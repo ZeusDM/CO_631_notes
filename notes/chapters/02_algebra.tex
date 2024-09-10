@@ -1,0 +1,85 @@
+\chapter{Formal Power Series}
+
+In this chapter, we introduce formal power series.
+
+To remove possible ambiguities, 
+note that
+rings are assumed to have a multiplicative identity,
+rings are not necessarily commutative, and
+the multiplicative identity of a subring is the same as the multiplicative identity of the parent ring.
+
+Let \(R\) be a ring.
+As a set, let \(R[[x]]\) be \(R^{\nonnegativeintegers}\), the set of all infinite sequences of elements of \(R\) indexed by the nonnegative integers.
+In other words, \(R[[x]]\) is the set of all sequences \((a_n)_{n=0}^\infty\) where each \(a_n \in R\).
+
+Given two sequences \((a_n)_{n=0}^\infty\) and \((b_n)_{n=0}^\infty\) in \(R[[x]]\), we define their sum as
+\[
+    (a_n)_{n=0}^\infty + (b_n)_{n=0}^\infty = (a_n + b_n)_{n=0}^\infty
+\]
+and their product as
+\[
+    (a_n)_{n=0}^\infty \cdot (b_n)_{n=0}^\infty = \left( \sum_{j=0}^n a_j b_{n-j} \right)_{n=0}^\infty.
+\]
+Such product is known as the \vocab{Cauchy product} of the two sequences.
+With these operations, \(R[[x]]\) is a ring with additive identity \((0, 0, 0, \dots)\) and multiplicative identity \((1, 0, 0, \dots)\).
+
+The ring \(R\) is embedded in \(R[[x]]\) via the map \(r \mapsto (r, 0, 0, \dots)\).
+This allows us to view \(R\) as a subring of \(R[[x]]\).
+Moreover, the polynomial ring \(R[x]\) is embedded in \(R[[x]]\) via the map \(r_0 + r_1 x + \cdots + r_n x^n \mapsto (r_0, r_1, \dots, r_n, 0, 0, \dots)\).
+This allows us to view \(R[x]\) as a subring of \(R[[x]]\).
+
+The embedding of \(R[x]\) into \(R[[x]]\) motivates the use of a similar notation for elements of \(R[[x]]\).
+We designate the sequence \(A = (a_n)_{n=0}^\infty\) by the formal expression
+\begin{equation*}
+    A(x) = \sum_{n=0}^\infty a_n x^n,
+\end{equation*}
+even though such expression is not formed by the operation of addition in \(R[[x]]\).
+We write \([x^k]A(x)\) to denote \(a_k\).
+
+This notational convention allows for convenient reformuations of the definitions of addition and multiplication in \(R[[x]]\), given by
+\begin{equation*}
+    \sum_{n=0}^\infty a_n x^n + \sum_{n=0}^\infty b_n x^n = \sum_{n=0}^\infty (a_n + b_n) x^n
+\end{equation*}
+and
+\begin{equation*}
+    \left( \sum_{n=0}^\infty a_n x^n \right) \cdot \left( \sum_{n=0}^\infty b_n x^n \right) = \sum_{n=0}^\infty \left( \sum_{j=0}^n a_j b_{n-j} \right) x^n,
+\end{equation*}
+which are convenient, but one must be careful with the distinction between the formal summation and actual addition in \(R[[x]]\).
+
+Unless otherwise relevant, the formal power series ring \(R[[x]] = R^{\nonnegativeintegers}\) is equipped with the product topology where each copy of \(R\) is equipped with the discrete topology.
+
+Let \(A_1(x), A_2(x), \dots\) be a sequence of formal power series,
+and let \(A(x)\) be another formal power series.
+The topology on \(R[[x]]\) implies that
+the sequence \(A_1(x), A_2(x), \dots\) \vocab{converges to} \(A(x)\)
+if and only if,
+for every \(k\),
+there exists \(N\) such that
+for all \(n \geq N\),
+we have \([x^k] A(x) = [x^k] A_n(x)\).
+If the sequence converges to \(A(x)\),
+we write \(A(x) = \lim_{n \to \infty} A_n(x)\).
+
+\begin{example}
+    Let \(A_i(x) = \sum_{j \geq i} x^j\).
+    Then, \(\lim_{i \to \infty} A_i(x) = 0\).
+\end{example}
+
+Let \(A_1(x), A_2(x), \dots\) be a sequence of formal power series.
+The \vocab{infinite sum} of the sequence is
+\[
+    \sum_{i=1}^\infty A_i(x) = \lim_{n \to \infty} \sum_{i=1}^n A_i(x),
+\]
+which may or may not converge.
+The \vocab{infinite product} of the sequence is
+\[
+    \prod_{i=1}^\infty A_i(x) = \lim_{n \to \infty} \prod_{i=1}^n A_i(x),
+\]
+which may or may not converge.
+
+Let \(A(x) = \sum_{i=0}^\infty a_i x^i\) and \(B(x) = \sum_{i=0}^\infty b_i x^i\).
+Then, the \vocab{composition} of \(A(x)\) and \(B(x)\) is the formal power series
+\[
+    A(B(x)) = \sum_{i=0}^\infty a_i B(x)^i,
+\]
+which may or may not converge.
