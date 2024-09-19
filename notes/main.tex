@@ -15,6 +15,7 @@
 \usepackage{subcaption}
 
 \usepackage[american]{babel}
+\usepackage{csquotes}
 \usepackage[en-US]{datetime2}
 \DTMlangsetup[en-US]{showdayofmonth=false}
 
@@ -30,16 +31,88 @@
 \newtheorem{example}[theorem]{Example}
 
 \newcommand{\vocab}[1]{\textbf{#1}}
-\DeclareMathOperator{\Sym}{Sym}
+
+\usepackage[dvipsnames, rgb]{xcolor}
+\usepackage{mathtools}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\le}{\leqslant}
+\usepackage{booktabs}
+\usepackage{ytableau}
+\ytableausetup{centertableaux, smalltableaux}
+
+\DeclareMathOperator\Par{\mathsf{Par}}
+\DeclareMathOperator\Sym{\mathsf{Sym}}
+\DeclareMathOperator\sym{\mathcal{S}}
+\DeclareMathOperator\cyc{\mathsf{cyc}}
+\DeclareMathOperator\inv{\mathsf{inv}}
+\DeclareMathOperator\sign{\mathsf{sign}}
+\DeclareMathOperator\Grassmanian{\mathsf{Gr}}
+\DeclareMathOperator\GL{\mathsf{Gr}}
+\DeclareMathOperator\id{\mathsf{id}}
+\DeclareMathOperator\Aut{\mathsf{Aut}}
+\DeclareMathOperator\Mat{\mathcal{M}}
+\newcommand{\qbinom}[3][q]{\genfrac{[}{]}{0pt}{}{#2}{#3}_{#1}}
 \newcommand{\integers}{\mathbb{Z}}
-\newcommand{\nonnegativeintegers}{\mathbb{N}}
-\newcommand{\positiveintegers}{\integers_{> 0}}
+\newcommand{\nonnegatives}{\mathbb{N}}
+\newcommand{\positives}{\integers_{> 0}}
 \newcommand{\rationals}{\mathbb{Q}}
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\complexes}{\mathbb{C}}
 
-\usepackage[american]{babel}
-\usepackage{csquotes}
+\newcommand\interval[1]{
+  \if#11
+    \{1\}
+  \else
+    \if#12
+      \{1, 2\}
+    \else
+      \if#13
+        \{1, 2, 3\}
+      \else
+        \if#14
+          \{1, 2, 3, 4\}
+        \else
+          \left\{1, \dots, #1\right\}
+        \fi
+      \fi
+    \fi
+  \fi
+}
+
+\newcommand\sg[1]{\EuScript{S}_{#1}}
+\newcommand\eltr[1]{
+    \sigma_{#1}
+}
+
+\usepackage{listofitems}
+
+\newcommand\perm[2][,]{%
+  \readlist\thecycle{#2}%
+    [\foreachitem\i\in\thecycle{\ifnum\icnt=1\else#1\fi\i}]%
+}
+\newcommand\tuple[2][]{%
+  \readlist\thecycle{#2}%
+  \foreachitem\i\in\thecycle{\ifnum\icnt=1\else#1\fi\i}%
+}
+\newcommand\word[2][]{%
+  \def\temp{#2}\ifx\temp\empty%
+    \varnothing%
+  \else%
+    \readlist\thecycle{#2}%
+      \foreachitem\i\in\thecycle{\ifnum\icnt=1\else#1\fi\i}%
+  \fi%
+}
+\newcommand\composition[2][]{%
+  \def\temp{#2}\ifx\temp\empty%
+    \varnothing%
+  \else%
+    \readlist\thecycle{#2}%
+      \foreachitem\i\in\thecycle{\ifnum\icnt=1\else#1\fi\i}%
+  \fi%
+}
+
 
 % https://tex.stackexchange.com/questions/343136/inline-spacing-within-the-cases-command-when-document-is-in-doublespace-mode
 \makeatletter
@@ -71,6 +144,8 @@
 
     %\input{chapters/01_motivation.tex}
     \input{chapters/02_algebra.tex}
+    \input{chapters/03_combinatorics.tex}
+    \input{chapters/04_permutations.tex}
 
-    % \printbibliography
+    \printbibliography
 \end{document}

@@ -2,14 +2,14 @@
 
 In this chapter, we introduce formal power series.
 
-To remove possible ambiguities, 
+To remove possible ambiguities,
 note that
 rings are assumed to have a multiplicative identity,
 rings are not necessarily commutative, and
 the multiplicative identity of a subring is the same as the multiplicative identity of the parent ring.
 
 Let \(R\) be a ring.
-As a set, let \(R[[x]]\) be \(R^{\nonnegativeintegers}\), the set of all infinite sequences of elements of \(R\) indexed by the nonnegative integers.
+As a set, let \(R[[x]]\) be \(R^{\nonnegatives}\), the set of all infinite sequences of elements of \(R\) indexed by the nonnegative integers.
 In other words, \(R[[x]]\) is the set of all sequences \((a_n)_{n=0}^\infty\) where each \(a_n \in R\).
 
 Given two sequences \((a_n)_{n=0}^\infty\) and \((b_n)_{n=0}^\infty\) in \(R[[x]]\), we define their sum as
@@ -46,7 +46,7 @@ and
 \end{equation*}
 which are convenient, but one must be careful with the distinction between the formal summation and actual addition in \(R[[x]]\).
 
-Unless otherwise relevant, the formal power series ring \(R[[x]] = R^{\nonnegativeintegers}\) is equipped with the product topology where each copy of \(R\) is equipped with the discrete topology.
+Unless otherwise relevant, the formal power series ring \(R[[x]] = R^{\nonnegatives}\) is equipped with the product topology where each copy of \(R\) is equipped with the discrete topology.
 
 Let \(A_1(x), A_2(x), \dots\) be a sequence of formal power series,
 and let \(A(x)\) be another formal power series.
@@ -83,3 +83,25 @@ Then, the \vocab{composition} of \(A(x)\) and \(B(x)\) is the formal power serie
     A(B(x)) = \sum_{i=0}^\infty a_i B(x)^i,
 \]
 which may or may not converge.
+
+\begin{proposition} \label{prop:composition_constant_term_zero}
+    Let \(A(x), B(x) \in R[[x]]\) such that \([x^0] B(x) = 0\).
+    Then, the composition \(A(B(x))\) is well-defined.
+\end{proposition}
+
+\begin{proposition}
+    Let \(A(x) \in R[[x]]\) such that \(A(0) = 0\).
+    Then, \(1 - A(x)\) is invertible in \(R[[x]]\), with inverse
+    \[
+        \sum_{i=0}^\infty A(x)^i.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Let \(B(x) = \sum_{i=0}^\infty x^i\).
+    First, the expression \(\sum_{i=0}^\infty A(x)^i = B(A(x))\) is well-defined by Proposition~\ref{prop:composition_constant_term_zero}.
+    Then, it is straightforward to verify that
+    \[
+        (1 - A(x)) \cdot \sum_{i=0}^\infty A(x)^i = 1. \qedhere
+    \]
+\end{proof}
