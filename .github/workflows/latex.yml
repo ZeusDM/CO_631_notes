@@ -5,15 +5,21 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build and Release
     runs-on: ubuntu-latest
     container:
       image: thomasweise/docker-texlive-full:latest
-    env:
-      TZ: 'America/Toronto'
     steps:
+      - name: Set timezone
+        uses: MathRobin/timezone-action@v1.1
+        with:
+          timezoneLinux: 'America/Toronto'
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -29,6 +35,7 @@ jobs:
         with:
           name: CO_631_notes.pdf
           path: ./notes/main.pdf
+          content-type: application/pdf
 
       - name: Get Current Date and Time
         id: datetime
