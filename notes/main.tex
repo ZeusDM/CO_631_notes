@@ -15,10 +15,11 @@
 \usetikzlibrary{arrows}
 \usepackage{subcaption}
 
-\usepackage[american]{babel}
+\usepackage[canadian]{babel}
 \usepackage{csquotes}
-\usepackage[en-US]{datetime2}
-\DTMlangsetup[en-US]{showdayofmonth=false}
+\usepackage[showseconds=false, showzone=false]{datetime2}
+\DTMlangsetup{mapzone}
+\DTMsettimestyle{en-CA}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}
@@ -142,6 +143,7 @@
 
 \title{Notes for Symmetric Functions}
 \author{Guilherme Zeus Dantas e Moura}
+\date{Last updated on \DTMnow.}
 
 \begin{document}
 	\maketitle

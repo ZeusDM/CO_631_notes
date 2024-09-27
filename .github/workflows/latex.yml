@@ -1,0 +1,72 @@
+name: Build and Release LaTeX Document
+
+on:
+  push:
+    branches:
+      - main  # Triggers the workflow on every push to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TZ: 'America/Toronto'  # Set timezone for the build job
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up LaTeX Environment
+        uses: dante-ev/latex-action@v2
+
+      - name: Compile LaTeX Document
+        run: |
+          cd notes
+          latexmk -pdf main.tex
+
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: CO_631_notes.pdf
+          path: notes/main.pdf
+
+  release:
+    needs: build  # Ensures that the release job runs after the build job
+    runs-on: ubuntu-latest
+    env:
+      TZ: 'America/Toronto'  # Set timezone for the release job
+
+    steps:
+      - name: Get Current Date and Time
+        id: datetime
+        run: |
+          # Generate a timestamp in the format YYYYMMDD-HHMMSS
+          echo "date=$(date '+%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
+
+      - name: Download PDF Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: CO_631_notes.pdf
+
+      - name: Create Git Tag
+        env:
+          TAG_NAME: ${{ steps.datetime.outputs.date }}
+        run: |
+          # Configure Git with a user name and email
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Create a new Git tag with the timestamp
+          git tag "$TAG_NAME" "$GITHUB_SHA"
+
+          # Push the new tag to the repository
+          git push origin "$TAG_NAME"
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: CO_631_notes.pdf  # Attach the compiled PDF
+          token: ${{ secrets.GITHUB_TOKEN }}  # Authentication token
+          tag: ${{ steps.datetime.outputs.date }}  # Use the timestamp as the tag
+          name: Release ${{ steps.datetime.outputs.date }}  # Release name
+          body: |
+            Compiled PDF of CO_631_notes as of ${{ steps.datetime.outputs.date }}.
