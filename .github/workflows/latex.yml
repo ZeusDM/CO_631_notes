@@ -36,7 +36,7 @@ jobs:
 
       - name: Get Current Date and Time
         id: datetime
-        run: echo "date=$(date '+%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
+        run: echo "date=$(date '+%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
