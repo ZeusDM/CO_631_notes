@@ -10,7 +10,7 @@ jobs:
     name: Build LaTeX Document
     runs-on: ubuntu-latest
     container:
-      image: thomasweise/docker-texlive-full:latest
+      image: ghcr.io/moderncv/debian-texlive-docker:main
     env:
       TZ: 'America/Toronto'
     steps:
