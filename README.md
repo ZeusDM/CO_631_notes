@@ -8,7 +8,7 @@ taught by Professor Oliver Pechenik in Fall 2024.
 ## Access the Notes
 
 The compiled PDF is automatically updated with every change to the `main` branch.  
-You can download the latest version from the [**Releases**](https://github.com/your-username/CO_631_notes/releases) section.
+You can download the latest version from the [**Releases**](https://github.com/ZeusDM/CO_631_notes/releases) section.
 
 ## Contribute
 
