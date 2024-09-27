@@ -13,7 +13,9 @@ jobs:
     name: Build and Release
     runs-on: ubuntu-latest
     container:
-      image: thomasweise/docker-texlive-full:latest
+      image: ghcr.io/moderncv/debian-texlive-docker:main
+    env:
+      TZ: 'America/Toronto'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,8 +23,6 @@ jobs:
           fetch-depth: 0
 
       - name: Build PDF
-        env:
-          TZ: America/Toronto
         run: |
           cd notes
           latexmk -pdf main.tex
@@ -35,8 +35,6 @@ jobs:
           path: CO_631_notes.pdf
 
       - name: Get Current Date and Time
-        env:
-          TZ: America/Toronto
         id: datetime
         run: echo "date=$(date '+%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
 
