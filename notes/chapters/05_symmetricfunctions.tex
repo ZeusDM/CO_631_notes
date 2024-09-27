@@ -1,0 +1,594 @@
+\chapter{Symmetric Functions}
+
+Let \(\sym_\infty\) be the group of bijections from \(\nonnegatives\) to itself that fix all but finitely many elements, under composition.
+Let \(\rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}}\)
+be the subalgebra consisting of the power series in \(x_1, x_2, \ldots\)
+of bounded degree.
+
+For example,
+\begin{align*}
+    x_1 + x_2 + x_3 + \cdots                   & \in \rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}}, \\
+    x_1x_2 + x_1x_3 + \cdots + x_2x_3 + \cdots & \in \rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}},
+\end{align*}
+but
+\begin{align*}
+    x_1 + x_1^2 + x_1^3 + \cdots \notin \rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}},
+    x_1x_2x_3x_4\cdots \notin \rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}}.
+\end{align*}
+
+Note that \(\rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}}\) is a graded \(\rationals\)-algebra,
+however its homogeneous components are infinite-dimensional,
+hence it has no Hilbert series.
+
+\begin{definition}
+    The \vocab{algebra of symmetric functions} is
+    \[
+        \Sym = \rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}}^{\sym_\infty},
+    \]
+\end{definition}
+
+Note that there are projections \(\Sym(n) \to \Sym(n-1)\) for all \(n\),
+where \(x_n\) is sent to \(0\) and the other variables are fixed.
+Thus, we have a sequence of maps
+\[
+    \cdots \to \Sym(n) \to \Sym(n-1) \to \cdots \to \Sym(2) \to \Sym(1) \to \rationals,
+\]
+and the algebra of symmetric functions \(\Sym\) is the inverse limit of this sequence; whatevers that means.
+
+There is a projection \(\Sym \to \Sym(n)\) that sends \(x_i\) to \(0\) for all \(i > n\), and the other variables are fixed.
+
+Given a partition \(\lambda \in \Par\),
+the \vocab{monomial symmetric function} \(m_\lambda \in \Sym\) is defined by
+\[
+    m_\lambda = \sum_{\sort{\alpha} = \lambda} x^\alpha.
+\]
+The set of monomial symmetric functions
+\[
+    \{ m_\lambda \mid \lambda \in \Par \}
+\]
+is a basis for \(\Sym\).
+
+Any formula that holds in \(\Sym\) will hold in \(\Sym(n)\) after sending \(m_\lambda\) to \(m_\lambda(x_1, x_2, \ldots, x_n)\) if \(\ell(\lambda) \leq n\), and to \(0\) otherwise.
+In some sense, the converse of this statement is also true: any formula that holds in \(\Sym(n)\) for all \(n\) will hold in \(\Sym\).
+
+We might also want to define the \vocab{formal completion} of \(\Sym\) as
+\begin{equation*}
+    \widehat\Sym = \rationals[[x_1, x_2, \ldots]]^{\sym_\infty}.
+\end{equation*}
+For example,
+\begin{equation*}
+    m_1 + m_2 + m_3 + \cdots \in \widehat\Sym.
+\end{equation*}
+
+Back to the algebra of symmetric functions,
+\(\Sym\) is a graded \(\rationals\)-algebra,
+where the homogeneous component of degree \(d\) is \(\Sym_d\).
+The dimension of \(\Sym_d\) is the number of partitions of \(d\),
+and therefore the Hilbert series of \(\Sym\) is
+\begin{equation*}
+    \Hilb(\Sym; t) = \prod_{i=1}^\infty \frac{1}{1-t^i}.
+\end{equation*}
+
+Consider \(N = \rationals[x_1, x_2, \ldots]\), the ring of polynomials in infinitely many variables, which is also a graded \(\rationals\)-algebra.
+But \(\dim N_1 = \infty\), so \(N\) has no Hilbert series.
+Consider \(N' = N\) with nonstandard grading where \(\deg(x_i) = i\) for all \(i \in \nonnegatives\).
+Then, \(\dim N'_d\) is the number of partitions of \(d\), so
+\begin{equation*}
+    \Hilb(N'; t) = \prod_{i=1}^\infty \frac{1}{1-t^i} = \Hilb(\Sym; t).
+\end{equation*}
+This makes us expect that \(\Sym\) to look like \(N'\).
+
+How do we explain this? We find generators of \(\Sym\), one in each degree, with no relations between them.
+There are three simple answers to this question:
+\begin{itemize}
+    \item \vocab{power sum symmetric functions} \(p_k = \sum_{i=1}^\infty x_i^k\),
+    \item \vocab{elementary symmetric functions} \(e_k = \sum_{1 \leq i_1 < i_2 < \cdots < i_k} x_{i_1}x_{i_2}\cdots x_{i_k}\),
+    \item \vocab{complete homogeneous symmetric functions} \(h_k = \sum_{1 \leq i_1 \leq i_2 \leq \cdots \leq i_k} x_{i_1}x_{i_2}\cdots x_{i_k}\).
+\end{itemize}
+
+\section{Power Sum Symmetric Functions}
+
+The \vocab{\(n\)\textsuperscript{th} power sum symmetric function \(p_n \in \Sym\)} is defined by
+\begin{equation}
+    p_n = \sum_{i=1}^\infty x_i^n.
+\end{equation}
+Given a partition \(\lambda \in \Par\), define \(p_\lambda = p_{\lambda_1}p_{\lambda_2}\cdots p_{\lambda_{\ell(\lambda)}}\).
+
+\begin{theorem} \label{thm:pn_sym}
+    The four following statements are true:
+    \begin{enumerate}
+        \item \label{item:pl_symd_basis}
+              The set \(\{p_\lambda : \lambda \in \Par(d)\}\) forms a basis for \(\Sym_d\).
+        \item \label{item:pl_sym_basis}
+              The set \(\{p_\lambda : \lambda \in \Par\}\) forms a basis for \(\Sym\).
+        \item \label{item:pn_sym_generates}
+              The set \(\{p_i : i \in \positives\}\) generates \(\Sym\) and is algebraically independent.
+        \item \label{item:pn_sym_graded_isom}
+              The map \(N' \to \Sym\) obtained by the extension of the map \(x_i \mapsto p_i\) is an isomorphism of graded \(\rationals\)-algebras.
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}[Theorem~\ref{thm:pn_sym}\ref{item:pl_symd_basis} for \(d = 3\)]
+    There are three partitions of \(3\), namely \(\composition{3}\), \(\composition{2, 1}\), and \(\composition{1, 1, 1}\).
+    The corresponding power sum symmetric functions are
+    \begin{align*}
+        p_{\composition{3}}       & = p_3 = x_1^3 + x_2^3 + x_3^3 + \cdots,                                \\
+        p_{\composition{2, 1}}    & = p_2p_1 = (x_1^2 + x_2^2 + x_3^2 + \cdots)(x_1 + x_2 + x_3 + \cdots), \\
+        p_{\composition{1, 1, 1}} & = p_1^3 = (x_1 + x_2 + x_3 + \cdots)^3,
+    \end{align*}
+    which can be expanded in terms of monomial symmetric functions as
+    \begin{align*}
+        p_{\composition{3}}       & = m_{\composition{3}}                                                         \\
+        p_{\composition{2, 1}}    & = m_{\composition{3}} + m_{\composition{2, 1}}                                \\
+        p_{\composition{1, 1, 1}} & = m_{\composition{3}} + 3m_{\composition{2, 1}} + 6m_{\composition{1, 1, 1}}.
+    \end{align*}
+    Hence,
+    \begin{equation*}
+        \begin{bsmallmatrix}
+            p_{\composition{1, 1, 1}} \\ p_{\composition{2, 1}} \\ p_{\composition{3}}
+        \end{bsmallmatrix}
+        =
+        \begin{bsmallmatrix}
+            6 & 3 & 1 \\
+            0 & 1 & 1 \\
+            0 & 0 & 1
+        \end{bsmallmatrix}
+        \begin{bsmallmatrix}
+            m_{\composition{1, 1, 1}} \\ m_{\composition{2, 1}} \\ m_{\composition{3}}
+        \end{bsmallmatrix}.
+    \end{equation*}
+    Since
+    \(
+    \begin{bsmallmatrix}
+        6 & 3 & 1 \\
+        0 & 1 & 1 \\
+        0 & 0 & 1
+    \end{bsmallmatrix}
+    \)
+    is an invertible matrix and \(\{m_{\composition{3}}, m_{\composition{2, 1}}, m_{\composition{1, 1, 1}}\}\) is a basis for \(\Sym_3\),
+    it follows that \(\{p_{\composition{3}}, p_{\composition{2, 1}}, p_{\composition{1, 1, 1}}\}\) is a basis for \(\Sym_3\).
+
+    Note that \(\{p_{\composition{3}}, p_{\composition{2, 1}}, p_{\composition{1, 1, 1}}\}\) is \emph{not} a \(\mathbb{Z}\)-basis for the integer symmetric functions, as the matrix has determinant \(6\).
+\end{example}
+
+\begin{proof}[Proof of Theorem~\ref{thm:pn_sym}(a)]
+    Let \(d\) be an integer and \(\lambda \in \Par(d)\).
+    Note that
+    \begin{align*}
+        p_\lambda
+         & = p_{\lambda_1}p_{\lambda_2}\cdots p_{\lambda_{\ell(\lambda)}}            \\
+         & = \left( \prod_i j_i! \right) m_\lambda + \sum_{\substack{\mu \in \Par(d) \\ \lambda \lessref \mu}} R_{\lambda\mu}m_\mu,
+    \end{align*}
+    where \(R_{\lambda\mu}\) are positive integers.%
+    \footnote{A future homework problem might ask to compute \(R_{\lambda\mu}\).}
+    Take a total order that extends the refinement order on \(\Par(d)\), and write two vectors \((p_\lambda)\) and \((m_\lambda)\) in this order.
+    Then, the matrix that maps \((\mu_\lambda)\) to \((p_\lambda)\) is upper triangular with positive diagonal entries, hence invertible.
+    Finally, since \(\{m_\lambda : \lambda \in \Par(d)\}\) is a basis for \(\Sym_d\), it follows that \(\{p_\lambda : \lambda \in \Par(d)\}\) is a basis for \(\Sym_d\).
+\end{proof}
+
+Note that the \(p\)-basis is \(m\)-positive, i.e., the coefficients of the \(p\)-basis in the \(m\)-basis are nonnegative integers,
+and \(m\)-integral, i.e., the coefficients of the \(p\)-basis in the \(m\)-basis are integers.
+
+\section{Elementary Symmetric Functions}
+
+The \vocab{\(n\)\textsuperscript{th} elementary symmetric function \(e_n \in \Sym\)} is defined by
+\begin{equation}
+    e_n = \sum_{1 \leq i_1 < i_2 < \cdots < i_n} x_{i_1}x_{i_2}\cdots x_{i_n}.
+\end{equation}
+Given a partition \(\lambda \in \Par\), define \(e_\lambda = e_{\lambda_1}e_{\lambda_2}\cdots e_{\lambda_{\ell(\lambda)}}\).
+
+\begin{theorem}[Fundamental Theorem of Symmetric Functions] \label{thm:en_sym}
+    The four following statements are true:
+    \begin{enumerate}
+        \item \label{item:el_symd_basis}
+              The set \(\{e_\lambda : \lambda \in \Par(d)\}\) forms a basis for \(\Sym_d\).
+        \item \label{item:el_sym_basis}
+              The set \(\{e_\lambda : \lambda \in \Par\}\) forms a basis for \(\Sym\).
+        \item \label{item:en_sym_generates}
+              The set \(\{e_i : i \in \positives\}\) generates \(\Sym\) and is algebraically independent.
+        \item \label{item:en_sym_graded_isom}
+              The map \(N' \to \Sym\) obtained by the extension of the map \(x_i \mapsto e_i\) is an isomorphism of graded \(\rationals\)-algebras.
+    \end{enumerate}
+\end{theorem}
+
+A \vocab{contingency table} is a function \(A \colon \positives \times \positives \to \nonnegatives\) such that all but finitely many entries are non-zero.
+Let \(\operatorname{row}(A)\) be the sequence of row sums of \(A\),
+and let \(\operatorname{col}(A)\) be the sequence of column sums of \(A\).
+Note that the sum of \(\operatorname{row}(A)\) is equal to the sum of \(\operatorname{col}(A)\), hence they are weak compositions of the same integer.
+See Figure~\ref{fig:contingency_table} for an example of a contingency table.
+
+\begin{figure}[htbp]
+	\begin{equation*}
+		\arraycolsep=7pt
+		\def\arraystretch{1.3}
+		\begin{array}{c|ccccc}
+			& \textcolor{red}{4} & \textcolor{red}{6} & \textcolor{red}{5} & \textcolor{red}{0} & \cdots \\ \hline
+			\textcolor{red}{6} & 1      & 4      & 3      & 0      & \cdots \\
+			\textcolor{red}{3} & 0      & 2      & 1      & 0      & \cdots \\
+			\textcolor{red}{4} & 3      & 0      & 1      & 0      & \cdots \\
+			\textcolor{red}{0} & 0      & 0      & 0      & 0      & \cdots \\
+			\vdots             & \vdots & \vdots & \vdots & \vdots & \ddots
+		\end{array}
+	\end{equation*}
+	\caption{A contingency table (in black) \(A\) with \(\operatorname{row}(A) = \composition{6, 3, 4}\) and \(\operatorname{col}(A) = \composition{4, 6, 5}\) (in red).}
+	\label{fig:contingency_table}
+\end{figure}
+
+Given weak compositions \(\alpha, \beta\),
+let \(M_{\alpha\beta}\) be the number of contingency tables with entries in \(\{0, 1\}\) such that \(\operatorname{row}(A) = \alpha\) and \(\operatorname{col}(A) = \beta\).
+
+We start with some facts about \(M_{\alpha\beta}\), which are used later without reference.
+
+\begin{fact} \label{fact:Mab-same-sum}
+	If \(\alpha, \beta\) are weak compositions of different integers, then \(M_{\alpha\beta} = 0\).
+\end{fact}
+\begin{proof}
+	If \(A\) is a contingency table with \(\operatorname{row}(A) = \alpha\) and \(\operatorname{col}(A) = \beta\),
+	then the sum of \(\alpha\) is equal to the sum of \(\beta\) because both are equal to the sum of all entries of \(A\).
+\end{proof}
+
+\begin{fact} \label{fact:Mab-Mba}
+	For any weak compositions \(\alpha, \beta\),
+	\(M_{\alpha\beta} = M_{\beta\alpha}\).
+\end{fact}
+\begin{proof}
+	Reflection by the main diagonal of a contingency table is a bijection between the objects counted by \(M_{\alpha\beta}\) and \(M_{\beta\alpha}\).
+\end{proof}
+
+\begin{fact} \label{fact:Mab-rearrangement}
+	If \(\alpha\) is a rearrangement of \(\alpha'\) and \(\beta\) is a rearrangement of \(\beta'\),
+	then \(M_{\alpha\beta} = M_{\alpha'\beta'}\).
+\end{fact}
+\begin{proof}
+	Let \(w\) be the permutation that rearranges \(\alpha\) to \(\alpha'\).
+	The map that sends a contingency table \(A\) to another contingency table \(A'\) by applying \(w\) to the rows of \(A\) is a bijection between the objects counted by \(M_{\alpha\beta}\) and \(M_{\alpha'\beta}\).
+	Applying the same argument to the columns shows that \(M_{\alpha\beta} = M_{\alpha'\beta'}\), as desired.
+\end{proof}
+
+\begin{corollary} \label{cor:Mab-Mlm}
+	If \(\alpha\) is a rearrangement of a partition \(\lambda\) and \(\beta\) is a rearrangement of a partition \(\mu\),
+	then \(M_{\alpha\beta} = M_{\lambda\mu}\).
+\end{corollary}
+
+Define the weight of a contingency table \(A\) to be the monomial
+\begin{equation}
+	\operatorname{wt}(A)
+	= \prod_{i, j \geq 1} (x_iy_j)^{A(i, j)}
+	= x^{\operatorname{row}(A)}y^{\operatorname{col}(A)},
+\end{equation}
+
+\begin{lemma} \label{lem:generating-function-01-contingency-tables-compositions}
+	Let \(x = (x_1, x_2, \ldots)\) and \(y = (y_1, y_2, \ldots)\) be sequences of variables.
+	Then,
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 + x_iy_j)
+		= \sum_{\substack{\text{contingency tables } A \\ \text{with entries in } \{0, 1\}}} \operatorname{wt}(A)
+		= \sum_{\substack{\text{weak compositions} \\ \alpha, \beta}} M_{\alpha\beta} x^\alpha y^\beta.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+Note that each monomial in the expansion of the power series
+\begin{equation}
+	\prod_{i, j \geq 1} (1 + x_iy_j)
+	= \prod_{i, j \geq 1} \left( (x_iy_j)^0 + (x_iy_j)^1 \right)
+\end{equation}
+corresponds to a choice of \(0\) or \(1\) for the exponent of each \(x_iy_j\), which corresponds to a contingency table with entries in \(\{0, 1\}\).
+Therefore,
+\begin{equation}
+	\prod_{i, j \geq 1} (1 + x_iy_j)
+	= \sum_{\substack{\text{contingency tables } A \\ \text{with entries in } \{0, 1\}}} \operatorname{wt}(A) 
+	= \sum_{\substack{\text{weak compositions} \\ \alpha, \beta}} M_{\alpha\beta} x^\alpha y^\beta, 
+\end{equation}
+where the last equation is obtained by computing the coefficient of each monomial.
+\end{proof}
+
+\begin{proposition} \label{prop:generating-function-01-contingency-tables-partitions}
+	Let \(x = (x_1, x_2, \ldots)\) and \(y = (y_1, y_2, \ldots)\) be sequences of variables.
+	Then,
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 + x_iy_j) = \sum_{\substack{\text{partitions} \\ \lambda, \mu}} M_{\lambda\mu} m_\lambda(x) m_\mu(y).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	We have
+\begin{equation}
+	\prod_{i, j \geq 1} (1 + x_iy_j)
+	= \sum_{\substack{\text{weak compositions} \\ \alpha, \beta}} M_{\alpha\beta} x^\alpha y^\beta
+	= \sum_{\substack{\text{partitions} \\ \lambda, \mu}} M_{\lambda\mu} m_\lambda(x) m_\mu(y),
+\end{equation}
+where the first equality is by Lemma~\ref{lem:generating-function-01-contingency-tables-compositions},
+and the second equality is obtained by collecting all monomials whose exponents are rearrangements of the same partition.
+\end{proof}
+
+\begin{proposition} \label{prop:el-expansion-in-m-basis}
+	Let \(\lambda\) be a partition.
+	Then,
+	\begin{equation}
+		e_\lambda = \sum_{\text{partitions } \mu} M_{\lambda\mu} m_\mu.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Note that 
+	\begin{equation}
+		e_k(x)
+		= \sum_{\substack{\{0, 1\}\text{-sequences } \alpha \\ \text{with sum } k}}
+			x^\alpha
+	\end{equation}
+	Hence,
+	\begin{align}
+		e_\lambda(x)
+		= \prod_{i\geq 1} e_{\lambda_i}
+		&= \prod_{i\geq 1}
+			\sum_{\substack{\text{weak compositions } \alpha \\ \text{with entries in } \{0, 1\} \\ \text{and sum } \lambda_i}}
+				x^{\alpha^{(i)}} \\
+		&= \sum_{\substack{\text{contingency tables } A \\ \text{with entries in } \{0, 1\} \\ \text{and column sum } \lambda}}
+			x^{\operatorname{row}(A)}.
+	\end{align}
+	By Lemma~\ref{lem:generating-function-01-contingency-tables-compositions},
+	\(e_\lambda(x)\) is the coefficient of \(y^\lambda\) in \(\prod_{i, j \geq 1} (1 + x_iy_j)\) as a power series in \(y\) with coefficients in \(\rationals[[x_1, x_2, \ldots]]\),
+	that is,
+	\begin{equation}
+		e_\lambda(x) = \sum_{\text{weak compositions } \alpha} M_{\alpha\lambda} x^\alpha = \sum_{\text{partitions } \mu} M_{\mu\lambda} m_\mu(x),
+	\end{equation}
+	which completes the proof.
+\end{proof}
+
+The following corollary is a direct consequence of Propositions~\ref{prop:generating-function-01-contingency-tables-partitions} and~\ref{prop:el-expansion-in-m-basis}.
+
+\begin{corollary}
+	Let \(x = (x_1, x_2, \ldots)\) and \(y = (y_1, y_2, \ldots)\) be sequences of variables.
+	Let \(\lambda\) be a partition.
+	Then,
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 + x_iy_j) = \sum_{\lambda \in \Par} e_\lambda(x) m_\lambda(y).
+	\end{equation}	
+\end{corollary}
+
+\begin{lemma}
+    Let \(\lambda, \mu \in \Par(d)\).
+    Then, \(M_{\lambda\mu} = 0\) if \(\mu \not\leq \tilde{\lambda}\),
+    where \(\tilde{\lambda}\) is the conjugate of \(\lambda\).
+    Moreover, \(M_{\lambda\tilde{\lambda}} = 1\).
+\end{lemma}
+
+\begin{proof}
+	Suppose \(M_{\lambda\mu} \neq 0\).
+	Then, there is a contingency table \(A\) with entries in \(\{0, 1\}\) such that \(\operatorname{row}(A) = \lambda\) and \(\operatorname{col}(A) = \mu\).
+	Let \(B\) be the contingency table obtained by left-justifying the ones in \(A\).
+	Then, \(\operatorname{row}(B) = \lambda\) and \(\operatorname{col}(B) = \tilde{\lambda}\).
+
+	Fix \(i\).
+	Note that
+	\begin{align}
+		\tilde{\lambda}_1 + \dots + \tilde{\lambda}_i
+		 & = \text{number of ones in the first \(i\) columns of \(B\)}    \\
+		 & \geq \text{number of ones in the first \(i\) columns of \(A\)}
+		\geq \mu_1 + \dots + \mu_i.
+	\end{align}
+	Therefore, \(\tilde{\lambda} \geq \mu\).
+
+	It is straightforward to see that \(M_{\lambda\tilde{\lambda}} = 1\), with the only possible contingency table having ones in the entries of the Young diagram of \(\lambda\) (in the English notation).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:en_sym}\ref{item:el_symd_basis}]
+    Let \(d\) be an integer and \(\lambda \in \Par(d)\).
+    Note that
+    \begin{equation*}
+        e_{\tilde{\lambda}}
+        = m_\lambda + \sum_{\substack{\mu \in \Par(d) \\ \mu < \lambda}} M_{\lambda\mu} m_\mu.
+    \end{equation*}
+    Take a total order that extends the dominance order on \(\Par(d)\),
+    and write two vectors \((e_{\tilde{\lambda}})\) and \((m_\lambda)\) in this order.
+    Then, the matrix that maps \((m_\mu)\) to \((e_{\tilde{\lambda}})\) is upper triangular with positive diagonal entries, hence invertible.
+    Finally, since \(\{m_\lambda : \lambda \in \Par(d)\}\) is a basis for \(\Sym_d\), it follows that \(\{e_{\tilde{\lambda}} : \lambda \in \Par(d)\}\) is a basis for \(\Sym_d\).
+
+    Moreover, since the diagonal entries of the matrix are all \(1\), this matrix has an inverse with integer entries, and consequently \(\{e_{\tilde{\lambda}} : \lambda \in \Par(d)\}\) is a \(\mathbb{Z}\)-basis for the integer symmetric functions.
+\end{proof}
+
+
+\section{Complete Homogeneous Symmetric Functions}
+
+The \vocab{\(n\)\textsuperscript{th} complete homogeneous symmetric function \(h_n \in \Sym\)} is defined by
+\begin{equation}
+    h_n = \sum_{1 \leq i_1 \leq i_2 \leq \cdots \leq i_n} x_{i_1}x_{i_2}\cdots x_{i_n}.
+\end{equation}
+Given a partition \(\lambda \in \Par\), define \(h_\lambda = h_{\lambda_1}h_{\lambda_2}\cdots h_{\lambda_{\ell(\lambda)}}\).
+
+\begin{theorem} \label{thm:hn_sym}
+		The four following statements are true:
+		\begin{enumerate}
+				\item \label{item:hl_symd_basis}
+							The set \(\{h_\lambda : \lambda \in \Par(d)\}\) forms a basis for \(\Sym_d\).
+				\item \label{item:hl_sym_basis}
+							The set \(\{h_\lambda : \lambda \in \Par\}\) forms a basis for \(\Sym\).
+				\item \label{item:hn_sym_generates}
+							The set \(\{h_i : i \in \positives\}\) generates \(\Sym\) and is algebraically independent.
+				\item \label{item:hn_sym_graded_isom}
+							The map \(N' \to \Sym\) obtained by the extension of the map \(x_i \mapsto h_i\) is an isomorphism of graded \(\rationals\)-algebras.
+		\end{enumerate}
+\end{theorem}
+
+\begin{example}[Theorem~\ref{thm:hn_sym}\ref{item:hl_symd_basis} for \(d = 3\)]
+    We claim that \(\{h_{\lambda} : \lambda \in \Par(3)\}\) is a basis for \(\Lambda_3\).
+    \[
+        \begin{bsmallmatrix}
+            h_{1,1,1} \\
+            h_{2,1}   \\
+            h_3
+        \end{bsmallmatrix}
+        =
+        \begin{bsmallmatrix}
+            6 & 3 & 1 \\
+            3 & 2 & 1 \\
+            1 & 1 & 1
+        \end{bsmallmatrix}
+        \begin{bsmallmatrix}
+            m_{1,1,1} \\
+            m_{2,1}   \\
+            m_3
+        \end{bsmallmatrix}.
+    \]
+    Since the matrix
+		\(
+        \begin{bsmallmatrix}
+            6 & 3 & 1 \\
+            3 & 2 & 1 \\
+            1 & 1 & 1
+        \end{bsmallmatrix}
+    \)
+    is invertible, \(\{h_{1,1,1}, h_{2,1}, h_3\}\) forms a basis of \(\Lambda_3\). Moreover,
+		\(
+        \det\begin{bsmallmatrix}
+            6 & 3 & 1 \\
+            3 & 2 & 1 \\
+            1 & 1 & 1
+        \end{bsmallmatrix} = 1,
+    \)
+    so the matrix has integer entries and determinant \(1\), making it also a \(\mathbb{Z}\)-basis.
+		However, the eigenvalues of
+		\(
+				\begin{bsmallmatrix}
+						6 & 3 & 1 \\
+						3 & 2 & 1 \\
+						1 & 1 & 1
+				\end{bsmallmatrix}
+		\)
+		are \(1\), \(4 + \sqrt{15}\), and \(4 - \sqrt{15}\),
+		so that is something weird about this matrix.
+\end{example}
+
+Given weak compositions \(\alpha, \beta\),
+let \(N_{\alpha\beta}\) be the number of contingency tables with entries in \(\nonnegatives\) such that \(\operatorname{row}(A) = \alpha\) and \(\operatorname{col}(A) = \beta\).
+
+We list some facts about \(N_{\alpha\beta}\), whose proofs are analogous to Facts~\ref{fact:Mab-same-sum}--\ref{cor:Mab-Mlm} for \(M_{\alpha\beta}\), and are omitted.
+These facts are used later without reference.
+
+\begin{fact}
+	If \(\alpha, \beta\) are weak compositions of different integers, then \(N_{\alpha\beta} = 0\).
+\end{fact}
+
+\begin{fact}
+	For any weak compositions \(\alpha, \beta\),
+	\(N_{\alpha\beta} = N_{\beta\alpha}\).
+\end{fact}
+
+\begin{fact}
+	If \(\alpha\) is a rearrangement of \(\alpha'\) and \(\beta\) is a rearrangement of \(\beta'\),
+	then \(N_{\alpha\beta} = N_{\alpha'\beta'}\).
+\end{fact}
+
+\begin{corollary}
+	If \(\alpha\) is a rearrangement of a partition \(\lambda\) and \(\beta\) is a rearrangement of a partition \(\mu\),
+	then \(N_{\alpha\beta} = N_{\lambda\mu}\).
+\end{corollary}
+
+\begin{lemma} \label{lem:generating-function-N-contingency-tables-compositions}
+	Let \(x = (x_1, x_2, \ldots)\) and \(y = (y_1, y_2, \ldots)\) be sequences of variables.
+	Then,
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}
+		= \sum_{\substack{\text{contingency tables } A \\ \text{with entries in } \nonnegatives}} \operatorname{wt}(A)
+		= \sum_{\substack{\text{weak compositions} \\ \alpha, \beta}} N_{\alpha\beta} x^\alpha y^\beta.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Note that each monomial in the expansion of the power series
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}
+		= \prod_{i, j \geq 1} \left( (x_iy_j)^0 + (x_iy_j)^1 + (x_iy_j)^2 + \cdots \right)
+	\end{equation}
+	corresponds to a choice of a nonnegative integer for the exponent of each \(x_iy_j\), which corresponds to a contingency table with entries in \(\nonnegatives\).
+	Therefore,
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}
+		= \sum_{\substack{\text{contingency tables } A \\ \text{with entries in } \nonnegatives}} \operatorname{wt}(A) 
+		= \sum_{\substack{\text{weak compositions} \\ \alpha, \beta}} N_{\alpha\beta} x^\alpha y^\beta, 
+	\end{equation}
+	where the last equation is obtained by computing the coefficient of each monomial.
+\end{proof}
+
+\begin{proposition} \label{prop:generating-function-N-contingency-tables-partitions}
+	Let \(x = (x_1, x_2, \ldots)\) and \(y = (y_1, y_2, \ldots)\) be sequences of variables.
+	Then,
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 - x_iy_j)^{-1} = \sum_{\substack{\text{partitions} \\ \lambda, \mu}} N_{\lambda\mu} m_\lambda(x) m_\mu(y).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	We have
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}
+		= \sum_{\substack{\text{weak compositions} \\ \alpha, \beta}} N_{\alpha\beta} x^\alpha y^\beta
+		= \sum_{\substack{\text{partitions} \\ \lambda, \mu}} N_{\lambda\mu} m_\lambda(x) m_\mu(y),
+	\end{equation}
+	where the first equality is by Lemma~\ref{lem:generating-function-N-contingency-tables-compositions},
+	and the second equality is obtained by collecting all monomials whose exponents are rearrangements of the same partition.
+\end{proof}
+
+\begin{proposition} \label{prop:hl-expansion-in-m-basis}
+	Let \(\lambda, \mu \in \Par(d)\).
+	Then,
+	\begin{equation}
+		h_\lambda = \sum_{\mu \in \Par(d)} N_{\lambda\mu}m_\mu.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Note that 
+	\begin{equation}
+		h_k(x)
+		= \sum_{\substack{\nonnegatives\text{-sequences } \alpha \\ \text{with sum } k}}
+			x^\alpha
+	\end{equation}
+	Hence,
+	\begin{align}
+		h_\lambda(x)
+		= \prod_{i\geq 1} h_{\lambda_i}
+		&= \prod_{i\geq 1}
+			\sum_{\substack{\text{weak compositions } \alpha \\ \text{with entries in } \nonnegatives \\ \text{and sum } \lambda_i}}
+				x^{\alpha^{(i)}} \\
+		&= \sum_{\substack{\text{contingency tables } A \\ \text{with entries in } \nonnegatives \\ \text{and column sum } \lambda}}
+			x^{\operatorname{row}(A)}.
+	\end{align}
+	By Lemma~\ref{lem:generating-function-N-contingency-tables-compositions},
+	\(h_\lambda(x)\) is the coefficient of \(y^\lambda\) in \(\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}\) as a power series in \(y\) with coefficients in \(\rationals[[x_1, x_2, \ldots]]\),
+	that is,
+	\begin{equation}
+		h_\lambda(x) = \sum_{\text{weak compositions } \alpha} N_{\alpha\lambda} x^\alpha = \sum_{\text{partitions } \mu} N_{\mu\lambda} m_\mu(x),
+	\end{equation}
+	which completes the proof.
+\end{proof}
+
+The following corollary is a consequence of Propositions~\ref{prop:generating-function-N-contingency-tables-partitions} and~\ref{prop:hl-expansion-in-m-basis}.
+
+\begin{corollary}
+	Let \(x = (x_1, x_2, \ldots)\) and \(y = (y_1, y_2, \ldots)\) be sequences of variables.
+	Then,
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 - x_iy_j)^{-1} = \sum_{\lambda \in \Par} h_\lambda(x) m_\lambda(y).
+	\end{equation}
+\end{corollary}
+
+Recall that \(\Lambda = \mathbb{Q}[e_1, e_2, \ldots]\) is secretly a polynomial ring. Given any \(\mathbb{Q}\)-algebra \(A\) and \(a_1, a_2, \ldots \in A\), there exists a unique homomorphism \(\varphi: \Lambda \to A\) with \(\varphi(e_k) = a_k\).
+
+Let \(\omega\) be the unique homomorphism \(\omega: \Lambda \to \Lambda\) such that \(\omega(e_k) = h_k\). Note that
+\[
+    \omega(e_{\lambda}) = \omega(e_{\lambda_1} e_{\lambda_2} \cdots e_{\lambda_{\ell(\lambda)}}) = h_{\lambda_1} h_{\lambda_2} \cdots h_{\lambda_{\ell(\lambda)}} = h_\lambda.
+\]
+
+\begin{theorem}
+    \(\omega\) is an involution, that is, \(\omega \circ \omega = \operatorname{id}\). In particular, \(\omega\) is an isomorphism.
+\end{theorem}
+
+\begin{proof}
+    (To be written later).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:hn_sym}(\ref{item:hl_symd_basis})]
+    Since \(\omega\) is an isomorphism of \(\Sym\), and \(\omega(e_\lambda) = h_\lambda\), and \(\{e_\lambda : \lambda \in \Par(d)\}\) forms a basis for \(\Sym_d\) by Theorem~\ref{thm:en_sym}(\ref{item:el_symd_basis}), it follows that \(\{h_\lambda : \lambda \in \Par(d)\}\) forms a basis for \(\Sym_d\).
+\end{proof}

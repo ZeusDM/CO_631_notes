@@ -9,6 +9,7 @@
 \usepackage[onehalfspacing, nodisplayskipstretch]{setspace}
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage{enumitem}
+\setlist[enumerate]{label={(\alph*)}}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows}
@@ -22,6 +23,7 @@
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{fact}[theorem]{Fact}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}
@@ -53,6 +55,7 @@
 \DeclareMathOperator\id{\mathsf{id}}
 \DeclareMathOperator\Aut{\mathsf{Aut}}
 \DeclareMathOperator\Mat{\mathcal{M}}
+\DeclareMathOperator\Hilb{\mathsf{Hilb}}
 \newcommand{\qbinom}[3][q]{\genfrac{[}{]}{0pt}{}{#2}{#3}_{#1}}
 \newcommand{\integers}{\mathbb{Z}}
 \newcommand{\nonnegatives}{\mathbb{N}}
@@ -60,6 +63,7 @@
 \newcommand{\rationals}{\mathbb{Q}}
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\complexes}{\mathbb{C}}
+\newcommand{\sort}[1]{\overleftarrow{#1}}
 
 \newcommand\interval[1]{
   \if#11
@@ -146,6 +150,7 @@
     \input{chapters/02_algebra.tex}
     \input{chapters/03_combinatorics.tex}
     \input{chapters/04_permutations.tex}
+    \input{chapters/05_symmetricfunctions.tex}
 
     \printbibliography
 \end{document}
