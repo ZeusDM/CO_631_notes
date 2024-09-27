@@ -42,7 +42,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.datetime.outputs.date }}
-          name: Release ${{ steps.datetime.outputs.date }}
+          name: Symmetric Functions (CO 631) Lecture Notes ${{ steps.datetime.outputs.date }}
           files: CO_631_notes.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
