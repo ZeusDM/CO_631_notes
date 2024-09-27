@@ -14,12 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: thomasweise/docker-texlive-full:latest
+    env:
+      TZ: America/Toronto
     steps:
-      - name: Set timezone
-        uses: MathRobin/timezone-action@v1.1
-        with:
-          timezoneLinux: 'America/Toronto'
-
       - name: Checkout code
         uses: actions/checkout@v4
         with:
