@@ -7,58 +7,35 @@ on:
 
 jobs:
   build:
-    name: Build LaTeX Document
+    name: Build and Release
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/moderncv/debian-texlive-docker:main
+      image: thomasweise/docker-texlive-full:latest
     env:
       TZ: 'America/Toronto'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Build PDF
-        run: |
-          cd notes
-          latexmk -pdf main.tex
+        run: latexmk -pdf ./notes/main.tex
 
-      - name: Upload PDF
+      - name: Upload PDF Artifact
         uses: actions/upload-artifact@v4
         with:
           name: CO_631_notes.pdf
           path: ./notes/main.pdf
 
-  release:
-    name: Create Release
-    needs: build
-    runs-on: ubuntu-latest
-    env:
-      TZ: 'America/Toronto'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download PDF Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: CO_631_notes.pdf
-
       - name: Get Current Date and Time
         id: datetime
         run: echo "date=$(date '+%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
 
-      - name: Create Git Tag
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git tag "${{ steps.datetime.outputs.date }}" "${{ github.sha }}"
-          git push origin "${{ steps.datetime.outputs.date }}"
-
       - name: Create GitHub Release
-        uses: ncipollo/release-action@v1
+        uses: softprops/action-gh-release@v2
         with:
-          artifacts: CO_631_notes.pdf
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.datetime.outputs.date }}
+          tag_name: ${{ steps.datetime.outputs.date }}
           name: Release ${{ steps.datetime.outputs.date }}
-          body: Compiled PDF of CO_631_notes as of ${{ steps.datetime.outputs.date }}.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
