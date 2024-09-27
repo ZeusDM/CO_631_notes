@@ -3,74 +3,57 @@ name: Build and Release LaTeX Document
 on:
   push:
     branches:
-      - main  # Triggers the workflow on every push to the main branch
+      - main
 
 jobs:
   build:
+    name: Build LaTeX Document
     runs-on: ubuntu-latest
-
+    container:
+      image: thomasweise/docker-texlive-full:latest
     env:
-      TZ: 'America/Toronto'  # Set timezone for the build job
-
+      TZ: 'America/Toronto'
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4.2.0
+      - name: Checkout code
+        uses: actions/checkout@v4
 
+      - name: Build PDF
+        run: latexmk -pdf ./notes/main.tex
 
-      - name: Set up LaTeX Environment
-        uses: xu-cheng/texlive-action@v2
-        with:
-          scheme: full
-
-      - name: Compile LaTeX Document
-        run: |
-          cd notes
-          latexmk -pdf main.tex
-
-      - name: Upload PDF Artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
         with:
           name: CO_631_notes.pdf
-          path: notes/main.pdf
+          path: ./notes/main.pdf
 
   release:
-    needs: build  # Ensures that the release job runs after the build job
+    name: Create Release
+    needs: build
     runs-on: ubuntu-latest
     env:
-      TZ: 'America/Toronto'  # Set timezone for the release job
-
+      TZ: 'America/Toronto'
     steps:
-      - name: Get Current Date and Time
-        id: datetime
-        run: |
-          # Generate a timestamp in the format YYYYMMDD-HHMMSS
-          echo "date=$(date '+%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
-
       - name: Download PDF Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: CO_631_notes.pdf
 
+      - name: Get Current Date and Time
+        id: datetime
+        run: echo "date=$(date '+%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
+
       - name: Create Git Tag
-        env:
-          TAG_NAME: ${{ steps.datetime.outputs.date }}
         run: |
-          # Configure Git with a user name and email
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Create a new Git tag with the timestamp
-          git tag "$TAG_NAME" "$GITHUB_SHA"
-
-          # Push the new tag to the repository
-          git push origin "$TAG_NAME"
+          git tag "${{ steps.datetime.outputs.date }}" "${{ github.sha }}"
+          git push origin "${{ steps.datetime.outputs.date }}"
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: CO_631_notes.pdf  # Attach the compiled PDF
-          token: ${{ secrets.GITHUB_TOKEN }}  # Authentication token
-          tag: ${{ steps.datetime.outputs.date }}  # Use the timestamp as the tag
-          name: Release ${{ steps.datetime.outputs.date }}  # Release name
-          body: |
-            Compiled PDF of CO_631_notes as of ${{ steps.datetime.outputs.date }}.
+          artifacts: CO_631_notes.pdf
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.datetime.outputs.date }}
+          name: Release ${{ steps.datetime.outputs.date }}
+          body: Compiled PDF of CO_631_notes as of ${{ steps.datetime.outputs.date }}.
