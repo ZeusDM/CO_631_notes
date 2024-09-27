@@ -18,9 +18,17 @@ jobs:
 
 
       - name: Set up LaTeX Environment
-        uses: xu-cheng/latex-action@3.2.0
+        uses: xu-cheng/texlive-action@v2
         with:
-          root_file: notes/main.tex  # Specify the main LaTeX file
+          scheme: full
+          run: |
+            apk add make
+            make
+
+      - name: Compile LaTeX Document
+        run: |
+          cd notes
+          latexmk -pdf main.tex
 
       - name: Upload PDF Artifact
         uses: actions/upload-artifact@v3
