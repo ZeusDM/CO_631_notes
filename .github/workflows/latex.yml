@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/moderncv/debian-texlive-docker:main
+
     env:
       TZ: 'America/Toronto'  # Set timezone for the build job
 
@@ -21,7 +24,7 @@ jobs:
       - name: Compile LaTeX Document
         run: |
           cd notes
-          latexmk -pdf notes/main.tex
+          latexmk -pdf main.tex
 
       - name: Upload PDF Artifact
         uses: actions/upload-artifact@v3
