@@ -21,9 +21,6 @@ jobs:
         uses: xu-cheng/texlive-action@v2
         with:
           scheme: full
-          run: |
-            apk add make
-            make
 
       - name: Compile LaTeX Document
         run: |
