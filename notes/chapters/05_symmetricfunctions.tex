@@ -577,18 +577,221 @@ The following corollary is a consequence of Propositions~\ref{prop:generating-fu
 Recall that \(\Lambda = \mathbb{Q}[e_1, e_2, \ldots]\) is secretly a polynomial ring. Given any \(\mathbb{Q}\)-algebra \(A\) and \(a_1, a_2, \ldots \in A\), there exists a unique homomorphism \(\varphi: \Lambda \to A\) with \(\varphi(e_k) = a_k\).
 
 Let \(\omega\) be the unique homomorphism \(\omega: \Lambda \to \Lambda\) such that \(\omega(e_k) = h_k\). Note that
-\[
+\begin{equation}
     \omega(e_{\lambda}) = \omega(e_{\lambda_1} e_{\lambda_2} \cdots e_{\lambda_{\ell(\lambda)}}) = h_{\lambda_1} h_{\lambda_2} \cdots h_{\lambda_{\ell(\lambda)}} = h_\lambda.
-\]
+\end{equation}
 
-\begin{theorem}
-    \(\omega\) is an involution, that is, \(\omega \circ \omega = \operatorname{id}\). In particular, \(\omega\) is an isomorphism.
+\begin{theorem} \label{thm:omega-involution}
+    \(\omega\) is an involution, that is, \(\omega \circ \omega = \operatorname{id}\).
+	As a consequence, \(\omega\) is an isomorphism of \(\Lambda\).
 \end{theorem}
 
+This is one version of a symmetry that appears in many contexts in algebraic combinatorics.
+
 \begin{proof}
-    (To be written later).
+	First, we establish a key relationship between elementary and complete symmetric functions using generating functions.
+	Define the generating functions
+	\begin{equation}
+		H(t) = \sum_{n \geq 0} h_n t^n, \quad
+		E(t) = \sum_{n \geq 0} e_n t^n \quad \in \quad \Sym[[t]].
+	\end{equation}
+	We find that these generating functions can be expressed as products, by
+	\begin{align}
+		H(t) & = \prod_{i \geq 1} (1 - x_it)^{-1} = \prod_{i \geq 1} (1 + x_it + x_i^2t^2 + \cdots), \\
+		E(t) & = \prod_{i \geq 1} (1 + x_it).
+	\end{align}
+	Observe that
+	\begin{equation}
+		H(t)E(-t) = 1.
+	\end{equation}
+
+	This implies that for all \(n > 0\), \([t^n]H(t)E(-t) = 0\), which gives us:
+	\begin{equation} \label{eq:sum-eh-zero}
+		\sum_{i=0}^n (-1)^i e_i h_{n-i} = 0.
+	\end{equation}
+
+	Apply \(\omega\) to this equation.
+	Since \(\omega\) is a homomorphism and \(\omega(e_k) = h_k\), we get:
+	\begin{equation} \label{eq:sum-omegahh-zero}
+		\sum_{i=0}^n (-1)^i \omega(h_i) h_{n-i} = 0.
+	\end{equation}
+
+	Consider the following key observation.
+	For any sequence \(u_k \in \Sym\) with \(u_0 = 1\), if
+	\begin{equation} \label{eq:sum-uh-zero}
+		\sum_{i = 0}^n (-1)^i u_i h_{n-i} = 0
+	\end{equation}
+	for all \(n > 0\), then each \(u_k\) is uniquely determined by the previous terms.
+
+	From equations \eqref{eq:sum-eh-zero} and \eqref{eq:sum-omegahh-zero},
+	we see that both \(e_k\) and \(\omega(h_k)\) satisfy this recurrence relation.
+	We also know that \(\omega(h_0) = \omega(1) = 1 = e_0\).
+
+	Therefore, by the uniqueness, we must have \(\omega(h_k) = e_k\) for all \(k\).
+
+	This proves that \(\omega(\omega(e_k)) = \omega(h_k) = e_k\) for all \(k\). Since the \(e_k\) generate \(\Lambda\) and \(\omega\) is a homomorphism, this implies \(\omega \circ \omega = \operatorname{id}\).
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:hn_sym}(\ref{item:hl_symd_basis})]
+\begin{proof}[Proof of Theorem~\ref{thm:hn_sym}\ref{item:hl_symd_basis}]
     Since \(\omega\) is an isomorphism of \(\Sym\), and \(\omega(e_\lambda) = h_\lambda\), and \(\{e_\lambda : \lambda \in \Par(d)\}\) forms a basis for \(\Sym_d\) by Theorem~\ref{thm:en_sym}(\ref{item:el_symd_basis}), it follows that \(\{h_\lambda : \lambda \in \Par(d)\}\) forms a basis for \(\Sym_d\).
+\end{proof}
+
+\section{More facts about the \(\omega\)-involution}
+
+Now that we have established an isomorphism \(\omega: \Lambda \to \Lambda\) that sends \(e_k \mapsto h_k\),
+we can apply it to other symmetric functions to obtain new symmetric functions.
+Or, more especifically, we can apply \(\omega\) to a basis of \(\Sym\) to obtain a new basis of \(\Sym\).
+
+We can apply \(\omega\) to the monomial symmetric functions \(m_\lambda\).
+
+\begin{definition}[Forgotten Symmetric Functions]
+		Let \(\lambda \in \Par\).
+	The \vocab{\(n\)\textsuperscript{th} forgotten symmetric function \(f_n \in \Sym\)} is defined by
+	\begin{equation}
+		f_n = \sum_{\substack{\lambda \in \Par \\ \ell(\lambda) = n}} m_\lambda.
+	\end{equation}
+	Given a partition \(\lambda \in \Par\), define \(f_\lambda = f_{\lambda_1}f_{\lambda_2}\cdots f_{\lambda_{\ell(\lambda)}}\).	
+\end{definition}
+
+These functions do not have interesting properties.
+
+We can apply \(\omega\) to the power sum symmetric functions \(p_\lambda\).
+
+\begin{theorem} \label{thm:omega-p-equals-pm-p}
+	Let \(\lambda \in \Par\).
+	Then, \(\omega(p_\lambda) = (-1)^{|\lambda|-\ell(\lambda)} p_{\lambda}\).
+\end{theorem}
+
+Before we prove Theorem~\ref{thm:omega-p-equals-pm-p},
+let's establish some powerful formal power series.
+
+\begin{definition}[Exponential power series]
+	Define
+	\begin{equation}
+		\exp(x) = \sum_{n \geq 0} \frac{x^n}{n!} \quad \in \quad \rationals[[x_1, x_2, \ldots]].
+	\end{equation}
+\end{definition}
+Note that \(\exp(x)\) matches with the Taylor series of the exponential function.
+
+\begin{definition}[Logarithm power series]
+	Define
+	\begin{equation}
+		L(x) = \sum_{n \geq 1} \frac{(-1)^{n-1}x^n}{n} \quad \in \quad \rationals[[x_1, x_2, \ldots]].
+	\end{equation}
+\end{definition}
+Note that \(L(x)\) matches with the Taylor series of \(\log(1+x)\).
+As an abuse of notation, we let \(\log(A(x)) = L(A(x) - 1)\) whenever this makes sense.
+
+For example,
+\begin{equation}
+	\log\left( \frac{1}{1 - x} \right)
+	= L\left( \frac{1}{1 - x} - 1 \right)
+	= L\left( \frac{x}{1 - x} \right) 
+	= \sum_{n \geq 1} \frac{1}{n} x^n.
+\end{equation}
+
+The exponentials and logarithms are formally related in all the ways you would analitically expect.
+
+Let \(P(x) = \sum_{n \geq 1} \frac{p_n}{n} x^n\).
+
+\begin{lemma} \label{lem:H-equals-exp-P}
+	\begin{equation}
+		H(t) = \exp(P(t)).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	First, note that
+	\begin{align}
+		P(t)
+		= \sum_{n \geq 1} \frac{p_n}{n} t^n
+		&= \sum_{n \geq 1} \sum_{i \geq 1} \frac{1}{n} x_i^n t^n\\
+		&= \sum_{i \geq 1} \sum_{n \geq 1} \frac{1}{n} x_i^n t^n
+		= \sum_{i \geq 1} \log(1 - x_it).
+	\end{align}
+
+	Therefore,
+	\begin{equation}
+		\exp(P(t))
+		= \exp\left( \sum_{i \geq 1} \log(1 - x_it) \right)
+		= \prod_{i \geq 1} (1 - x_it)^{-1}
+		= H(t). \qedhere
+	\end{equation}
+\end{proof}
+
+\begin{lemma} \label{lem:E-equals-mexp-mP}
+	\begin{equation}
+		E(t) = \exp(-P(-t)).
+	\end{equation}	
+\end{lemma}
+
+\begin{proof}
+	Note that
+	\begin{equation}
+		E(t) = H(-t)^{-1} = \exp(P(-t))^{-1} = \exp(-P(-t)). \qedhere
+	\end{equation}	
+\end{proof}
+
+\begin{proposition} \label{prop:product-1-xiyj-inverse-into-p}
+	\begin{equation}
+		\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}
+		= \exp\left( \sum_{n \geq 1} \frac{1}{n} p_n(x) p_n(y) \right)
+		= \sum_{\lambda \in \Par} z_\lambda^{-1} p_\lambda(x) p_\lambda(y).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}[Proof of the first equality of Proposition~\ref{prop:product-1-xiyj-inverse-into-p}]
+	Note that
+	\begin{align}
+		\log\left(
+			\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}
+		\right)
+		&= \sum_{i, j \geq 1} \sum_{n \geq 1} \frac{1}{n} (x_iy_j)^n \\
+		&= \sum_{n \geq 1} \sum_{i, j \geq 1} \frac{1}{n} x_i^n y_j^n \\
+		&= \sum_{n \geq 1} \frac{1}{n} \left(\sum_{i \geq 1} x_i^n\right) \left(\sum_{j \geq 1} y_j^n\right) \\
+		&= \sum_{n \geq 1} \frac{1}{n} p_n(x) p_n(y).
+	\end{align}
+	By exponentiating both sides, we get the first equality.
+\end{proof}
+
+Given a sequence \(a_0, a_1, \ldots\) of elements of a ring \(R\) containing \(\mathbb{Q}\), define the \vocab{exponential generating function} of the sequence to be
+\begin{equation}
+	\sum_{n \geq 0} \frac{a_n}{n!} t^n.
+\end{equation}
+
+\begin{fact} \label{fact:egf-cyc-prod}
+	Suppose we have \(a_1, a_2, \ldots\), define for each \(w \in \sym{n}\) with \(\cyc(w) = \lambda\),
+	\begin{equation}
+		a(w) = a_{\lambda_1}a_{\lambda_2}\cdots a_{\lambda_{\ell(\lambda)}}
+	\end{equation}
+	and define 
+	\begin{equation}
+		b_n = \sum_{w \in \sym{n}} a(w),
+	\end{equation}
+	with \(b_0 = 1\).
+	Then, the exponential generating function of the sequence \(b_0, b_1, \ldots\) is
+	\begin{equation}
+		\sum_{n \geq 0} \frac{b_n}{n!} t^n
+		=
+		\exp\left( \sum_{n \geq 1} \frac{a_n}{n} t^n \right).
+	\end{equation}
+\end{fact}
+
+\begin{proof}[Proof of the second equality of Proposition~\ref{prop:product-1-xiyj-inverse-into-p}]
+	Let \(a_n = p_n(x)p_n(y)\).
+	Then,
+	\begin{align}
+		b_n
+		&= \sum_{w \in \sym{n}} p_{\cyc(w)}(x) p_{\cyc(w)}(y) \\
+		&= \sum_{\lambda \in \Par(n)} \frac{n!}{z_\lambda} p_\lambda(x) p_\lambda(y),
+	\end{align}
+	and applying Fact~\ref{fact:egf-cyc-prod} gives
+	\begin{align}
+		\exp\left(
+			\sum_{n \geq 1} \frac{1}{n} p_n(x) p_n(y)
+		\right)
+		&= \sum_{n \geq 0} \frac{b_n}{n!} t^n \\
+		&= \sum_{n \geq 0} \frac{1}{n!} \sum_{\lambda \in \Par(n)} \frac{n!}{z_\lambda} p_\lambda(x) p_\lambda(y) t^n \\
+		&= \sum_{\lambda \in \Par} z_\lambda^{-1} p_\lambda(x) p_\lambda(y). \qedhere
+	\end{align}
 \end{proof}
