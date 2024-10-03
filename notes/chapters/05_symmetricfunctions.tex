@@ -961,3 +961,49 @@ The proof of Lemma~\ref{prop:othogonal-bases-characterization} is omitted.
 	which would be an orthonormal basis of \(\Sym\) if \(\sqrt{z_\lambda}\) were rational --- which is not the case.
 	We would need to consider \(\Sym\) over \(\reals\) or \(\complexes\) to obtain an orthonormal basis.
 \end{remark}
+
+\begin{proposition} \label{prop:omega-lies-in-the-orthogonal-group}
+	The \(\omega\) involution lies in \(O(\Sym)\),
+	the orthogonal group of \(\Sym\) with the Hall inner product.
+	Equivalently, 
+	\( \langle \omega(f), \omega(g) \rangle = \langle f, g \rangle \)
+	for all \(f, g \in \Sym\).
+\end{proposition}
+
+\begin{proof}
+	Let \(\lambda, \mu \in \Par\).
+	Then,
+	\begin{align}
+		\langle \omega(p_\lambda), \omega(p_\mu) \rangle
+		&= \langle \sign(\lambda) p_\lambda, \sign(\mu) p_\mu \rangle \\
+		&= \sign(\lambda) \sign(\mu) z_\lambda \delta_{\lambda\mu}
+		= z_\lambda \delta_{\lambda\mu} 
+		= \langle p_\lambda, p_\mu \rangle.
+	\end{align}
+	Therefore, since \(\{p_\lambda : \lambda \in \Par\}\) is a basis of \(\Sym\), the result follows.
+\end{proof}
+
+\begin{example}
+	Consider \(\Sym_3\).
+	Recall that \(\sign(\lambda) = (-1)^{|\lambda| - \ell(\lambda)}\).
+	Then,
+	\begin{align}
+		\omega p_{\composition{1, 1, 1}} &= (-1)^0 p_{\composition{1, 1, 1}} = p_{\composition{1, 1, 1}}, \\
+		\omega p_{\composition{2, 1}} &= (-1)^1 p_{\composition{2, 1}} = -p_{\composition{2, 1}}, \\
+		\omega p_{\composition{3}} &= (-1)^2 p_{\composition{3}} = p_{\composition{3}}.
+	\end{align}
+	Therefore, the determinant of the restriction of \(\omega\) to \(\Sym_3\) is \(-1\), and hence not in \(SO(\Sym_3)\).
+	Thus, \(\omega\) is not in \(SO(\Sym)\).
+\end{example}
+
+Let's recall some facts about the power sum symmetric functions \(p_\lambda\).
+\begin{itemize}
+	\item \(p_\lambda\) is a positive integral linear combination of \(\{m_\mu : \mu \in \Par\}\).
+	\item \(m_\mu\) is \textbf{not} generally an integral linear combination of \(\{p_\lambda : \lambda \in \Par\}\).
+	\item \(\{p_\lambda : \lambda \in \Par\}\) is an orthogonal basis,
+	\item \(\{p_\lambda : \lambda \in \Par\}\) is \textbf{not} an orthonormal basis.
+	\item \(p_\lambda\) is an eigenvector of \(\omega\) with eigenvalue \(\sign(\lambda)\).
+\end{itemize}
+
+This is \textbf{almost} perfect, but not quite.
+Let's define yet another basis of \(\Sym\).
