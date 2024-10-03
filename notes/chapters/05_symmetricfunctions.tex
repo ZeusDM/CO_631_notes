@@ -819,12 +819,12 @@ Now, we prove Theorem~\ref{thm:omega-p-equals-pm-p}.
 		=
 		\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}.
 	\end{equation}
-	Appplying \(\omega\) in the \(y\) variables, we get
+	Applying \(\omega\) in the \(y\) variables, we get
 	\begin{align}
 		\sum_{\lambda \in \Par} z_\lambda^{-1} p_\lambda(x) \omega(p_\lambda)(y)
-		&= \omega(\sum_{\lambda \in \Par} z_\lambda^{-1} p_\lambda(x) p_\lambda(y)) \\
-		&= \omega(\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}) \\
-		&= \omega(\sum_{\lambda \in \Par} z_\lambda^{-1} m_\lambda(x) h_\lambda(y)) \\
+		&= \omega\left(\sum_{\lambda \in \Par} z_\lambda^{-1} p_\lambda(x) p_\lambda(y)\right) \\
+		&= \omega\left(\prod_{i, j \geq 1} (1 - x_iy_j)^{-1}\right) \\
+		&= \omega\left(\sum_{\lambda \in \Par} z_\lambda^{-1} m_\lambda(x) h_\lambda(y)\right) \\
 		&= \sum_{\lambda \in \Par} z_\lambda^{-1} m_\lambda(x) \omega(h_\lambda)(y) \\
 		&= \sum_{\lambda \in \Par} z_\lambda^{-1} m_\lambda(x) e_\lambda(y) \\
 		&= \prod_{i, j \geq 1} (1 + x_iy_j) \\
@@ -834,4 +834,121 @@ Now, we prove Theorem~\ref{thm:omega-p-equals-pm-p}.
 	\begin{equation}
 		\omega(p_\lambda) = \sign(\lambda) p_\lambda. \qedhere
 	\end{equation}
+\end{proof}
+
+\section{Inner product on symmetric functions}
+
+Given a vector space \(V\) over \(\rationals\),
+in order to determine a bilinear form
+\begin{equation}
+	\langle \cdot, \cdot \rangle: V \times V \to \rationals,
+\end{equation}
+it is enough to specify it on a basis of \(V\);
+that is,
+if \(B\) is a basis of \(V\),
+then a bilinear form \(\rho\) is determined by the values \(\rho(b, b')\) for \(b, b' \in B\).
+
+More generally, the basis for the two copies of \(V\) can be different;
+that is, if \(B\) and \(C\) are bases of \(V\),
+then a bilinear form \(\rho\) is determined by the values \(\rho(b, c)\) for \(b \in B\) and \(c \in C\).
+
+\begin{definition}[Hall inner product]
+	Define the \vocab{Hall inner product} on \(\Sym\) as the bilinear form given by
+	\begin{equation}
+		\langle m_\lambda, h_\mu \rangle = \delta_{\lambda\mu}.
+	\end{equation}
+\end{definition}
+
+Note that this inner product interacts well with the grading,
+since if \(f \in \Sym_n\) and \(g \in \Sym_m\),
+then \(\langle f, g \rangle = 0\) if \(n \neq m\).
+
+\begin{proposition} \label{prop:hall-inner-product-is-inner-product}
+	The Hall inner product is an inner product on \(\Sym\).
+\end{proposition}
+
+\begin{lemma} \label{prop:hall-is-symmetric}
+	The Hall inner product is symmetric,
+	that is,
+	\(\langle f, g \rangle = \langle g, f \rangle\)
+	for all \(f, g \in \Sym\).
+\end{lemma}
+
+\begin{proof}
+	Let \(\lambda, \mu \in \Par\).
+	Note that
+	\begin{equation}
+		\langle h_\lambda, h_\mu \rangle
+		= \langle \sum_{\nu \in \Par} N_{\lambda\nu} m_\nu, h_\mu \rangle
+		= \sum_{\nu \in \Par} N_{\lambda\nu} \langle m_\nu, h_\mu \rangle
+		= N_{\lambda\mu},
+	\end{equation}
+	and therefore \(\langle h_\lambda, h_\mu \rangle = N_{\lambda\mu} = N_{\mu\lambda} = \langle h_\mu, h_\lambda \rangle\).
+	Since \(\{h_\lambda : \lambda \in \Par\}\) is a basis for \(\Sym\), the result follows.
+\end{proof}
+
+\begin{lemma} \label{prop:othogonal-bases-characterization}
+	Let \(\{a_\lambda : \lambda \in \Par\}\) and \(\{b_\mu : \mu \in \Par\}\) be bases of \(\Sym\).
+	Assume \(a_\lambda, b_\lambda \in \Sym_{|\lambda|}\) for all \(\lambda \in \Par\).
+	Then, the following statements are equivalent:
+	\begin{itemize}
+		\item \(\langle a_\lambda, b_\mu \rangle = \delta_{\lambda\mu}\) for all \(\lambda, \mu \in \Par(d)\).
+		\item \(\sum_{\lambda} a_\lambda b_\lambda = \prod_{i,j \geq 1} (1 - x_iy_j)^{-1}\).
+	\end{itemize}
+\end{lemma}
+
+The proof of Lemma~\ref{prop:othogonal-bases-characterization} is omitted.
+
+\begin{corollary}
+	Let \(\lambda, \mu \in \Par\).
+	Then,
+	\begin{equation}
+		\langle p_\lambda, p_\mu \rangle = z_\lambda \delta_{\lambda\mu}.
+	\end{equation}
+\end{corollary}
+
+\begin{proof}
+	Let \(a_\lambda = p_\lambda\) and \(b_\lambda = z_\lambda^{-1} p_\lambda\).
+	Then, by Proposition~\ref{prop:product-1-xiyj-inverse-into-p},
+	\begin{equation}
+		\sum_{\lambda} a_\lambda b_\lambda = \prod_{i, j \geq 1} (1 - x_iy_j)^{-1},
+	\end{equation}
+	and by Lemma~\ref{prop:othogonal-bases-characterization},
+	\begin{equation}
+		\langle p_\lambda, z_\lambda^{-1} p_\lambda \rangle = \delta_{\lambda\lambda} = 1,
+	\end{equation}
+	which implies the desired result.
+\end{proof}
+
+\begin{corollary}
+	The set \(\{p_\lambda : \lambda \in \Par\}\) is an orthogonal (but not orthonormal) basis of \(\Sym\) with respect to the Hall inner product.
+\end{corollary}
+
+\begin{lemma} \label{lemma:hall-is-positive-definite}
+	The Hall inner product is positive definite,
+	that is,
+	\(\langle f, f \rangle \geq 0\)
+	for all \(f \in \Sym\),
+\end{lemma}
+
+\begin{proof}
+	Let \(f \in \Sym\).
+	Expand \(f\) in the basis \(\{p_\lambda : \lambda \in \Par\}\) as
+	\begin{equation}
+		f = \sum_{\lambda \in \Par} c_\lambda p_\lambda,
+	\end{equation}
+	with \(c_\lambda \in \rationals\).
+	Then,
+	\begin{equation}
+		\langle f, f \rangle =
+		\langle
+			\sum_{\lambda \in \Par} c_\lambda p_\lambda,
+			\sum_{\mu \in \Par} c_\mu p_\mu
+		\rangle
+		=
+		\sum_{\lambda, \mu \in \Par} c_\lambda c_\mu \langle p_\lambda, p_\mu \rangle
+		=
+		\sum_{\lambda \in \Par} c_\lambda^2 z_\lambda \geq 0,
+	\end{equation}
+	with equality if and only if \(c_\lambda = 0\) for all \(\lambda \in \Par\), that is, with equality if and only if \(f = 0\).
 \end{proof}
