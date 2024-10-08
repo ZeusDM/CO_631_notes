@@ -1,0 +1,209 @@
+\chapter{Alternating Polynomials}
+
+Consider the following two representations of \(\sym_n\):
+\begin{itemize}
+    \item The trivial representation \(1 \colon \sym_n \to \GL_1(\complexes)\) given by \(\sigma \mapsto 1\).
+    \item The sign representation \(\sign \colon \sym_n \to \GL_1(\complexes)\) given by \(\sigma \mapsto \sign(\sigma)\).
+\end{itemize}
+
+Consider any representation \(\phi \colon  \sym_n \to \GL_1(\complexes)\).
+Let \(i \in \interval{n-1}\).
+Then,
+\begin{equation}
+    \phi(\eltr{i}) = \phi(\tau \eltr{1} \tau^{-1}) = \phi(\tau) \phi(\eltr{1}) \phi(\tau)^{-1} = \phi(\eltr{1}),
+\end{equation}
+for some \(\tau \in \sym_n\).
+Thus, \(\phi(\eltr{i})\) is independent of \(i\).
+Moreover, \(\phi(\eltr{i})^2 = \phi(\eltr{i}^2) = \phi(\operatorname{id}) = 1\), hence \(\phi(\eltr{i}) = \pm 1\), for all \(i \in \interval{n-1}\).
+If \(\phi(\eltr{i}) = 1\) for all \(i \in \interval{n-1}\), then \(\phi = 1\).
+If \(\phi(\eltr{i}) = -1\) for all \(i \in \interval{n-1}\), then \(\phi = \sign\).
+
+Therefore, the only irreducible representations of \(\sym_n\) of dimension \(1\) are the trivial representation and the sign representation.
+
+Suppose \(\rho \colon \sym_n \to \GL(V)\) is a representation of \(S_n\).
+The \vocab{invariants} of \(\rho\) are the elements \(v \in v\) such that
+\begin{equation}
+    \rho(w) v = 1(w) v, 
+\end{equation}
+for all \(w \in S_n\), where \(1\) denotes the trivial representation.
+We can alternatively call these elements \vocab{\(1\)-isotypic elements}.
+Let \(\Inv(V)\) denote the set of \(1\)-isotypic elements of \(\rho \colon S_n \to \GL(V)\).
+
+We can replace the trivial representation with the sign representation.
+
+The \vocab{\(\sign\)-isotypic elements} of \(\rho\) are the elements \(v \in V\) such that
+\begin{equation}
+    \rho(w) v = \sign(w) v,
+\end{equation}
+for all \(w \in S_n\).
+Let \(\Alt(V)\) denote the set of \(\sign\)-isotypic elements of \(\rho \colon S_n \to \GL(V)\).
+
+\begin{proposition}
+    Let \(\rho \colon S_n \to \GL(V)\) be a representation of \(S_n\).
+    Then, \(\Alt(V)\) is a subspace of \(V\).
+\end{proposition}
+
+\begin{definition}[Direct sum of representations]
+    If \(\rho_1 \colon S_n \to \GL(V_1)\) and \(\rho_2 \colon S_n \to \GL(V_2)\) are representations of \(S_n\),
+    then the \vocab{direct sum} of \(\rho_1\) and \(\rho_2\) is the representation \(\rho_1 \oplus \rho_2 \colon S_n \to \GL(V_1 \oplus V_2)\) given by
+    \begin{equation}
+        (\rho_1 \oplus \rho_2)(w) = \rho_1(w) \oplus \rho_2(w),
+    \end{equation}
+    for all \(w \in S_n\).
+\end{definition}
+
+Much more interesting than adding two representations to get a third,
+is to start with a representation and decompose it into a direct sum of other representations.
+
+\begin{theorem}
+    Let \(\rho \colon S_n \to \GL(V)\) be a representation of \(S_n\).
+    Then, \(V = \Inv(V) \oplus \Alt(V) \oplus W\), for some \(W \subset V\),
+    and 
+    \begin{equation}
+        \rho = 1_{\Inv(V)} \oplus \sign_{\Alt(V)} \oplus \rho|_W.
+    \end{equation}
+\end{theorem}
+
+We saw that, if \(V\) is an algebra, then \(\Inv(V)\) is a subalgebra of \(V\).
+However, this is not the case for \(\Alt(V)\).
+Suppose \(a \in \Alt(V)\).
+Then \(w \cdot a^2 = (w \cdot a) (w \cdot a) = \sign(w)^2 a^2 = a^2\), for all \(w \in S_n\), which is not always equal to \(\sign(w) a^2\) (for \(n \geq 2\)).
+Something can be salvaged from this situation.
+
+\begin{theorem} \label{thm:inv-alt-subalgebra}
+    Let \(V\) be an algebra.
+    Let \(\rho \colon S_n \to \Aut(V)\) be a representation of \(S_n\).
+    Consider the subspace \(\Inv(V) \oplus \Alt(V)\) of \(V\).
+    Then, \(\Inv(V) \oplus \Alt(V)\) is a subalgebra of \(V\).
+\end{theorem}
+
+The proof of Theorem~\ref{thm:inv-alt-subalgebra} follows from Theorem~\ref{thm:inv-alt-super}.
+
+\begin{definition}[\(G\)-graded algebra]
+    A \vocab{\(G\)-graded algebra} is an algebra \(V\) together with a direct sum decomposition
+    \begin{equation}
+        V = \bigoplus_{g \in G} V_g,
+    \end{equation}
+    such that \(ab \in V_{gh}\), for all \(a \in V_g\) and \(b \in V_h\).
+\end{definition}
+
+A \vocab{superalgebra} is a \(\mathbb{Z}_2\)-graded algebra.
+
+\begin{theorem} \label{thm:inv-alt-super}
+    Let \(V\) be an algebra.
+    Let \(\rho \colon S_n \to \Aut(V)\) be a representation of \(S_n\).
+    Consider the subspace \(\Inv(V) \oplus \Alt(V)\) of \(V\).
+    Then, \(\Inv(V) \oplus \Alt(V)\) is a superalgebra with parts \(\Inv(V)\) and \(\Alt(V)\).
+\end{theorem}
+
+\begin{proof}
+    Let \(a \in \Inv(V)\) and \(b \in \Inv(V)\).
+    Then, \(w \cdot (ab) = (w \cdot a) (w \cdot b) = a b\), for all \(w \in S_n\).
+    Thus, \(ab \in \Inv(V)\).
+    Let \(a \in \Inv(V)\) and \(b \in \Alt(V)\).
+    Then, \(w \cdot (ab) = (w \cdot a) (w \cdot b) = (\sign(w) a) b = \sign(w) a b\), for all \(w \in S_n\).
+    Thus, \(ab \in \Alt(V)\).
+    Let \(a \in \Alt(V)\) and \(b \in \Alt(V)\).
+    Then, \(w \cdot (ab) = (w \cdot a) (w \cdot b) = \sign(w)^2 a b = a b\), for all \(w \in S_n\).
+    Thus, \(ab \in \Inv(V)\).
+
+    Therefore, \(\Inv(V) \oplus \Alt(V)\) is a subalgebra of \(V\),
+    and \(\Inv(V) \oplus \Alt(V)\) is a superalgebra with parts \(\Inv(V)\) and \(\Alt(V)\).
+\end{proof}
+
+Now, apply this with \(\mathcal{A} = \rationals[x_1, x_2, \ldots, x_n]\),
+and the action \(\rho \colon S_n \to \Aut(\mathcal{A})\) given by
+permuting the variables.
+The \(\sign\)-isotypic elements of \(\mathcal{A}\) are are the \vocab{alternating polynomials},
+denoted by \(\AltPoly(n)\) or \(v_n\Sym(n)\).
+
+For example,
+\begin{equation}
+    x_1^2x_2 - x_2^2x_1 + x_2^2x_3 - x_3^2x_2 + x_3^2x_1 - x_1^2x_3 \in \AltPoly(3).
+\end{equation}
+
+\begin{lemma}
+Let \(p \in \AltPoly(n)\).
+Let \(\alpha\) be a weak composition of length \(n\).
+Assume that \(\alpha_i = \alpha_j\) for some distinct \(i, j \in \interval{n}\).
+Then, the coefficient of \(x^\alpha\) in \(p\) is zero.
+\end{lemma}
+
+\begin{proof}
+    We compute that     
+    \begin{equation}
+        [x^\alpha] p = [x^alpha] (- \eltr{i, j} \cdot p) = - [x^\alpha] p,
+    \end{equation}
+    which implies that \([x^\alpha] p = 0\).
+\end{proof}
+
+\begin{definition}[Vandermonde polynomial]
+    Define the \vocab{\(n\)\textsuperscript{th} Vandermonde polynomial} to be
+    \begin{equation}
+        v_n = \prod_{1 \leq i < j \leq n} (x_j - x_i) \in \AltPoly(n).
+    \end{equation}
+\end{definition}
+
+\begin{lemma} \label{lem:vandermonde-divides-alt}
+    Let \(p \in \AltPoly(n)\).
+    Then, \(v_n \mid p\).
+\end{lemma}
+
+\begin{proof}
+    Let \(i < j\) in \(\interval{n}\).
+    If we specialize \(p\) by setting \(x_i = x_j\), then \(p \mapsto 0\).
+    Therefore, \(x_i - x_j \mid p\).
+    Since this holds for all \(i < j\), we have \(v_n \mid p\).
+\end{proof}
+
+\begin{lemma} \label{lem:vandermonde-times-sym-is-alt}
+    Let \(p \in \AltPoly(n)\).
+    Then, \(\frac{p}{v_n} \in \Sym(n)\).
+\end{lemma}
+
+\begin{proof}
+    Let \(p \in \AltPoly(n)\).
+    Then, \(p = v_n q\), for some \(q \in \rationals[x_1, x_2, \ldots, x_n]\),
+    by Lemma~\ref{lem:vandermonde-divides-alt}.
+    Since \(p, v_n \in \AltPoly(n)\),
+    we have \(w \cdot p = \sign(w) p\) and \(w \cdot v_n = \sign(w) v_n\), for all \(w \in S_n\).
+    Thus, \(w \cdot q = q\), for all \(w \in S_n\), and consequently, \(q \in \Sym(n)\).
+\end{proof}
+
+\begin{corollary}
+    The map from \(\Sym(n)\) to \(\AltPoly(n)\) given by \(q \mapsto v_n q\) is a vector space isomorphism.
+\end{corollary}
+
+Note that bases of \(\Sym(n)\), multiplied by \(v_n\), form a basis of \(\AltPoly(n)\), and conversely, bases of \(\AltPoly(n)\), divided by \(v_n\), form a basis of \(\Sym(n)\).
+
+Let's make one basis of \(\AltPoly(n)\) explicitly.
+
+Given a partition \(\lambda\) of \(n\),
+we define
+\begin{equation}
+    \tilde{a}_\lambda
+    =
+    \sum_{w \in \sym_n}
+    \sign(w)
+    x^{w \cdot \lambda} \in \AltPoly(n).
+\end{equation}
+Note that, if \(\lambda\) has equal parts, then \(\tilde{a}_\lambda = 0\).
+A \vocab{strict partition} is a partition with distinct parts.
+The set 
+\begin{equation}
+    \{ \tilde{a}_\lambda \mid \lambda \text{ is a strict partition of } n \}
+\end{equation}
+is a basis of \(\AltPoly(n)\).
+
+Let \(\delta_n = (n-1, n-2, \ldots, 1, 0)\).
+Note that the map \(\lambda \mapsto \lambda + \delta_n\) is a bijection between strict partitions of \(n\) and partitions of \(n+1\).
+Then, we define
+\begin{equation}
+    a_\lambda = \tilde{a}_{\lambda + \delta_n} \in \AltPoly(n+1),
+\end{equation}
+and consequently, 
+\begin{equation}
+    \{ a_\lambda \mid \lambda \in \Par(n) \}
+\end{equation}
+is a basis of \(\AltPoly(n+1)\).
+
