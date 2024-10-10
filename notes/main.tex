@@ -15,6 +15,15 @@
 \usetikzlibrary{arrows}
 \usepackage{subcaption}
 
+\usepackage{xcolor}
+\usepackage[
+    colorlinks=true,
+    linkcolor=blue!60!black,      % For internal links
+    citecolor=green!70!black,     % For citation links
+    urlcolor=orange!70!black,      % For URLs
+    filecolor=cyan!60!black        % For file links
+]{hyperref}
+
 \usepackage[canadian]{babel}
 \usepackage{csquotes}
 \usepackage[showseconds=false, showzone=false]{datetime2}
@@ -35,7 +44,6 @@
 
 \newcommand{\vocab}[1]{\textbf{#1}}
 
-\usepackage{xcolor}
 \usepackage{mathtools}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\ge}{\geqslant}
