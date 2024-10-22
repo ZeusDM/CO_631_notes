@@ -284,7 +284,7 @@ we know that
     \item \(s_\lambda\) is an integral linear combination of \(m_\mu\)'s, and \(m_\mu\)'s are integral linear combinations of \(s_\lambda\)'s.
 \end{itemize}
 
-\section{Combinatorics of Schur Polynomials}
+\section{Pieri's Formulas and Strips}
 
 \begin{definition}[Horizontal and vertical strips]
     A \vocab{horizontal strip} is a set of boxes in a Young diagram
@@ -295,7 +295,7 @@ we know that
 
 For example, the empty set is both a horizontal and vertical strip.
 
-\begin{theorem}[Pieri's \(e\)-formula]
+\begin{theorem}[Pieri's \(e\)-formula] \label{thm:pieri-e-formula}
     Let \(\lambda\) be a partition.
     Then,
     \begin{equation}
@@ -364,7 +364,7 @@ Note that this is somewhat similar to the formula
     e_{\lambda} e_k = e_{\operatorname{sort}(\lambda, k)}.
 \end{equation}
 
-\begin{theorem}[Pieri's \(h\)-formula]
+\begin{theorem}[Pieri's \(h\)-formula] \label{thm:pieri-h-formula}
     Let \(\lambda\) be a partition.
     Then,
     \begin{equation}
@@ -515,4 +515,210 @@ Note that this is somewhat similar to the formula
     \end{equation}
     where the sum is over all partitions \(\mu\) obtained by adding a horizontal strip of size \(k\) to \(\lambda\).
     Finally, the result follows by dividing by \(v_n\).
+\end{proof}
+
+In the next section, we solve a problem that we didn't even know we wanted to solve:
+\emph{How to write \(h_\lambda\) and \(e_\lambda\) in the Schur basis?}
+
+\section{Tableaux and Kostka Numbers}
+
+\begin{definition}[Semistandard Young tableaux]
+    A \vocab{semistandard tableaux \(T\)} 
+    is a sequence of nested partitions
+    \begin{equation}
+        \varnothing = \lambda^{(0)}
+        \subset \lambda^{(1)}
+        \subset \cdots
+        \subset \lambda^{(\ell)},
+    \end{equation}
+    such that \(\lambda^{(k)} \setminus \lambda^{(k-1)}\) is a horizontal strip, for all \(k \in \interval{\ell}\).
+    We say that \(T\) has \vocab{shape} \(\lambda = \lambda^{(\ell)}\).
+\end{definition}
+
+Traditionally, a semistandard tableau \(T\) of shape \(\lambda\) is represented by filling the boxes of the diagram of \(\lambda\) with numbers from the set \(\{1, 2, \ldots, \ell\}\). Specifically, the number \(i\) is placed in the boxes corresponding to the horizontal strip \(\lambda^{(i)} \setminus \lambda^{(i-1)}\).
+
+Under this depiction, a filling of the boxes of a Young diagram is semistandard if and only if the entries in each row are weakly increasing from left to right, and the entries in each column are strictly increasing from top to bottom.
+
+\begin{example}
+    Consider the following semistandard tableaux of shape \(\composition{5, 4, 2}\):
+    \begin{equation}
+        \varnothing
+        \subset \composition{3}
+        \subset \composition{4, 2}
+        \subset \composition{4, 2}
+        \subset \composition{5, 4}
+        \subset \composition{5, 4, 2}.
+    \end{equation}
+    This tableaux is drawn as
+    \begin{equation}
+        \begin{ytableau}
+            1 & 1 & 1 & 2 & 4 \\
+            2 & 2 & 4 & 4 \\
+            5 & 5
+        \end{ytableau}.
+    \end{equation}
+\end{example}
+
+The \vocab{weight} (sometimes called \vocab{content}) of a tableaux
+is the composition \(\alpha\) such that the number \(i\) appears \(\alpha_i\) times in the tableaux, that is, \(\alpha_i\) is the size of the horizontal strip \(\lambda^{(i)} \setminus \lambda^{(i-1)}\).
+
+\begin{definition}[Standard Young tableaux]
+    A \vocab{standard tableaux} is a semistandard Young tableaux with weight \(\composition{1, 1, \ldots, 1}\), that is, each horizontal strip has size \(1\).
+\end{definition}
+
+\begin{definition}[Kostka numbers]
+    Let \(\lambda\) and \(\mu\) be partitions.
+    The \vocab{Kostka number} \(K_{\lambda \mu}\) is the number of standard Young tableaux of shape \(\lambda\) and weight \(\mu\).
+\end{definition}
+
+\begin{theorem} \label{thm:h-e-sum-kostka-schur}
+    Let \(\lambda\) be a partition.
+    Then,
+    \begin{equation}
+        h_\mu = \sum_{\lambda} K_{\lambda \mu} s_\lambda,
+    \end{equation}
+    and
+    \begin{equation}
+        e_\mu = \sum_{\lambda} K_{\lambda \mu} s_{\tilde\lambda}.
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    Note that 
+    \begin{align}
+        h_\mu
+        &= h_{\mu_1} h_{\mu_2} \cdots h_{\mu_\ell} \\
+        &= s_{\varnothing} h_{\mu_1} s_{\varnothing} h_{\mu_2} \cdots s_{\varnothing} h_{\mu_\ell},
+    \end{align}
+    and then the result follows by successively applying \nameref{thm:pieri-h-formula}.
+    The proof for the \(e\)-formula is similar, using \nameref{thm:pieri-e-formula}.
+\end{proof}
+
+We list some observations about Kostka numbers.
+
+\begin{fact}
+    If \(|\lambda| \neq |\mu|\), then \(K_{\lambda \mu} = 0\).
+\end{fact}
+
+\begin{fact}
+    Let \(\lambda\) be a partition.
+    Then \(K_{\lambda \lambda} = 1\).
+\end{fact}
+
+The only standard Young tableaux of shape \(\lambda\) and weight \(\lambda\) is the one where the number \(i\) is placed in the \(i\)\textsuperscript{th} box of the \(i\)\textsuperscript{th} row.
+This tableaux is called \vocab{Yamanouchi tableaux}, \vocab{the highest weight tableaux of shape \(\lambda\)}, or \vocab{supersemistandard tableaux}.
+
+\begin{fact}
+    Let \(\lambda, \mu\) be partitions.
+    If \(K_{\lambda \mu} \neq 0\), then \(\lambda \geq \mu\).
+\end{fact}
+
+\begin{proof}
+    Let \(i\) be a positive integer.
+    The entries of a standard Young tableaux of shape \(\lambda\) and weight \(\mu\) that are at most \(i\) must be contained in the first \(i\) rows of the Young diagram of \(\lambda\).
+    Therefore, \(\lambda_1 + \cdots + \lambda_i \geq \mu_1 + \cdots + \mu_i\) for all \(i\),
+    and consequently, \(\lambda \geq \mu\).
+\end{proof}
+
+\begin{fact}
+    Kostka numbers are not symmetric, that is, 
+    there exist partitions \(\lambda, \mu\) such that \(K_{\lambda \mu} \neq K_{\mu \lambda}\).
+\end{fact}
+
+\begin{example}
+    Let \(\lambda = \composition{2}\) and \(\mu = \composition{1, 1}\).
+    Then, \(K_{\lambda \mu} = 1\) and \(K_{\mu \lambda} = 0\).
+\end{example}
+
+The \vocab{Kostka matrix} \(K\) is the matrix where the entry in the \(\mu\)\textsuperscript{th} row and \(\lambda\)\textsuperscript{th} column is \(K_{\lambda \mu}\) (note the reversal of indices).
+Note that \(K\) is upper triangular (with respect a linear extension of the dominance order) and its diagonal entries are all \(1\).
+Therefore, \(K\) is invertible, and its inverse has integer entries.
+We call \(K^{-1}\) the \vocab{inverse Kostka matrix}.
+Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row and \(\lambda\)\textsuperscript{th} column of \(K^{-1}\).
+
+\begin{theorem}
+    Let \(\lambda\) be a partition.
+    Then,
+    \begin{equation}
+        \omega(s_\lambda) = s_{\tilde\lambda}.
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    Theorem~\ref{thm:h-e-sum-kostka-schur} implies that
+    \begin{equation}
+        s_\lambda = \sum_{\mu} K_{\lambda \mu}^{-1} h_\mu,
+    \end{equation}
+    and 
+    \begin{equation}
+        s_{\tilde\lambda} = \sum_{\mu} K_{\lambda \mu}^{-1} e_\mu.
+    \end{equation}
+    It is straightforward to check that applying \(\omega\) to the right-hand side of the first equation gives the right-hand side of the second equation, and the result follows.
+\end{proof}
+
+\begin{theorem}[Jacobi--Trudi's determinant formula] \label{thm:jacobi-trudi}
+    Let \(\lambda\) be a partition and let \(n \geq \ell(\lambda)\) be an integer.
+    Then,
+    \begin{equation}
+        s_\lambda = \det\left( s_{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
+    \end{equation}
+    and
+    \begin{equation}
+        s_{\tilde\lambda} = \det\left( s_{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
+    \end{equation}
+\end{theorem}
+
+\begin{example}
+    Let's compute \(s_{\composition{3, 1}}\) using \nameref{thm:jacobi-trudi}.
+    Let \(n = 4\).
+    We have
+    \begin{equation}
+        s_{\composition{3, 1}}
+        = \left|
+            \begin{matrix}
+                h_3 & h_4 & h_5 & h_6 \\
+                h_0 & h_1 & h_2 & h_3 \\
+                0   & 0   & h_0 & h_1 \\
+                0   & 0   & 0   & h_0
+            \end{matrix}
+        \right|
+        = \left|
+            \begin{matrix}
+                h_3 & h_4 \\
+                h_0 & h_1 \\
+            \end{matrix}
+        \right|
+        = h_{\composition{3, 1}} - h_{\composition{4}},
+    \end{equation}
+    and
+    \begin{equation}
+        s_{\composition{3, 1}} = s_{\tilde{\composition{2, 1, 1}}} =
+        \left|
+            \begin{matrix}
+                e_2 & e_3 & e_4 \\
+                e_0 & e_1 & e_2 \\
+                0   & e_0 & e_1
+            \end{matrix}
+        \right|
+        = e_{\composition{2, 1, 1}} + e_{\composition{4}} - e_{\composition{3, 1}} - e_{\composition{2, 2}}.
+    \end{equation}
+\end{example}
+
+\begin{proof}[Proof of \nameref{thm:jacobi-trudi}]
+    It is straightforward to check that the determinants are equal for all \(n \geq \ell(\lambda)\). Therefore, it suffices to prove the result for \(n = \ell(\lambda)\).
+
+    We proceed by induciton on \(n = \ell(\lambda)\).
+    The result is true for \(n = 0\).
+
+    We column expand along the rightmost column
+    \begin{equation}
+        \det\left( s_{\lambda_i + \ell - i - j} \right)_{i, j \in \interval{n}}
+        =
+        \sum_{i=1}^\ell
+        (-1)^{\ell - i}
+        h_{\lambda_i + \ell - i}
+        s_{\composition{\lambda_1, \ldots, \lambda_{i-1}, \lambda_{i+1} - 1, \ldots, \lambda_\ell - 1}}
+    \end{equation}
+
+    \textcolor{red}{... I did not finish this proof. Reading a book proof might be better.}
 \end{proof}
