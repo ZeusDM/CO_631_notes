@@ -903,3 +903,421 @@ We provide a combinatorial proof of Corollary~\ref{cor:kostka-composition-sort},
     \end{equation}
     There are more relations, but nobody knows the entire list.
 \end{remark}
+
+\begin{definition} \label{def:skew-schur}
+    Let \(\lambda \subset \nu\) be partitions.
+    The \vocab{skew Schur polynomial} is defined as
+    \begin{equation}
+        s_{\nu / \lambda} = \sum_{\text{semistandard tableaux } T \text{ of skew shape } \nu / \lambda} x^{\wt(T)}.
+    \end{equation}
+\end{definition}
+
+Note that any schur polynomial is a skew Schur polynomial, by taking \(\lambda = \varnothing\).
+Hence, many results about Schur polynomials can be generalized to skew Schur polynomials.
+
+\begin{theorem} \label{thm:skew-schur-symmetric}
+    Let \(\lambda \subset \mu\) be partitions.
+    Then, \(s_{\nu / \lambda}\) is a symmetric function.
+\end{theorem}
+
+Theorem~\ref{thm:skew-schur-symmetric} follows from applying Bender--Knuth involutions to semistandard tableaux of skew shape.
+
+\section{The exponential specialization}
+
+Recall \(\Sym = \rationals[p_1, p_2, \ldots]\).
+Define
+\begin{equation}
+    \operatorname{ex} \colon \Sym \to \rationals[t]
+\end{equation}
+by
+\begin{align*}
+    p_1 &\mapsto t, \\
+    p_k &\mapsto 0 \quad \text{for } k \geq 2.
+\end{align*}
+
+\begin{proposition}
+    Let \(f \in \Sym\).
+    Then,
+    \begin{equation}
+        \operatorname{ex}(f)
+        = \sum_{n=0}^\infty \left( [x_1x_2\dots x_n] f \right) \frac{t^n}{n!},
+    \end{equation}
+    that is, \(\operatorname{ex}(f)\) is the exponential generating function of square-free coefficients of \(f\).
+\end{proposition}
+
+\begin{proof}
+    Both sides are linear in \(f\), so it suffices to check the result for the elements of a basis of \(\Sym\).
+    We check that the result is true for \(f = p_\lambda\), where \(\lambda\) is a partition.
+
+    If \(\lambda \neq \composition{1}^k\) for all \(k\), then both sides are zero.
+    If \(\lambda = \composition{1}^k\), then
+    \begin{equation}
+        \operatorname{ex}(p_{\composition{1}^k}) = (\operatorname{ex}(p_1))^k = t^k
+    \end{equation}
+    and
+    \begin{equation}
+        \sum_{n=0}^\infty \left( [x_1x_2\dots x_n] p_{\composition{1}^k} \right) \frac{t^n}{n!}
+        = \left( [x_1x_2\dots x_k] p_{\composition{1}^k} \right) \frac{t^k}{k!}
+        = k! \frac{t^k}{k!}
+        = t^k,
+    \end{equation}
+    and the result follows.
+\end{proof}
+
+\begin{corollary}
+    Let \(f \in \Sym_k\),
+    with \(f = \sum_{\lambda} c_\lambda m_\lambda\).
+    Then,
+    \begin{equation}
+        \operatorname{ex}(f) = c_{\composition{1}^k}.
+    \end{equation}
+\end{corollary}
+
+\begin{corollary}
+    Let \(\lambda\) be a partition.
+    Then,
+    \begin{equation}
+        \operatorname{ex}(p_\lambda) =
+        \begin{cases}
+            t^k & \text{if } \lambda = \composition{1}^k, \\
+            0 & \text{otherwise}.
+        \end{cases}
+    \end{equation}
+\end{corollary}
+
+\begin{corollary}
+    Let \(\lambda\) be a partition.
+    Then,
+    \begin{equation}
+        \operatorname{ex}(m_\lambda) =
+        \begin{cases}
+            \frac{t^n}{n!} & \text{if } \lambda = \composition{1}^k, \\
+            0 & \text{otherwise}.
+        \end{cases}
+    \end{equation}
+\end{corollary}
+
+\begin{corollary}
+    Let \(\lambda\) be a partition.
+    Then,
+    \begin{equation}
+        \operatorname{ex}(h_\lambda) = \operatorname{ex}(e_\lambda) = 
+        \frac{1}{\lambda_1! \lambda_2! \cdots} t^{|lambda|}.
+    \end{equation}
+\end{corollary}
+
+\begin{corollary}
+    Let \(\lambda \subset \nu\) be partitions.
+    Then,
+    \begin{equation}
+        \operatorname{ex}(s_{\nu / \lambda}) =
+        \frac{f^{\nu / \lambda}}{| \nu / \lambda |!} t^{|\nu / \lambda|},
+    \end{equation}
+    where \(f^{\nu / \lambda}\) is the number of standard Young tableaux of skew shape \(\nu / \lambda\).
+\end{corollary}
+
+\section{Skew Schur polynomials}
+
+Let \(\lambda \subset \nu\) and let \(\alpha\) be a composition.
+The \vocab{skew Kostka number} \(K_{\nu / \lambda, \alpha}\) is the number of standard Young tableaux of skew shape \(\nu / \lambda\) and weight \(\alpha\).
+
+Then, 
+\begin{equation}
+    s_{\nu / \lambda} = \sum_{\mu} K_{\nu / \lambda, \mu} m_\mu.
+\end{equation}
+
+Therefore,
+\begin{equation}
+    \left\langle s_{\nu / \lambda}, h_\mu \right\rangle = K_{\nu / \lambda, \mu}.
+\end{equation}
+
+\begin{theorem}
+    Let \(\lambda, \nu\) be partitions.
+    Then,
+    \begin{equation}
+        s_\lambda^\perp s_\nu =
+        \begin{cases}
+            s_{\nu / \lambda} & \text{if } \lambda \subset \nu, \\
+            0 & \text{otherwise}.
+        \end{cases}
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    Let \(\mu\) be a partition.
+    Then,
+    \begin{equation}
+        \left\langle s_\lambda^\perp s_\nu, h_\mu \right\rangle
+        = \left\langle s_\lambda, s_\nu h_\mu \right\rangle
+        = K_{\nu / \lambda, \mu}
+        =
+        \begin{cases}
+            \left\langle s_{\nu / \lambda}, h_\mu \right\rangle & \text{if } \lambda \subset \nu, \\
+            0 & \text{otherwise}.
+        \end{cases}
+    \end{equation}
+    The result follows by linearity.
+\end{proof}
+
+\begin{corollary}
+    Let \(\lambda, \mu, \nu\) be partitions.
+    Then,
+    \begin{equation}
+        \left\langle s_\lambda s_\mu, s_\nu \right\rangle
+        = \left\langle s_\lambda, s_{\nu / \mu} \right\rangle.
+        = \left\langle s_\mu, s_{\nu / \lambda} \right\rangle.
+    \end{equation}
+\end{corollary}
+
+Let \(\lambda, \mu, \nu\) be partitions.
+Define the \vocab{Littlewood--Richardson coefficient} \(c_{\lambda \mu}^\nu\) by
+\begin{equation}
+    c_{\lambda \mu}^\nu = \left\langle s_\lambda s_\mu, s_\nu \right\rangle.
+\end{equation}
+Since the Schur polynomials are orthonormal, we have
+\begin{equation}
+    s_\lambda s_\mu = \sum_{\nu} c_{\lambda \mu}^\nu s_\nu.
+\end{equation}
+and
+\begin{equation}
+    s_{\nu / \lambda} = \sum_{\mu} c_{\nu / \lambda, \mu} s_\mu.
+\end{equation}
+We know that these coefficients are integers.
+
+From the equations above, we can think of two ways to attempt to compute the Littlewood--Richardson coefficients:
+\begin{itemize}
+    \item \emph{product of tableaux:} start with tableaux \(T_\lambda\) and \(T_\mu\) and try to build a tableau \(T_\nu\). 
+    \item \emph{rectification of tableau:} start with a tableau \(T_{\nu / \lambda}\) and try to build a tableau \(T_\mu\).
+\end{itemize}
+
+For a tableau \(T\),
+write \(^aT^b\) for the subtableau of \(T\) of columns \(a\) through \(b\).
+
+\begin{theorem} \label{thm:skew-tilde-a}
+    Let \(\lambda, \nu, \mu\) be partitions such that \(\nu \subset \mu\).
+    Then,
+    \begin{equation}
+        \tilde{a}_{\lambda + \delta} s_{\mu/\nu}
+        =
+        \sum \tilde{a}_{\lambda + \wt(T) + \delta}
+    \end{equation}
+    where the sum is over all tableaux \(T\) of shape \(\mu/\nu\)
+    such that \(\lambda + \wt(^jT^\infty)\) is a partition for all \(j\).
+\end{theorem}
+
+\begin{proof}[Proof (Stembridge, 2002)]
+    We expand the definitions of \(\tilde{a}\) and \(s_{\mu/\nu}\),
+    use the fact that the Schur polynomials are symmetric,
+    \begin{align}
+        \tilde{a}_{\lambda + \delta} s_{\mu/\nu}
+        &= 
+        \sum_{w \in \sym{n}}
+        \sum_{T \in \SSYT(\mu/\nu)}
+        \sign(w) x^{w(\lambda + \delta) + \wt(T)} \\
+        &=
+        \sum_{w \in \sym{n}}
+        \sum_{T \in \SSYT(\mu/\nu)}
+        \sign(w) x^{w(\lambda + \delta + \wt(T))} \\
+        &=
+        \sum_{T \in \SSYT(\mu/\nu)}
+        \sum_{w \in \sym{n}}
+        \sign(w) x^{w(\lambda + \wt(T)) + \delta} \\
+        &=
+        \sum_{T \in \SSYT(\mu/\nu)}
+        \tilde{a}_{\lambda + \wt(T) + \delta}.
+    \end{align}
+
+    Let \(\mathcal{B}\) be the set of semistandard tableaux \(T\) of shape \(\mu/\nu\) such that \(\lambda + \wt(^jT^\infty)\) is not a partition for some \(j\).
+
+    Let \(T \in \mathcal{B}\), and let \(j\) be maximal such that \(\lambda + \wt(^jT^\infty)\) is not a partition.
+    Then, there exists a minimum \(k\) such that
+    \begin{equation}
+        \lambda_k + (\wt(^jT^\infty))_k > \lambda_{k+1} + (\wt(^jT^\infty))_{k+1}.
+    \end{equation}
+    Since \(\lambda + \wt(^{j+1}T^\infty)\) is a partition, we have
+    \begin{equation}
+        \lambda_k + (\wt(^{j+1}T^\infty))_k \leq \lambda_{k+1} + (\wt(^{j+1}T^\infty))_{k+1}.
+    \end{equation}
+    Moreover, the \(j\)\textsuperscript{th} column of \(T\) contains distinct entries.
+    Therefore, the \(j\)\textsuperscript{th} column of \(T\) contains one entry \(k\), it contains no entry \(k+1\), and
+    \begin{equation} \label{eq:skew-tilde-a-1}
+        \lambda_k + (\wt(^jT^\infty))_k = \lambda_{k+1} + (\wt(^jT^\infty))_{k+1} + 1.
+    \end{equation}
+
+    Let \(T^*\) be obtained from \(T\) by applying the Bender--Knuth involution \(\operatorname{BK}_k\) only to \(^1T^{j-1}\).
+    Note that \(T^*\) is still in \(\mathcal{B}\),
+    and moreover, \((T^*)^* = T\).
+    Therefore, this is an involution on \(\mathcal{B}\).
+
+    Note that
+    \begin{equation} \label{eq:skew-tilde-a-2}
+        \wt(^1(T^*)^{j-1}) = s_k \wt(^1T^{j-1})
+    \end{equation}
+    and
+    \begin{equation} \label{eq:skew-tilde-a-3}
+        \wt(^jT^\infty) = \wt(^j(T^*)^\infty).
+    \end{equation}
+    From Equations~\eqref{eq:skew-tilde-a-1}, \eqref{eq:skew-tilde-a-2}, and \eqref{eq:skew-tilde-a-3}, we find that
+    \begin{equation}
+        \lambda + \wt(T^*) + \delta = s_k(\lambda + \wt(T) + \delta).
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        \tilde{a}_{\lambda + \wt(T) + \delta}
+        =
+        - \tilde{a}_{\lambda + \wt(T^*) + \delta},
+    \end{equation}
+    which implies that
+    \begin{equation}
+        \sum_{T \in \mathcal{B}} \tilde{a}_{\lambda + \wt(T) + \delta} = 0.
+    \end{equation}
+
+    Therefore, as desired,
+    \begin{equation}
+        \tilde{a}_{\lambda + \delta} s_{\mu/\nu}
+        =
+        \sum_{T \in \SSYT(\mu/\nu) \setminus \mathcal{B}}
+        \tilde{a}_{\lambda + \wt(T) + \delta}.
+    \end{equation}
+\end{proof}
+
+Note that Theorem~\ref{thm:skew-tilde-a} recovers the definition of Schur polynomials.
+
+\begin{corollary}
+    Let \(\mu\) be a partition.
+    Then,
+    \begin{equation}
+        \tilde{a}_{\delta} s_\mu = \tilde{a}_{\mu + \delta}.
+    \end{equation}
+\end{corollary}
+
+\begin{proof}
+    We know
+    \begin{equation}
+        \tilde{a}_{\delta} s_\mu = \sum_{T} \tilde{a}_{\wt(T) + \delta},
+    \end{equation}
+    where the sum is over all tableaux \(T\) of shape \(\mu\) such that \(\wt(^jT^\infty)\) is a partition for all \(j\),
+    but there is only one such tableau, the Yamanouchi tableau of shape \(\mu\),
+    and the result follows.
+\end{proof}
+
+\begin{corollary}[Zelevinsky] \label{cor:zelevinsky}
+    Let \(\lambda, \mu, \nu\) be partitions.
+    Then,
+    \begin{equation}
+        s_\lambda s_{\mu / \nu} =
+        \sum s_{\lambda + \wt(T)},
+    \end{equation}
+    where the sum is over all tableaux \(T\) of shape \(\mu/\nu\) such that \(\lambda + \wt(^jT^\infty)\) is a partition for all \(j\).
+\end{corollary}
+
+\begin{proof}
+    Obtained from Theorem~\ref{thm:skew-tilde-a} by dividing by the Vandermonde determinant \(\tilde{a}_\delta\).
+\end{proof}
+
+\begin{corollary}
+    Let \(\mu, \nu\) be partitions.
+    Then,
+    \begin{equation}
+        s_{\mu / \nu} = \sum s_{\mu + \wt(T)},
+    \end{equation}
+    where the sum is over all tableaux \(T\) of shape \(\mu/\nu\) such that \(\wt(^jT^\infty)\) is a partition for all \(j\).
+\end{corollary}
+
+\begin{proof}
+    Obtained from Corollary~\ref{cor:zelevinsky} by setting \(\lambda = \varnothing\).
+\end{proof}
+
+\begin{corollary}
+    Let \(\lambda, \mu\) be partitions.
+    Then,
+    \begin{equation}
+        s_\lambda s_\mu = \sum s_{\lambda + \wt(T)},
+    \end{equation}
+    where the sum is over all tableaux \(T\) of shape \(\mu\) such that \(\lambda + \wt(^jT^\infty)\) is a partition for all \(j\).
+\end{corollary}
+
+\begin{proof}
+    Obtained from Corollary~\ref{cor:zelevinsky} by setting \(\nu = \varnothing\).
+\end{proof}
+
+\begin{example}
+    Let \(\lambda = \mu = \composition{2, 1}\).
+    Then, the desired sum is over all tableaux of shape \(\composition{2, 1}\) such that \(\composition{2, 1, 0, 0, 0} + \wt(^jT^\infty)\) is a partition for all \(j\).
+    These tableaux are
+    \begin{gather}
+        \ytableausetup{boxsize=1em}
+        \ytableaushort{11,2}, \quad
+        \ytableaushort{11,3}, \quad
+        \ytableaushort{12,2}, \quad
+        \ytableaushort{12,3}, \quad
+        \ytableaushort{13,2}, \quad
+        \ytableaushort{13,4}, \quad
+        \ytableaushort{23,3}, \quad
+        \ytableaushort{23,4}, \quad
+        \ytableaushort{23,4}.
+    \end{gather}
+    and consequently
+    \begin{equation}
+        s_{\composition{2, 1}} s_{\composition{2, 1}}
+        =
+        s_{\composition{4, 2}} +
+        s_{\composition{4, 1, 1}} +
+        s_{\composition{3, 3}} +
+        2s_{\composition{3, 2, 1}} +
+        s_{\composition{3, 1, 1, 1}} +
+        s_{\composition{2, 2, 2}} +
+        2s_{\composition{2, 2, 1, 1}}.
+    \end{equation}
+\end{example}
+
+Given a word \(a = a_1 a_2 \cdots a_n\),
+we say that this word satisfies the \vocab{Yamanouchi condition} if,
+for all partial words \(a_1 a_2 \cdots a_k\),
+the number of entries \(i\) is at least as large as the number of entries \(i+1\).
+
+Note that \(T\) satisfies \(\lambda + \wt(^jT^\infty)\) is a partition for all \(j\) if and only if the tableau
+\begin{equation}
+    T * Y_\lambda = 
+    \vcenter{\hbox{
+    \begin{tikzpicture}[scale=.5, thick]
+        \draw (0, 0) -- (2, 0) -- (2, 2) -- (3, 2) -- (3, 3) -- (4, 3) -- (4, 4) -- (0, 4) -- cycle;
+        \draw (0, 0) -- (-2, 0) -- (-2, -1) -- (-3, -1) -- (-3, -2) -- (0, -2) -- cycle;
+        \node at (1, 2) {\(Y_\lambda\)};
+        \node at (-1, -1) {\(T\)};
+    \end{tikzpicture}
+    }}
+\end{equation}
+satisfies the \vocab{Yamanouchi condition},
+namely,
+when we read the columns of \(T * Y_\lambda\) from right to left,
+reading each column from top to bottom,
+we obtain an Yamanouchi word.
+
+\begin{example}
+    Let's compute \(c_{\composition{2, 1} \composition{2, 1}}^{\composition{3, 2, 1}}\).
+    We have
+    \begin{equation}
+        c_{\composition{2, 1} \composition{2, 1}}^{\composition{3, 2, 1}}
+        = [s_{\composition{2, 1}}] s_{\composition{3, 2, 1} / \composition{2, 1}},
+    \end{equation}
+    which equals the number of tableaux of shape \(\composition{3, 2, 1} / \composition{2, 1}\) with weight \(\composition{2, 1}\) that satisfy the Yamanouchi condition.
+    There are two such tableaux, namely,
+    \begin{equation}
+        \ytableaushort{\none\none1,\none1,2}, \quad
+        \ytableaushort{\none\none1,\none2,1}.
+    \end{equation}
+    and therefore \(c_{\composition{2, 1} \composition{2, 1}}^{\composition{3, 2, 1}} = 2\).
+\end{example}
+
+\section{Tableaux Combinatorics}
+
+We know that
+\begin{equation}
+    s_\lambda s_{\composition{1}} = \sum_{\mu : |\mu / \lambda| = 1} s_\mu.
+\end{equation}
+
+Therefore, we have some hope that there exists a bijection
+\begin{equation}
+    \SSYT(\lambda) \times \positives \longleftrightarrow \bigsqcup_{\mu : |\mu / \lambda| = 1} \SSYT(\mu).
+\end{equation}
