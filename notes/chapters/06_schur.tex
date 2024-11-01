@@ -2,11 +2,11 @@
 
 Consider the following two representations of \(\sym{n}\):
 \begin{itemize}
-    \item The trivial representation \(1 \colon \sym{n} \to \GL[1](\complexes)\) given by \(\sigma \mapsto 1\).
-    \item The sign representation \(\sign \colon \sym{n} \to \GL[1](\complexes)\) given by \(\sigma \mapsto \sign(\sigma)\).
+    \item The trivial representation \(1 \colon \sym{n} \to \GL[1]{\complexes}\) given by \(\sigma \mapsto 1\).
+    \item The sign representation \(\sign \colon \sym{n} \to \GL[1]{\complexes}\) given by \(\sigma \mapsto \sign(\sigma)\).
 \end{itemize}
 
-Consider any representation \(\phi \colon  \sym{n} \to \GL[1](\complexes)\).
+Consider any representation \(\phi \colon  \sym{n} \to \GL[1]{\complexes}\).
 Let \(i \in \interval{n-1}\).
 Then,
 \begin{equation}
@@ -20,14 +20,14 @@ If \(\phi(\eltr{i}) = -1\) for all \(i \in \interval{n-1}\), then \(\phi = \sign
 
 Therefore, the only irreducible representations of \(\sym{n}\) of dimension \(1\) are the trivial representation and the sign representation.
 
-Suppose \(\rho \colon \sym{n} \to \GL(V)\) is a representation of \(\sym{n}\).
+Suppose \(\rho \colon \sym{n} \to \GL{V}\) is a representation of \(\sym{n}\).
 The \vocab{invariants} of \(\rho\) are the elements \(v \in v\) such that
 \begin{equation}
     \rho(w) v = 1(w) v, 
 \end{equation}
 for all \(w \in \sym{n}\), where \(1\) denotes the trivial representation.
 We can alternatively call these elements \vocab{\(1\)-isotypic elements}.
-Let \(\Inv(V)\) denote the set of \(1\)-isotypic elements of \(\rho \colon \sym{n} \to \GL(V)\).
+Let \(\Inv(V)\) denote the set of \(1\)-isotypic elements of \(\rho \colon \sym{n} \to \GL{V}\).
 
 We can replace the trivial representation with the sign representation.
 
@@ -36,16 +36,16 @@ The \vocab{\(\sign\)-isotypic elements} of \(\rho\) are the elements \(v \in V\)
     \rho(w) v = \sign(w) v,
 \end{equation}
 for all \(w \in \sym{n}\).
-Let \(\Alt(V)\) denote the set of \(\sign\)-isotypic elements of \(\rho \colon \sym{n} \to \GL(V)\).
+Let \(\Alt(V)\) denote the set of \(\sign\)-isotypic elements of \(\rho \colon \sym{n} \to \GL{V}\).
 
 \begin{proposition}
-    Let \(\rho \colon \sym{n} \to \GL(V)\) be a representation of \(\sym{n}\).
+    Let \(\rho \colon \sym{n} \to \GL{V}\) be a representation of \(\sym{n}\).
     Then, \(\Alt(V)\) is a subspace of \(V\).
 \end{proposition}
 
 \begin{definition}[Direct sum of representations]
-    If \(\rho_1 \colon \sym{n} \to \GL(V_1)\) and \(\rho_2 \colon \sym{n} \to \GL(V_2)\) are representations of \(\sym{n}\),
-    then the \vocab{direct sum} of \(\rho_1\) and \(\rho_2\) is the representation \(\rho_1 \oplus \rho_2 \colon \sym{n} \to \GL(V_1 \oplus V_2)\) given by
+    If \(\rho_1 \colon \sym{n} \to \GL{V_1}\) and \(\rho_2 \colon \sym{n} \to \GL{V_2}\) are representations of \(\sym{n}\),
+    then the \vocab{direct sum} of \(\rho_1\) and \(\rho_2\) is the representation \(\rho_1 \oplus \rho_2 \colon \sym{n} \to \GL{V_1 \oplus V_2}\) given by
     \begin{equation}
         (\rho_1 \oplus \rho_2)(w) = \rho_1(w) \oplus \rho_2(w),
     \end{equation}
@@ -56,7 +56,7 @@ Much more interesting than adding two representations to get a third,
 is to start with a representation and decompose it into a direct sum of other representations.
 
 \begin{theorem}
-    Let \(\rho \colon \sym{n} \to \GL(V)\) be a representation of \(\sym{n}\).
+    Let \(\rho \colon \sym{n} \to \GL{V}\) be a representation of \(\sym{n}\).
     Then, \(V = \Inv(V) \oplus \Alt(V) \oplus W\), for some \(W \subset V\),
     and 
     \begin{equation}
