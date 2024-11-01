@@ -203,14 +203,14 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
     \[
         \qbinom{\ell + w}{\ell}
         = \left|
-            \Grassmanian_\ell\left(\mathbb{F}_{q}^{\ell + w} \right)
+            \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
-        = \sum_{\lambda \in \Par_{\ell, w}} (q)^{|\lambda|}.
+        = \sum{\lambda \in \Par_{\ell, w}} (q)^{|\lambda|}.
     \]
 \end{lemma}
 
 \begin{proof}[Proof of the first equality.]
-    Let \(\mathcal{M}\) be the set of all \(\ell \times (\ell + w)\) matrices with entries in \(\mathbb{F}_q\) with linearly independent rows.
+    Let \(\mathcal{M}\) be the set of all \(\ell \times (\ell + w)\) matrices with entries in \(\finitefield{q}\) with linearly independent rows.
 
     On one hand, we may count the elements of \(\mathcal{M}\) by choosing the \(\ell\) linearly independent rows one by one.
     There are \(q^{\ell + w} - 1\) choices for the first row,
@@ -225,7 +225,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
     \end{equation*}
 
     On the other hand, we may count the elements of \(\mathcal{M}\) by first choosing the linear span of its rows, and then choosing the rows themselves in such linear span.
-    There are \(|\Grassmanian_\ell(\mathbb{F}_q^{\ell + w})|\) choices for an \(\ell\)-dimensional subspace of \(\mathbb{F}_q^{\ell + w}\).
+    There are \(|\Grassmanian_\ell(\finitefield{q}^{\ell + w})|\) choices for an \(\ell\)-dimensional subspace of \(\finitefield{q}^{\ell + w}\).
     Given such a subspace,
     there are \(q^{\ell} - 1\) choices for the first row,
     there are \(q^{\ell} - q\) choices for the second row, and so on.
@@ -236,7 +236,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
             \mathcal{M}
         \right|
         = \left|
-            \Grassmanian_\ell\left(\mathbb{F}_{q}^{\ell + w} \right)
+            \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         \prod_{i=1}^{\ell} (q^{\ell} - q^{i-1})
     \end{equation*}
@@ -244,7 +244,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
     Finally, from the two expressions for \(\left| \mathcal{M} \right|\), we find
     \begin{align*}
         \left|
-            \Grassmanian_\ell\left(\mathbb{F}_{q}^{\ell + w} \right)
+            \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         = \prod_{i=1}^{\ell} \frac{q^{\ell + w} - q^{i-1}}{q^{\ell} - q^{i-1}} \\
         = \prod_{i=0}^{\ell - 1} \frac{1 - q^{\ell + w - i}}{1 - q^{\ell - i}} \\
@@ -254,21 +254,21 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
 \end{proof}
 
 \begin{proof}[Proof for the second equality]
-    By linear algebra, the \(\Grassmanian_\ell(\mathbb{F}_q^{\ell + w})\) is in bijection with the set of \(\ell \times (\ell + w)\) matrices with independent rows and in row reduced echelon form.
+    By linear algebra, the \(\Grassmanian_\ell(\finitefield{q}^{\ell + w})\) is in bijection with the set of \(\ell \times (\ell + w)\) matrices with independent rows and in row reduced echelon form.
 
     The set of \(\ell \times (\ell + w)\) matrices with independent rows and in row reduced echelon form is in bijection with the set of partitions of \(\ell\) with at most \(w\) parts by the following correspondence:
     \begin{quote}
         ``Start from the \(\ell \times (\ell + w)\) matrix with independent rows and in row reduced echelon form.
         There are \(\ell\) pivots, one in each row.
         Delete all zeroes southwest of the pivots, and delete all \(\ell\) pivot columns.
-        The resulting matrix-looking table of elements of \(\mathbb{F}_q\) can be interpreted as an assignment of elements of \(\mathbb{F}_q\) to the boxes of the Young diagram within the rectangle of size \(\ell \times w\).''
+        The resulting matrix-looking table of elements of \(\finitefield{q}\) can be interpreted as an assignment of elements of \(\finitefield{q}\) to the boxes of the Young diagram within the rectangle of size \(\ell \times w\).''
     \end{quote}
 
-    Note that, for each Young diagram within the rectangle of size \(\ell \times w\), there are \(q^{|\lambda|}\) ways to assign elements of \(\mathbb{F}_q\) to the boxes of the Young diagram.
+    Note that, for each Young diagram within the rectangle of size \(\ell \times w\), there are \(q^{|\lambda|}\) ways to assign elements of \(\finitefield{q}\) to the boxes of the Young diagram.
     Therefore,
     \[
         \left|
-            \Grassmanian_\ell\left(\mathbb{F}_{q}^{\ell + w} \right)
+            \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         = \sum_{\lambda \in \Par_{\ell, w}} (q)^{|\lambda|},
     \]

@@ -1,33 +1,33 @@
 \chapter{Schur Polynomials}
 
-Consider the following two representations of \(\sym_n\):
+Consider the following two representations of \(\sym{n}\):
 \begin{itemize}
-    \item The trivial representation \(1 \colon \sym_n \to \GL_1(\complexes)\) given by \(\sigma \mapsto 1\).
-    \item The sign representation \(\sign \colon \sym_n \to \GL_1(\complexes)\) given by \(\sigma \mapsto \sign(\sigma)\).
+    \item The trivial representation \(1 \colon \sym{n} \to \GL[1](\complexes)\) given by \(\sigma \mapsto 1\).
+    \item The sign representation \(\sign \colon \sym{n} \to \GL[1](\complexes)\) given by \(\sigma \mapsto \sign(\sigma)\).
 \end{itemize}
 
-Consider any representation \(\phi \colon  \sym_n \to \GL_1(\complexes)\).
+Consider any representation \(\phi \colon  \sym{n} \to \GL[1](\complexes)\).
 Let \(i \in \interval{n-1}\).
 Then,
 \begin{equation}
     \phi(\eltr{i}) = \phi(\tau \eltr{1} \tau^{-1}) = \phi(\tau) \phi(\eltr{1}) \phi(\tau)^{-1} = \phi(\eltr{1}),
 \end{equation}
-for some \(\tau \in \sym_n\).
+for some \(\tau \in \sym{n}\).
 Thus, \(\phi(\eltr{i})\) is independent of \(i\).
-Moreover, \(\phi(\eltr{i})^2 = \phi(\eltr{i}^2) = \phi(\operatorname{id}) = 1\), hence \(\phi(\eltr{i}) = \pm 1\), for all \(i \in \interval{n-1}\).
+Moreover, \(\phi(\eltr{i})^2 = \phi(\eltr{i}^2) = \phi(\id) = 1\), hence \(\phi(\eltr{i}) = \pm 1\), for all \(i \in \interval{n-1}\).
 If \(\phi(\eltr{i}) = 1\) for all \(i \in \interval{n-1}\), then \(\phi = 1\).
 If \(\phi(\eltr{i}) = -1\) for all \(i \in \interval{n-1}\), then \(\phi = \sign\).
 
-Therefore, the only irreducible representations of \(\sym_n\) of dimension \(1\) are the trivial representation and the sign representation.
+Therefore, the only irreducible representations of \(\sym{n}\) of dimension \(1\) are the trivial representation and the sign representation.
 
-Suppose \(\rho \colon \sym_n \to \GL(V)\) is a representation of \(S_n\).
+Suppose \(\rho \colon \sym{n} \to \GL(V)\) is a representation of \(\sym{n}\).
 The \vocab{invariants} of \(\rho\) are the elements \(v \in v\) such that
 \begin{equation}
     \rho(w) v = 1(w) v, 
 \end{equation}
-for all \(w \in S_n\), where \(1\) denotes the trivial representation.
+for all \(w \in \sym{n}\), where \(1\) denotes the trivial representation.
 We can alternatively call these elements \vocab{\(1\)-isotypic elements}.
-Let \(\Inv(V)\) denote the set of \(1\)-isotypic elements of \(\rho \colon S_n \to \GL(V)\).
+Let \(\Inv(V)\) denote the set of \(1\)-isotypic elements of \(\rho \colon \sym{n} \to \GL(V)\).
 
 We can replace the trivial representation with the sign representation.
 
@@ -35,28 +35,28 @@ The \vocab{\(\sign\)-isotypic elements} of \(\rho\) are the elements \(v \in V\)
 \begin{equation}
     \rho(w) v = \sign(w) v,
 \end{equation}
-for all \(w \in S_n\).
-Let \(\Alt(V)\) denote the set of \(\sign\)-isotypic elements of \(\rho \colon S_n \to \GL(V)\).
+for all \(w \in \sym{n}\).
+Let \(\Alt(V)\) denote the set of \(\sign\)-isotypic elements of \(\rho \colon \sym{n} \to \GL(V)\).
 
 \begin{proposition}
-    Let \(\rho \colon S_n \to \GL(V)\) be a representation of \(S_n\).
+    Let \(\rho \colon \sym{n} \to \GL(V)\) be a representation of \(\sym{n}\).
     Then, \(\Alt(V)\) is a subspace of \(V\).
 \end{proposition}
 
 \begin{definition}[Direct sum of representations]
-    If \(\rho_1 \colon S_n \to \GL(V_1)\) and \(\rho_2 \colon S_n \to \GL(V_2)\) are representations of \(S_n\),
-    then the \vocab{direct sum} of \(\rho_1\) and \(\rho_2\) is the representation \(\rho_1 \oplus \rho_2 \colon S_n \to \GL(V_1 \oplus V_2)\) given by
+    If \(\rho_1 \colon \sym{n} \to \GL(V_1)\) and \(\rho_2 \colon \sym{n} \to \GL(V_2)\) are representations of \(\sym{n}\),
+    then the \vocab{direct sum} of \(\rho_1\) and \(\rho_2\) is the representation \(\rho_1 \oplus \rho_2 \colon \sym{n} \to \GL(V_1 \oplus V_2)\) given by
     \begin{equation}
         (\rho_1 \oplus \rho_2)(w) = \rho_1(w) \oplus \rho_2(w),
     \end{equation}
-    for all \(w \in S_n\).
+    for all \(w \in \sym{n}\).
 \end{definition}
 
 Much more interesting than adding two representations to get a third,
 is to start with a representation and decompose it into a direct sum of other representations.
 
 \begin{theorem}
-    Let \(\rho \colon S_n \to \GL(V)\) be a representation of \(S_n\).
+    Let \(\rho \colon \sym{n} \to \GL(V)\) be a representation of \(\sym{n}\).
     Then, \(V = \Inv(V) \oplus \Alt(V) \oplus W\), for some \(W \subset V\),
     and 
     \begin{equation}
@@ -67,12 +67,12 @@ is to start with a representation and decompose it into a direct sum of other re
 We saw that, if \(V\) is an algebra, then \(\Inv(V)\) is a subalgebra of \(V\).
 However, this is not the case for \(\Alt(V)\).
 Suppose \(a \in \Alt(V)\).
-Then \(w \cdot a^2 = (w \cdot a) (w \cdot a) = \sign(w)^2 a^2 = a^2\), for all \(w \in S_n\), which is not always equal to \(\sign(w) a^2\) (for \(n \geq 2\)).
+Then \(w \cdot a^2 = (w \cdot a) (w \cdot a) = \sign(w)^2 a^2 = a^2\), for all \(w \in \sym{n}\), which is not always equal to \(\sign(w) a^2\) (for \(n \geq 2\)).
 Something can be salvaged from this situation.
 
 \begin{theorem} \label{thm:inv-alt-subalgebra}
     Let \(V\) be an algebra.
-    Let \(\rho \colon S_n \to \Aut(V)\) be a representation of \(S_n\).
+    Let \(\rho \colon \sym{n} \to \Aut(V)\) be a representation of \(\sym{n}\).
     Consider the subspace \(\Inv(V) \oplus \Alt(V)\) of \(V\).
     Then, \(\Inv(V) \oplus \Alt(V)\) is a subalgebra of \(V\).
 \end{theorem}
@@ -91,20 +91,20 @@ A \vocab{superalgebra} is a \(\mathbb{Z}_2\)-graded algebra.
 
 \begin{theorem} \label{thm:inv-alt-super}
     Let \(V\) be an algebra.
-    Let \(\rho \colon S_n \to \Aut(V)\) be a representation of \(S_n\).
+    Let \(\rho \colon \sym{n} \to \Aut(V)\) be a representation of \(\sym{n}\).
     Consider the subspace \(\Inv(V) \oplus \Alt(V)\) of \(V\).
     Then, \(\Inv(V) \oplus \Alt(V)\) is a superalgebra with parts \(\Inv(V)\) and \(\Alt(V)\).
 \end{theorem}
 
 \begin{proof}
     Let \(a \in \Inv(V)\) and \(b \in \Inv(V)\).
-    Then, \(w \cdot (ab) = (w \cdot a) (w \cdot b) = a b\), for all \(w \in S_n\).
+    Then, \(w \cdot (ab) = (w \cdot a) (w \cdot b) = a b\), for all \(w \in \sym{n}\).
     Thus, \(ab \in \Inv(V)\).
     Let \(a \in \Inv(V)\) and \(b \in \Alt(V)\).
-    Then, \(w \cdot (ab) = (w \cdot a) (w \cdot b) = (\sign(w) a) b = \sign(w) a b\), for all \(w \in S_n\).
+    Then, \(w \cdot (ab) = (w \cdot a) (w \cdot b) = (\sign(w) a) b = \sign(w) a b\), for all \(w \in \sym{n}\).
     Thus, \(ab \in \Alt(V)\).
     Let \(a \in \Alt(V)\) and \(b \in \Alt(V)\).
-    Then, \(w \cdot (ab) = (w \cdot a) (w \cdot b) = \sign(w)^2 a b = a b\), for all \(w \in S_n\).
+    Then, \(w \cdot (ab) = (w \cdot a) (w \cdot b) = \sign(w)^2 a b = a b\), for all \(w \in \sym{n}\).
     Thus, \(ab \in \Inv(V)\).
 
     Therefore, \(\Inv(V) \oplus \Alt(V)\) is a subalgebra of \(V\),
@@ -112,7 +112,7 @@ A \vocab{superalgebra} is a \(\mathbb{Z}_2\)-graded algebra.
 \end{proof}
 
 Now, apply this with \(\mathcal{A} = \rationals[x_1, x_2, \ldots, x_n]\),
-and the action \(\rho \colon S_n \to \Aut(\mathcal{A})\) given by
+and the action \(\rho \colon \sym{n} \to \Aut(\mathcal{A})\) given by
 permuting the variables.
 The \(\sign\)-isotypic elements of \(\mathcal{A}\) are are the \vocab{alternating polynomials},
 denoted by \(\AltPoly(n)\) or \(v_n\Sym(n)\).
@@ -166,8 +166,8 @@ Then, the coefficient of \(x^\alpha\) in \(p\) is zero.
     Then, \(p = v_n q\), for some \(q \in \rationals[x_1, x_2, \ldots, x_n]\),
     by Lemma~\ref{lem:vandermonde-divides-alt}.
     Since \(p, v_n \in \AltPoly(n)\),
-    we have \(w \cdot p = \sign(w) p\) and \(w \cdot v_n = \sign(w) v_n\), for all \(w \in S_n\).
-    Thus, \(w \cdot q = q\), for all \(w \in S_n\), and consequently, \(q \in \Sym(n)\).
+    we have \(w \cdot p = \sign(w) p\) and \(w \cdot v_n = \sign(w) v_n\), for all \(w \in \sym{n}\).
+    Thus, \(w \cdot q = q\), for all \(w \in \sym{n}\), and consequently, \(q \in \Sym(n)\).
 \end{proof}
 
 \begin{corollary}
@@ -183,7 +183,7 @@ we define
 \begin{equation}
     \tilde{a}_\lambda
     =
-    \sum_{w \in \sym_n}
+    \sum_{w \in \sym{n}}
     \sign(w)
     x^{w \cdot \lambda} \in \AltPoly(n).
 \end{equation}
@@ -212,9 +212,9 @@ we can divide by \(v_n\) to get a basis of \(\Sym(n)\).
 
 \begin{definition}[Schur polynomial]
     Let \(\lambda\) be a partition of \(n\).
-    Define the \vocab{Schur polynomial} \(s_\lambda \in \Sym(n)\) by
+    Define the \vocab{Schur polynomial} \(\schur{\lambda} \in \Sym(n)\) by
     \begin{equation}
-        s_\lambda = \frac{a_\lambda}{v_n} \in \Sym(n).
+        \schur{\lambda} = \frac{a_\lambda}{v_n} \in \Sym(n).
     \end{equation}
 \end{definition}
 
@@ -222,7 +222,7 @@ we can divide by \(v_n\) to get a basis of \(\Sym(n)\).
     Let \(\lambda\) be a partition of \(n\).
     Then,
     \begin{equation}
-        s_\lambda = 
+        \schur{\lambda} = 
         \frac{
             \det\left(\left[x_i^{\lambda_j + n - j}\right]\right)_{i, j \in \interval{n}}
         }{
@@ -241,7 +241,7 @@ we can divide by \(v_n\) to get a basis of \(\Sym(n)\).
     Moreover, for \(\lambda = \composition{2}\),
     we have
     \begin{align}
-        s_{\composition{2}}
+        \schur{\composition{2}}
         = \frac{a_{\composition{2}}}{v_3}
         = \frac{\tilde{a}_{\composition{4, 1, 0}}}{\tilde{a}_{\composition{2, 1, 0}}}
         &= \frac{
@@ -261,7 +261,7 @@ we can divide by \(v_n\) to get a basis of \(\Sym(n)\).
     Let \(n = 3\) and \(\lambda = \composition{1, 1}\).
     :We have
     \begin{align}
-        s_{\composition{1, 1}}
+        \schur{\composition{1, 1}}
         = \frac{a_{\composition{1, 1}}}{v_3}
         = \frac{\tilde{a}_{\composition{3, 2, 0}}}{\tilde{a}_{\composition{2, 1, 0}}}
         &= \frac{
@@ -280,8 +280,8 @@ we can divide by \(v_n\) to get a basis of \(\Sym(n)\).
 Although it is a pain to write out Schur polynomials explicitly,
 we know that
 \begin{itemize}
-    \item \(s_\lambda\) has integer coefficients, by divisibility rules on monic polynomials,
-    \item \(s_\lambda\) is an integral linear combination of \(m_\mu\)'s, and \(m_\mu\)'s are integral linear combinations of \(s_\lambda\)'s.
+    \item \(\schur{\lambda}\) has integer coefficients, by divisibility rules on monic polynomials,
+    \item \(\schur{\lambda}\) is an integral linear combination of \(m_\mu\)'s, and \(m_\mu\)'s are integral linear combinations of \(\schur{\lambda}\)'s.
 \end{itemize}
 
 \section{Pieri's Formulas and Strips}
@@ -299,7 +299,7 @@ For example, the empty set is both a horizontal and vertical strip.
     Let \(\lambda\) be a partition.
     Then,
     \begin{equation}
-        s_\lambda e_k = \sum_{\mu} s_{\mu},
+        \schur{\lambda} e_k = \sum_{\mu} \schur{\mu},
     \end{equation}
     where the sum is over all partitions \(\mu\) obtained by adding a vertical strip of size \(k\) to \(\lambda\).
 \end{theorem}
@@ -310,22 +310,22 @@ For example, the empty set is both a horizontal and vertical strip.
         \tilde{a}_{\lambda + \delta_n} e_k
         &=
         \left(
-            \sum_{w \in \sym_n} \sign(w) x^{w \cdot (\lambda + \delta_n)} 
+            \sum_{w \in \sym{n}} \sign(w) x^{w \cdot (\lambda + \delta_n)} 
         \right) 
         \left(
             \sum_{i_1 < i_2 < \cdots < i_k} x_{i_1} x_{i_2} \cdots x_{i_k}
         \right) \\
         &=
-        \sum_{w \in \sym_n}
+        \sum_{w \in \sym{n}}
         \sum_{\substack{\text{binary compositions } \alpha \\ \text{of } k \text{ with length } n}}
         \sign(w) x^{w \cdot (\lambda + \delta_n) + \alpha} \\
         &=
-        \sum_{w \in \sym_n}
+        \sum_{w \in \sym{n}}
         \sum_{\substack{\text{binary compositions } \alpha \\ \text{of } k \text{ with length } n}}
         \sign(w) x^{w \cdot (\lambda + \delta_n + \alpha)} \\
         &=
         \sum_{\substack{\text{binary compositions } \alpha \\ \text{of } k \text{ with length } n}}
-        \sum_{w \in \sym_n}
+        \sum_{w \in \sym{n}}
         \sign(w) x^{w \cdot (\lambda + \delta_n + \alpha)} \\
         &=
         \sum_{\substack{\text{binary compositions } \alpha \\ \text{of } k \text{ with length } n}}
@@ -355,7 +355,7 @@ For example, the empty set is both a horizontal and vertical strip.
     Let \(k\) be a nonnegative integer.
     Then,
     \begin{equation}
-        s_{\composition{1}^k} = e_k.
+        \schur{\composition{1}^k} = e_k.
     \end{equation}
 \end{corollary}
 
@@ -368,7 +368,7 @@ Note that this is somewhat similar to the formula
     Let \(\lambda\) be a partition.
     Then,
     \begin{equation}
-        s_\lambda h_k = \sum_{\mu} s_{\mu},
+        \schur{\lambda} h_k = \sum_{\mu} \schur{\mu},
     \end{equation}
     where the sum is over all partitions \(\mu\) obtained by adding a horizontal strip of size \(k\) to \(\lambda\).
 \end{theorem}
@@ -379,22 +379,22 @@ Note that this is somewhat similar to the formula
         \tilde{a}_{\lambda + \delta_n} h_k
         &=
         \left(
-            \sum_{w \in \sym_n} \sign(w) x^{w \cdot (\lambda + \delta_n)} 
+            \sum_{w \in \sym{n}} \sign(w) x^{w \cdot (\lambda + \delta_n)} 
         \right) 
         \left(
             \sum_{i_1 \leq i_2 \leq \cdots \leq i_k} x_{i_1} x_{i_2} \cdots x_{i_k}
         \right) \\
         &=
-        \sum_{w \in \sym_n}
+        \sum_{w \in \sym{n}}
         \sum_{\substack{\text{compositions } \alpha \\ \text{of } k \text{ with length } n}}
         \sign(w) x^{w \cdot (\lambda + \delta_n) + \alpha} \\
         &=
-        \sum_{w \in \sym_n}
+        \sum_{w \in \sym{n}}
         \sum_{\substack{\text{compositions } \alpha \\ \text{of } k \text{ with length } n}}
         \sign(w) x^{w \cdot (\lambda + \delta_n + \alpha)} \\
         &=
         \sum_{\substack{\text{compositions } \alpha \\ \text{of } k \text{ with length } n}}
-        \sum_{w \in \sym_n}
+        \sum_{w \in \sym{n}}
         \sign(w) x^{w \cdot (\lambda + \delta_n + \alpha)} \\
         &=
         \sum_{\substack{\text{compositions } \alpha \\ \text{of } k \text{ with length } n}}
@@ -575,11 +575,11 @@ is the composition \(\alpha\) such that the number \(i\) appears \(\alpha_i\) ti
     Let \(\alpha\) be a composition.
     Then,
     \begin{equation}
-        h_\alpha = \sum_{\lambda} K_{\lambda \alpha} s_\lambda,
+        h_\alpha = \sum_{\lambda} K_{\lambda \alpha} \schur{\lambda},
     \end{equation}
     and
     \begin{equation}
-        e_\alpha = \sum_{\lambda} K_{\lambda \alpha} s_{\tilde\lambda}.
+        e_\alpha = \sum_{\lambda} K_{\lambda \alpha} \schur{\tilde\lambda}.
     \end{equation}
 \end{theorem}
 
@@ -588,7 +588,7 @@ is the composition \(\alpha\) such that the number \(i\) appears \(\alpha_i\) ti
     \begin{align}
         h_\alpha
         &= h_{\alpha_1} h_{\alpha_2} \cdots h_{\alpha_\ell} \\
-        &= s_{\varnothing} h_{\alpha_1} s_{\varnothing} h_{\alpha_2} \cdots s_{\varnothing} h_{\alpha_\ell},
+        &= \schur{\varnothing} h_{\alpha_1} \schur{\varnothing} h_{\alpha_2} \cdots \schur{\varnothing} h_{\alpha_\ell},
     \end{align}
     and then the result follows by successively applying \nameref{thm:pieri-h-formula}.
     The proof for the \(e\)-formula is similar, using \nameref{thm:pieri-e-formula}.
@@ -649,18 +649,18 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
     Let \(\lambda\) be a partition.
     Then,
     \begin{equation}
-        \omega(s_\lambda) = s_{\tilde\lambda}.
+        \omega(\schur{\lambda}) = \schur{\tilde\lambda}.
     \end{equation}
 \end{theorem}
 
 \begin{proof}
     Theorem~\ref{thm:h-e-sum-kostka-schur} implies that
     \begin{equation}
-        s_\lambda = \sum_{\mu} K_{\lambda \mu}^{-1} h_\mu,
+        \schur{\lambda} = \sum_{\mu} K_{\lambda \mu}^{-1} h_\mu,
     \end{equation}
     and 
     \begin{equation}
-        s_{\tilde\lambda} = \sum_{\mu} K_{\lambda \mu}^{-1} e_\mu.
+        \schur{\tilde\lambda} = \sum_{\mu} K_{\lambda \mu}^{-1} e_\mu.
     \end{equation}
     It is straightforward to check that applying \(\omega\) to the right-hand side of the first equation gives the right-hand side of the second equation, and the result follows.
 \end{proof}
@@ -669,20 +669,20 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
     Let \(\lambda\) be a partition and let \(n \geq \ell(\lambda)\) be an integer.
     Then,
     \begin{equation}
-        s_\lambda = \det\left( s_{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
+        \schur{\lambda} = \det\left( \schur{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
     \end{equation}
     and
     \begin{equation}
-        s_{\tilde\lambda} = \det\left( s_{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
+        \schur{\tilde\lambda} = \det\left( \schur{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
     \end{equation}
 \end{theorem}
 
 \begin{example}
-    Let's compute \(s_{\composition{3, 1}}\) using \nameref{thm:jacobi-trudi}.
+    Let's compute \(\schur{\composition{3, 1}}\) using \nameref{thm:jacobi-trudi}.
     Let \(n = 4\).
     We have
     \begin{equation}
-        s_{\composition{3, 1}}
+        \schur{\composition{3, 1}}
         = \left|
             \begin{matrix}
                 h_3 & h_4 & h_5 & h_6 \\
@@ -701,7 +701,7 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
     \end{equation}
     and
     \begin{equation}
-        s_{\composition{3, 1}} = s_{\tilde{\composition{2, 1, 1}}} =
+        \schur{\composition{3, 1}} = \schur{\tilde{\composition{2, 1, 1}}} =
         \left|
             \begin{matrix}
                 e_2 & e_3 & e_4 \\
@@ -721,12 +721,12 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
 
     We column expand along the rightmost column
     \begin{equation}
-        \det\left( s_{\lambda_i + \ell - i - j} \right)_{i, j \in \interval{n}}
+        \det\left( \schur{\lambda_i + \ell - i - j} \right)_{i, j \in \interval{n}}
         =
         \sum_{i=1}^\ell
         (-1)^{\ell - i}
         h_{\lambda_i + \ell - i}
-        s_{\composition{\lambda_1, \ldots, \lambda_{i-1}, \lambda_{i+1} - 1, \ldots, \lambda_\ell - 1}}
+        \schur{\composition{\lambda_1, \ldots, \lambda_{i-1}, \lambda_{i+1} - 1, \ldots, \lambda_\ell - 1}}
     \end{equation}
 
     \textcolor{red}{... I did not finish this proof. Reading a book proof might be better.}
@@ -734,23 +734,23 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
 
 \begin{theorem}
     \begin{equation}
-        \prod_{i, j} (1 - x_i y_j)^{-1} = \sum_{\lambda} s_\lambda(x) s_{\lambda}(y).
+        \prod_{i, j} (1 - x_i y_j)^{-1} = \sum_{\lambda} \schur{\lambda}(x) \schur{\lambda}(y).
     \end{equation}
 \end{theorem}
 
 \begin{proof}
     By \nameref{thm:jacobi-trudi}, we have
     \begin{equation}
-        s_\lambda = \sum_{w \in \sym_n} \sign(w) h_{\lambda + \delta - w \cdot \delta}.
+        \schur{\lambda} = \sum_{w \in \sym{n}} \sign(w) h_{\lambda + \delta - w \cdot \delta}.
     \end{equation}
     Multiplying by \(v_n\) gives
     \begin{equation}
-        a_\lambda = a_\varnothing \sum_{w \in \sym_n} \sign(w) h_{\lambda + \delta - w \cdot \delta}.
+        a_\lambda = a_\varnothing \sum_{w \in \sym{n}} \sign(w) h_{\lambda + \delta - w \cdot \delta}.
     \end{equation}
     Let \(\alpha = \lambda + \delta\).
     Then,
     \begin{equation}
-        \tilde{a}_\alpha = \tilde{a}_\delta \sum_{w \in \sym_n} \sign(w) h_{\alpha - w \cdot \delta}.
+        \tilde{a}_\alpha = \tilde{a}_\delta \sum_{w \in \sym{n}} \sign(w) h_{\alpha - w \cdot \delta}.
     \end{equation}
 
     Now, recall that
@@ -761,7 +761,7 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
     \begin{align}
         \tilde{a}_\delta(x) \tilde{a}_\delta(y) 
         \prod_{i, j} (1 - x_i y_j)^{-1}
-        &= \tilde{a}_\delta(x) \sum_{\gamma} \sum_{w \in \sym_n} \sign(w) h_{\overleftarrow{\gamma}}(x) y^{\gamma} \\
+        &= \tilde{a}_\delta(x) \sum_{\gamma} \sum_{w \in \sym{n}} \sign(w) h_{\overleftarrow{\gamma}}(x) y^{\gamma} \\
         &= \textcolor{red}{... TBD}.
     \end{align}
 \end{proof}
@@ -770,7 +770,7 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
     Let \(\lambda, \mu\) be partitions.
     Then,
     \begin{equation}
-        \langle s_\lambda, s_\mu \rangle = \delta_{\lambda \mu}.
+        \langle \schur{\lambda}, \schur{\mu} \rangle = \delta_{\lambda \mu}.
     \end{equation}
 \end{corollary}
 
@@ -778,34 +778,34 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
     Let \(\lambda\) be a partition.
     Then,
     \begin{equation}
-        s_\lambda = \sum_{\mu} K_{\lambda \mu} m_\mu.
+        \schur{\lambda} = \sum{\mu} K_{\lambda \mu} m_\mu.
     \end{equation}
 \end{corollary}
 
 \begin{proof}
-    Define \(Q_{\lambda, \xi}\) so that \(s_\lambda = \sum_{\xi} Q_{\lambda, \xi} m_\xi\).
+    Define \(Q_{\lambda, \xi}\) so that \(\schur{\lambda} = \sum{\xi} Q_{\lambda, \xi} m_\xi\).
     On the one hand, we have
     \begin{equation}
-        \langle h_\mu, s_\lambda \rangle
+        \langle h_\mu, \schur{\lambda} \rangle
         = \langle h_\mu, \sum_{\xi} Q_{\lambda, \xi} m_\xi \rangle
         = \sum_{\xi} Q_{\lambda, \xi} \langle h_\mu, m_\xi \rangle
         = Q_{\lambda, \mu}.
     \end{equation}
     On the other hand, we have
     \begin{equation}
-        \langle h_\mu, s_\lambda \rangle
-        = \langle \sum_{\nu} K_{\nu \mu} s_\nu, s_\lambda \rangle
-        = \sum_{\nu} K_{\nu \mu} \langle s_\nu, s_\lambda \rangle
+        \langle h_\mu, \schur{\lambda} \rangle
+        = \langle \sum_{\nu} K_{\nu \mu} \schur{\nu}, \schur{\lambda} \rangle
+        = \sum_{\nu} K_{\nu \mu} \langle \schur{\nu}, \schur{\lambda} \rangle
         = K_{\lambda \mu}.
     \end{equation}
     Therefore, \(Q_{\lambda, \mu} = K_{\lambda \mu}\), and the result follows.
 \end{proof}
 
-\begin{example}[\(s_{\composition{2, 1}}\)]
-    Let's compute \(s_{\composition{2, 1}}\) using Corollary~\ref{cor:schur-sum-kostka-m}.
+\begin{example}[\(\schur{\composition{2, 1}}\)]
+    Let's compute \(\schur{\composition{2, 1}}\) using Corollary~\ref{cor:schur-sum-kostka-m}.
     We have
     \begin{equation}
-        s_{\composition{2, 1}}
+        \schur{\composition{2, 1}}
         =
         0 m_{\composition{3}} + 
         1 m_{\composition{2, 1}} +
@@ -813,11 +813,11 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
     \end{equation}
 \end{example}
 
-\begin{example}[\(s_{\composition{4, 2}}\)]
-    Let's compute \(s_{\composition{4, 2}}\) using Corollary~\ref{cor:schur-sum-kostka-m}.
+\begin{example}[\(\schur{\composition{4, 2}}\)]
+    Let's compute \(\schur{\composition{4, 2}}\) using Corollary~\ref{cor:schur-sum-kostka-m}.
     We have
     \begin{equation}
-        s_{\composition{4, 2}}
+        \schur{\composition{4, 2}}
         =
         1 m_{\composition{4, 2}} +
         1 m_{\composition{4, 1, 1}} +
@@ -833,16 +833,16 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
 
 From Corollary~\ref{cor:schur-sum-kostka-m}, we can observe that, for all nonnegative integers \(k\),
 \begin{equation}
-    s_{\composition{1}^k} = e_k
+    \schur{\composition{1}^k} = e_k
     \qquad \text{and} \qquad
-    s_{\composition{k}} = h_k.
+    \schur{\composition{k}} = h_k.
 \end{equation}
 
 \begin{corollary}
     Let \(\lambda\) be a partition.
     Then,
     \begin{equation}
-        s_{\lambda} = \sum_{\text{semistandard tableaux } T \text{ of shape } \lambda} x^{\wt(T)},
+        \schur{\lambda} = \sum_{\text{semistandard tableaux } T \text{ of shape } \lambda} x^{\wt(T)},
     \end{equation}
     where \(\wt(T)\) is the weight of \(T\).
 \end{corollary}
@@ -850,7 +850,7 @@ From Corollary~\ref{cor:schur-sum-kostka-m}, we can observe that, for all nonneg
 \begin{proof}
     By Corollary~\ref{cor:schur-sum-kostka-m}, we have
     \begin{equation}
-        s_{\lambda} = \sum_{\mu} K_{\lambda \mu} m_{\mu}
+        \schur{\lambda} = \sum{\mu} K_{\lambda \mu} m_{\mu}
         = \sum_{\alpha} K_{\lambda \alpha} x^{\alpha}
         = \sum_{\text{semistandard tableaux } T \text{ of shape } \lambda} x^{\wt(T)}. \qedhere
     \end{equation}
@@ -864,7 +864,7 @@ We provide a combinatorial proof of Corollary~\ref{cor:kostka-composition-sort},
     By induction, it suffices to show that the result is true when \(\alpha\) and \(\beta\) differ by swapping coordinates \(i\) and \(i+1\).
     Define the \vocab{\(i\)\textsubscript{th} Bender--Knuth involution}
     \begin{equation}
-        \operatorname{BK}_i \colon SSYT(\mu) \to SSYT(\mu)
+        \BK{i} \colon SSYT(\mu) \to SSYT(\mu)
     \end{equation}
     as follows.
     If entries \(i\) and \(i+1\) are in the column, we say that these labels are \emph{frozen}.
@@ -877,7 +877,7 @@ We provide a combinatorial proof of Corollary~\ref{cor:kostka-composition-sort},
         \end{ytableau}.
     \end{equation}
     Suppose row \(k\) has \(a\) free entries \(i\) and \(b\) free entries \(i+1\).
-    The involution \(\operatorname{BK}_i\) swaps those entires to \(b\) entries \(i\) and \(a\) entries \(i+1\).
+    The involution \(\BK{i}\) swaps those entires to \(b\) entries \(i\) and \(a\) entries \(i+1\).
     In other words, the middle \(|a-b|\) free entries are swapped.
     By doing this to all rows, we obtain a bijection between the set of semistandard tableaux of shape \(\lambda\) and weight \(\alpha\) and the set of semistandard tableaux of shape \(\lambda\) and weight \(\beta\), and the result follows.
 \end{proof}
@@ -887,19 +887,19 @@ We provide a combinatorial proof of Corollary~\ref{cor:kostka-composition-sort},
     and therefore they do not generate the symmetric group.
     Instead, we get elements that satisfy
     \begin{gather}
-        \operatorname{BK}_i^2 = \operatorname{id}, \\
-        \operatorname{BK}_i \operatorname{BK}_j = \operatorname{BK}_j \operatorname{BK}_i \quad \text{if } |i - j| > 1, \\
-        (\operatorname{BK}_1 \operatorname{BK}_2)^6 = \operatorname{id},
+        \BK{i}^2 = \id, \\
+        \BK{i} \BK{j} = \BK{j} \BK{i} \quad \text{if } |i - j| > 1, \\
+        (\BK{1} \BK{2})^6 = \id,
     \end{gather}
     and, by letting \(q_i =
-    \operatorname{BK}_1
-    (\operatorname{BK}_2 \operatorname{BK}_1)
-    (\operatorname{BK}_3 \operatorname{BK}_2 \operatorname{BK}_1)
+    \BK{1}
+    (\BK{2} \BK{1})
+    (\BK{3} \BK{2} \BK{1})
     \cdots
-    (\operatorname{BK}_i \cdots \operatorname{BK}_2 \operatorname{BK}_1)\),
+    (\BK{i} \cdots \BK{2} \BK{1})\),
     we get that, for \(i \geq 2\),
     \begin{equation}
-        (\operatorname{BK}_i q_i)^4 = \operatorname{id}.
+        (\BK{i} q_i)^4 = \id.
     \end{equation}
     There are more relations, but nobody knows the entire list.
 \end{remark}
@@ -908,7 +908,7 @@ We provide a combinatorial proof of Corollary~\ref{cor:kostka-composition-sort},
     Let \(\lambda \subset \nu\) be partitions.
     The \vocab{skew Schur polynomial} is defined as
     \begin{equation}
-        s_{\nu / \lambda} = \sum_{\text{semistandard tableaux } T \text{ of skew shape } \nu / \lambda} x^{\wt(T)}.
+        \schur{\nu / \lambda} = \sum_{\text{semistandard tableaux } T \text{ of skew shape } \nu / \lambda} x^{\wt(T)}.
     \end{equation}
 \end{definition}
 
@@ -917,7 +917,7 @@ Hence, many results about Schur polynomials can be generalized to skew Schur pol
 
 \begin{theorem} \label{thm:skew-schur-symmetric}
     Let \(\lambda \subset \mu\) be partitions.
-    Then, \(s_{\nu / \lambda}\) is a symmetric function.
+    Then, \(\schur{\nu / \lambda}\) is a symmetric function.
 \end{theorem}
 
 Theorem~\ref{thm:skew-schur-symmetric} follows from applying Bender--Knuth involutions to semistandard tableaux of skew shape.
@@ -1010,7 +1010,7 @@ by
     Let \(\lambda \subset \nu\) be partitions.
     Then,
     \begin{equation}
-        \operatorname{ex}(s_{\nu / \lambda}) =
+        \operatorname{ex}(\schur{\nu / \lambda}) =
         \frac{f^{\nu / \lambda}}{| \nu / \lambda |!} t^{|\nu / \lambda|},
     \end{equation}
     where \(f^{\nu / \lambda}\) is the number of standard Young tableaux of skew shape \(\nu / \lambda\).
@@ -1023,21 +1023,21 @@ The \vocab{skew Kostka number} \(K_{\nu / \lambda, \alpha}\) is the number of st
 
 Then, 
 \begin{equation}
-    s_{\nu / \lambda} = \sum_{\mu} K_{\nu / \lambda, \mu} m_\mu.
+    \schur{\nu / \lambda} = \sum_{\mu} K_{\nu / \lambda, \mu} m_\mu.
 \end{equation}
 
 Therefore,
 \begin{equation}
-    \left\langle s_{\nu / \lambda}, h_\mu \right\rangle = K_{\nu / \lambda, \mu}.
+    \left\langle \schur{\nu / \lambda}, h_\mu \right\rangle = K_{\nu / \lambda, \mu}.
 \end{equation}
 
 \begin{theorem}
     Let \(\lambda, \nu\) be partitions.
     Then,
     \begin{equation}
-        s_\lambda^\perp s_\nu =
+        \schur{\lambda}^\perp \schur{\nu} =
         \begin{cases}
-            s_{\nu / \lambda} & \text{if } \lambda \subset \nu, \\
+            \schur{\nu / \lambda} & \text{if } \lambda \subset \nu, \\
             0 & \text{otherwise}.
         \end{cases}
     \end{equation}
@@ -1047,12 +1047,12 @@ Therefore,
     Let \(\mu\) be a partition.
     Then,
     \begin{equation}
-        \left\langle s_\lambda^\perp s_\nu, h_\mu \right\rangle
-        = \left\langle s_\lambda, s_\nu h_\mu \right\rangle
+        \left\langle \schur{\lambda}^\perp \schur{\nu}, h_\mu \right\rangle
+        = \left\langle \schur{\lambda}, \schur{\nu} h_\mu \right\rangle
         = K_{\nu / \lambda, \mu}
         =
         \begin{cases}
-            \left\langle s_{\nu / \lambda}, h_\mu \right\rangle & \text{if } \lambda \subset \nu, \\
+            \left\langle \schur{\nu / \lambda}, h_\mu \right\rangle & \text{if } \lambda \subset \nu, \\
             0 & \text{otherwise}.
         \end{cases}
     \end{equation}
@@ -1063,24 +1063,24 @@ Therefore,
     Let \(\lambda, \mu, \nu\) be partitions.
     Then,
     \begin{equation}
-        \left\langle s_\lambda s_\mu, s_\nu \right\rangle
-        = \left\langle s_\lambda, s_{\nu / \mu} \right\rangle.
-        = \left\langle s_\mu, s_{\nu / \lambda} \right\rangle.
+        \left\langle \schur{\lambda} \schur{\mu}, \schur{\nu} \right\rangle
+        = \left\langle \schur{\lambda}, \schur{\nu / \mu} \right\rangle.
+        = \left\langle \schur{\mu}, \schur{\nu / \lambda} \right\rangle.
     \end{equation}
 \end{corollary}
 
 Let \(\lambda, \mu, \nu\) be partitions.
 Define the \vocab{Littlewood--Richardson coefficient} \(c_{\lambda \mu}^\nu\) by
 \begin{equation}
-    c_{\lambda \mu}^\nu = \left\langle s_\lambda s_\mu, s_\nu \right\rangle.
+    c_{\lambda \mu}^\nu = \left\langle \schur{\lambda} \schur{\mu}, \schur{\nu} \right\rangle.
 \end{equation}
 Since the Schur polynomials are orthonormal, we have
 \begin{equation}
-    s_\lambda s_\mu = \sum_{\nu} c_{\lambda \mu}^\nu s_\nu.
+    \schur{\lambda} \schur{\mu} = \sum{\nu} c_{\lambda \mu}^\nu \schur{\nu}.
 \end{equation}
 and
 \begin{equation}
-    s_{\nu / \lambda} = \sum_{\mu} c_{\nu / \lambda, \mu} s_\mu.
+    \schur{\nu / \lambda} = \sum{\mu} c_{\nu / \lambda, \mu} \schur{\mu}.
 \end{equation}
 We know that these coefficients are integers.
 
@@ -1097,7 +1097,7 @@ write \(^aT^b\) for the subtableau of \(T\) of columns \(a\) through \(b\).
     Let \(\lambda, \nu, \mu\) be partitions such that \(\nu \subset \mu\).
     Then,
     \begin{equation}
-        \tilde{a}_{\lambda + \delta} s_{\mu/\nu}
+        \tilde{a}_{\lambda + \delta} \schur{\mu/\nu}
         =
         \sum \tilde{a}_{\lambda + \wt(T) + \delta}
     \end{equation}
@@ -1106,10 +1106,10 @@ write \(^aT^b\) for the subtableau of \(T\) of columns \(a\) through \(b\).
 \end{theorem}
 
 \begin{proof}[Proof (Stembridge, 2002)]
-    We expand the definitions of \(\tilde{a}\) and \(s_{\mu/\nu}\),
+    We expand the definitions of \(\tilde{a}\) and \(\schur{\mu/\nu}\),
     use the fact that the Schur polynomials are symmetric,
     \begin{align}
-        \tilde{a}_{\lambda + \delta} s_{\mu/\nu}
+        \tilde{a}_{\lambda + \delta} \schur{\mu/\nu}
         &= 
         \sum_{w \in \sym{n}}
         \sum_{T \in \SSYT(\mu/\nu)}
@@ -1144,7 +1144,7 @@ write \(^aT^b\) for the subtableau of \(T\) of columns \(a\) through \(b\).
         \lambda_k + (\wt(^jT^\infty))_k = \lambda_{k+1} + (\wt(^jT^\infty))_{k+1} + 1.
     \end{equation}
 
-    Let \(T^*\) be obtained from \(T\) by applying the Bender--Knuth involution \(\operatorname{BK}_k\) only to \(^1T^{j-1}\).
+    Let \(T^*\) be obtained from \(T\) by applying the Bender--Knuth involution \(\BK{k}\) only to \(^1T^{j-1}\).
     Note that \(T^*\) is still in \(\mathcal{B}\),
     and moreover, \((T^*)^* = T\).
     Therefore, this is an involution on \(\mathcal{B}\).
@@ -1174,7 +1174,7 @@ write \(^aT^b\) for the subtableau of \(T\) of columns \(a\) through \(b\).
 
     Therefore, as desired,
     \begin{equation}
-        \tilde{a}_{\lambda + \delta} s_{\mu/\nu}
+        \tilde{a}_{\lambda + \delta} \schur{\mu/\nu}
         =
         \sum_{T \in \SSYT(\mu/\nu) \setminus \mathcal{B}}
         \tilde{a}_{\lambda + \wt(T) + \delta}.
@@ -1187,14 +1187,14 @@ Note that Theorem~\ref{thm:skew-tilde-a} recovers the definition of Schur polyno
     Let \(\mu\) be a partition.
     Then,
     \begin{equation}
-        \tilde{a}_{\delta} s_\mu = \tilde{a}_{\mu + \delta}.
+        \tilde{a}_{\delta} \schur{\mu} = \tilde{a}_{\mu + \delta}.
     \end{equation}
 \end{corollary}
 
 \begin{proof}
     We know
     \begin{equation}
-        \tilde{a}_{\delta} s_\mu = \sum_{T} \tilde{a}_{\wt(T) + \delta},
+        \tilde{a}_{\delta} \schur{\mu} = \sum{T} \tilde{a}_{\wt(T) + \delta},
     \end{equation}
     where the sum is over all tableaux \(T\) of shape \(\mu\) such that \(\wt(^jT^\infty)\) is a partition for all \(j\),
     but there is only one such tableau, the Yamanouchi tableau of shape \(\mu\),
@@ -1205,8 +1205,8 @@ Note that Theorem~\ref{thm:skew-tilde-a} recovers the definition of Schur polyno
     Let \(\lambda, \mu, \nu\) be partitions.
     Then,
     \begin{equation}
-        s_\lambda s_{\mu / \nu} =
-        \sum s_{\lambda + \wt(T)},
+        \schur{\lambda} \schur{\mu / \nu} =
+        \sum \schur{\lambda + \wt(T)},
     \end{equation}
     where the sum is over all tableaux \(T\) of shape \(\mu/\nu\) such that \(\lambda + \wt(^jT^\infty)\) is a partition for all \(j\).
 \end{corollary}
@@ -1219,7 +1219,7 @@ Note that Theorem~\ref{thm:skew-tilde-a} recovers the definition of Schur polyno
     Let \(\mu, \nu\) be partitions.
     Then,
     \begin{equation}
-        s_{\mu / \nu} = \sum s_{\mu + \wt(T)},
+        \schur{\mu / \nu} = \sum \schur{\mu + \wt(T)},
     \end{equation}
     where the sum is over all tableaux \(T\) of shape \(\mu/\nu\) such that \(\wt(^jT^\infty)\) is a partition for all \(j\).
 \end{corollary}
@@ -1232,7 +1232,7 @@ Note that Theorem~\ref{thm:skew-tilde-a} recovers the definition of Schur polyno
     Let \(\lambda, \mu\) be partitions.
     Then,
     \begin{equation}
-        s_\lambda s_\mu = \sum s_{\lambda + \wt(T)},
+        \schur{\lambda} \schur{\mu} = \sum \schur{\lambda + \wt(T)},
     \end{equation}
     where the sum is over all tableaux \(T\) of shape \(\mu\) such that \(\lambda + \wt(^jT^\infty)\) is a partition for all \(j\).
 \end{corollary}
@@ -1259,15 +1259,15 @@ Note that Theorem~\ref{thm:skew-tilde-a} recovers the definition of Schur polyno
     \end{gather}
     and consequently
     \begin{equation}
-        s_{\composition{2, 1}} s_{\composition{2, 1}}
+        \schur{\composition{2, 1}} \schur{\composition{2, 1}}
         =
-        s_{\composition{4, 2}} +
-        s_{\composition{4, 1, 1}} +
-        s_{\composition{3, 3}} +
-        2s_{\composition{3, 2, 1}} +
-        s_{\composition{3, 1, 1, 1}} +
-        s_{\composition{2, 2, 2}} +
-        2s_{\composition{2, 2, 1, 1}}.
+        \schur{\composition{4, 2}} +
+        \schur{\composition{4, 1, 1}} +
+        \schur{\composition{3, 3}} +
+        2\schur{\composition{3, 2, 1}} +
+        \schur{\composition{3, 1, 1, 1}} +
+        \schur{\composition{2, 2, 2}} +
+        2\schur{\composition{2, 2, 1, 1}}.
     \end{equation}
 \end{example}
 
@@ -1299,7 +1299,7 @@ we obtain an Yamanouchi word.
     We have
     \begin{equation}
         c_{\composition{2, 1} \composition{2, 1}}^{\composition{3, 2, 1}}
-        = [s_{\composition{2, 1}}] s_{\composition{3, 2, 1} / \composition{2, 1}},
+        = [\schur{\composition{2, 1}}] \schur{\composition{3, 2, 1} / \composition{2, 1}},
     \end{equation}
     which equals the number of tableaux of shape \(\composition{3, 2, 1} / \composition{2, 1}\) with weight \(\composition{2, 1}\) that satisfy the Yamanouchi condition.
     There are two such tableaux, namely,
@@ -1314,7 +1314,7 @@ we obtain an Yamanouchi word.
 
 We know that
 \begin{equation}
-    s_\lambda s_{\composition{1}} = \sum_{\mu : |\mu / \lambda| = 1} s_\mu.
+    \schur{\lambda} \schur{\composition{1}} = \sum{\mu : |\mu / \lambda| = 1} \schur{\mu}.
 \end{equation}
 
 Therefore, we have some hope that there exists a bijection
