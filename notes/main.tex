@@ -53,31 +53,114 @@
 \usepackage{ytableau}
 \ytableausetup{centertableaux, smalltableaux}
 
+% Set of Partitions
 \DeclareMathOperator\Par{\mathsf{Par}}
-\DeclareMathOperator\Sym{\mathsf{Sym}}
-\DeclareMathOperator\sym{\mathcal{S}}
+
+% Ring of symmetric functions
+\DeclareMathOperator\Sym{\Lambda}
+
+% Symmetric group
+\newcommand{\sym}[1]{\mathcal{S}_{#1}}
+
+% Cycle type
 \DeclareMathOperator\cyc{\mathsf{cyc}}
+
+% Inversion number
 \DeclareMathOperator\inv{\mathsf{inv}}
+
+% Sign of a permutation
 \DeclareMathOperator\sign{\mathsf{sign}}
+
+% Grassmannian
 \DeclareMathOperator\Grassmanian{\mathsf{Gr}}
-\DeclareMathOperator\GL{\mathsf{Gr}}
+
+% General Linear group
+\makeatletter
+\newcommand{\GL}[2][]{%
+  \mathsf{GL}%
+  \if\relax\detokenize{#1}\relax
+    % No optional argument
+    (#2)%
+  \else
+    % Optional argument provided
+    _{#1}(#2)%
+  \fi
+}
+\makeatother
+
+% Special Linear group
+\makeatletter
+\newcommand{\SL}[2][]{%
+  \mathsf{SL}%
+  \if\relax\detokenize{#1}\relax
+    % No optional argument
+    (#2)%
+  \else
+    % Optional argument provided
+    _{#1}(#2)%
+  \fi
+}
+\makeatother
+
+% Identity operator
 \DeclareMathOperator\id{\mathsf{id}}
+
+% Automorphism group
 \DeclareMathOperator\Aut{\mathsf{Aut}}
+
+% Matrix space
 \DeclareMathOperator\Mat{\mathcal{M}}
+
+% Hilbert series
 \DeclareMathOperator\Hilb{\mathsf{Hilb}}
+
+% Invariant subspace
 \DeclareMathOperator\Inv{\mathsf{Inv}}
+
+% Alternating group
 \DeclareMathOperator\Alt{\mathsf{Alt}}
+
+% Alternating polynomial
 \DeclareMathOperator\AltPoly{\mathsf{AltPoly}}
+
+% Weight of a tableau
 \DeclareMathOperator\wt{\mathsf{wt}}
+
+% Set of semistandard Young tableaux
 \DeclareMathOperator\SSYT{\mathsf{SSYT}}
+
+% q-binomial coefficient
 \newcommand{\qbinom}[3][q]{\genfrac{[}{]}{0pt}{}{#2}{#3}_{#1}}
+
+% Integers
 \newcommand{\integers}{\mathbb{Z}}
+
+% Nonnegative integers
 \newcommand{\nonnegatives}{\mathbb{N}}
+
+% Positive integers
 \newcommand{\positives}{\integers_{> 0}}
+
+% Rational numbers
 \newcommand{\rationals}{\mathbb{Q}}
+
+% Real numbers
 \newcommand{\reals}{\mathbb{R}}
+
+% Complex numbers
 \newcommand{\complexes}{\mathbb{C}}
+
+% Sorted composition
 \newcommand{\sort}[1]{\overleftarrow{#1}}
+
+% Finite field
+\newcommand{\finitefield}[1]{\mathbb{F}_{#1}}
+
+% Schur function
+\newcommand{\schur}[1]{s_{#1}}
+
+% Bender–Knuth involution
+\newcommand{\BK}[1]{\operatorname{BK}_{#1}}
 
 \newcommand\interval[1]{
   \if#11
