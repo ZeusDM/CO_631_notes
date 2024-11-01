@@ -1,6 +1,6 @@
 \chapter{Symmetric Functions}
 
-Let \(\sym_\infty\) be the group of bijections from \(\nonnegatives\) to itself that fix all but finitely many elements, under composition.
+Let \(\sym{\infty}\) be the group of bijections from \(\nonnegatives\) to itself that fix all but finitely many elements, under composition.
 Let \(\rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}}\)
 be the subalgebra consisting of the power series in \(x_1, x_2, \ldots\)
 of bounded degree.
@@ -23,7 +23,7 @@ hence it has no Hilbert series.
 \begin{definition}
     The \vocab{algebra of symmetric functions} is
     \[
-        \Sym = \rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}}^{\sym_\infty},
+        \Sym = \rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}}^{\sym{\infty}},
     \]
 \end{definition}
 
@@ -53,7 +53,7 @@ In some sense, the converse of this statement is also true: any formula that hol
 
 We might also want to define the \vocab{formal completion} of \(\Sym\) as
 \begin{equation*}
-    \widehat\Sym = \rationals[[x_1, x_2, \ldots]]^{\sym_\infty}.
+    \widehat\Sym = \rationals[[x_1, x_2, \ldots]]^{\sym{\infty}}.
 \end{equation*}
 For example,
 \begin{equation*}
@@ -662,7 +662,7 @@ We can apply \(\omega\) to the power sum symmetric functions \(p_\lambda\).
 	\begin{equation}
 		\omega(p_\lambda) = \sign(\lambda) p_{\lambda},
 	\end{equation}
-	where \(\sign(\lambda) = \sign(w) = (-1)^{|\lambda|-\ell(\lambda)}\) for any permutation \(w \in \sym_n\) with \(\cyc(w) = \lambda\).
+	where \(\sign(\lambda) = \sign(w) = (-1)^{|\lambda|-\ell(\lambda)}\) for any permutation \(w \in \sym{n}\) with \(\cyc(w) = \lambda\).
 \end{theorem}
 
 Before we prove Theorem~\ref{thm:omega-p-equals-pm-p},
@@ -860,7 +860,7 @@ then a bilinear form \(\rho\) is determined by the values \(\rho(b, c)\) for \(b
 \end{definition}
 
 Note that this inner product interacts well with the grading,
-since if \(f \in \Sym_n\) and \(g \in \Sym_m\),
+since if \(f \in \sym{n}\) and \(g \in \Sym_m\),
 then \(\langle f, g \rangle = 0\) if \(n \neq m\).
 
 \begin{proposition} \label{prop:hall-inner-product-is-inner-product}
