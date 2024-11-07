@@ -44,6 +44,7 @@
 
 \newcommand{\vocab}[1]{\textbf{#1}}
 
+\usepackage[mathscr]{eucal}     % For \EuScript
 \usepackage{mathtools}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\ge}{\geqslant}
@@ -57,10 +58,10 @@
 \DeclareMathOperator\Par{\mathsf{Par}}
 
 % Ring of symmetric functions
-\DeclareMathOperator\Sym{\Lambda}
+\DeclareMathOperator\Sym{\mathsf{\Lambda}}
 
 % Symmetric group
-\newcommand{\sym}[1]{\mathcal{S}_{#1}}
+\newcommand{\sym}[1]{\mathscr{S}_{#1}}
 
 % Cycle type
 \DeclareMathOperator\cyc{\mathsf{cyc}}
@@ -233,6 +234,8 @@
     \endorig@cases
 }
 \makeatother
+
+\DeclareFontShape{TU}{lmr}{m}{scit}{<->ssub * lmr/m/scsl}{}
 
 \usepackage[style=alphabetic, backend=biber,isbn=false,url=false]{biblatex} 
 \addbibresource{references.bib}

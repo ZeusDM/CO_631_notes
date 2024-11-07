@@ -1321,3 +1321,135 @@ Therefore, we have some hope that there exists a bijection
 \begin{equation}
     \SSYT(\lambda) \times \positives \longleftrightarrow \bigsqcup_{\mu : |\mu / \lambda| = 1} \SSYT(\mu).
 \end{equation}
+
+Indeed, there exists a bijection called \vocab{row insertion} or \vocab{row bumping} or \vocab{Schensted insertion}.
+Refer to \cite{Fulton1997} for the definition of this insertion algorithm.
+
+Given \(T \in \SSYT(\lambda)\) and \(a \in \positives\),
+we denote by \(T \leftarrow a\) the result of applying row inserting \(a\) into \(T\).
+
+\begin{lemma}
+    \(T \leftarrow a\) is a semistandard tableau.
+\end{lemma}
+
+\begin{proof}
+    The fact that the rows are weakly increasing is immediate.
+
+    If \(x\) is moved to a box \(b\),
+    then either \(b\) was empty or it contained a larger entry \(y > x\).
+    In the first case, \(b^{\downarrow}\) is empty, which is fine.
+    In the second case, \(b^{\downarrow}\) contains a larger entry \(z > y\).
+    Therefore, the entry in \(b\) is strictly smaller than the entry in \(b^{\downarrow}\).
+
+    It is analogous to check that the entry in \(b^{\uparrow}\) is strictly smaller than the entry in \(b\).
+\end{proof}
+
+\begin{lemma}
+    Let \(\lambda\) be a partition.
+    Let \(U\) be a semistandard tableau of shape \(\mu\), where \(\mu / \lambda\) is one box.
+    Then, there exists a unique semistandard tableau \(T\) of shape \(\lambda\) and a positive integer \(a\) such that \(T \leftarrow a = U\).
+\end{lemma}
+
+Refer to \cite{Fulton1997} for the proof of this lemma.
+
+\begin{corollary} \label{cor:row-insertion-bijection}
+    The row insertion map
+    \begin{equation}
+        \SSYT(\lambda) \times \positives \to \bigsqcup_{\mu : |\mu / \lambda| = 1} \SSYT(\mu)
+    \end{equation}
+    is a bijection, and moreover, the weight of \(T \leftarrow a\) is \(\wt(T) + \wt\left( \boxed{a} \right)\).
+\end{corollary}
+
+\begin{proof}
+    The bijection is immediate from the previous lemmas.
+    The weight-preserving property follows from the fact that the multiset of entries of \(T \leftarrow a\) is the multiset of entries of \(T\) with an additional \(a\).
+\end{proof}
+
+\begin{corollary}[Mank/Chevally] \label{cor:slambda-s1}
+    Let \(\lambda\) be a partition.
+    Then,
+    \begin{equation}
+        s_\lambda s_{\composition{1}} = \sum_{\mu : |\mu / \lambda| = 1} s_\mu.
+    \end{equation}
+\end{corollary}
+
+\begin{proof}
+    This results follows from Corollary~\ref{cor:row-insertion-bijection}
+    by taking the weight generating function of both sides.
+\end{proof}
+
+\newcommand\north{north}
+\newcommand\North{\textsc{north}}
+\newcommand\south{south}
+\newcommand\South{\textsc{south}}
+\newcommand\west{west}
+\newcommand\West{\textsc{west}}
+\newcommand\east{east}
+\newcommand\East{\textsc{east}}
+
+We say that a box \(b = (i, j)\) is (weakly) \north\ of a box \(b' = (i', j')\) if \(i \leq i'\),
+and (strictly) \North\ if \(i < i'\).
+The other directions are defined analogously.
+
+We may also combine directions, for example, \north\East\ means simultaneously \north\ and \East.
+
+\begin{definition}[Bumping path]
+    Let \(\lambda\) be a partition,
+    \(T \in \SSYT(\lambda)\),
+    and \(a \in \positives\).
+    The \vocab{bumping path} of \(T \leftarrow a\) is the
+    subset of \(\positives \times \positives\) given by
+    the boxes whose entries change when \(a\) is inserted into \(T\).
+\end{definition}
+
+\begin{proposition}
+    Let \(T \in \SSYT(\lambda)\) and \(a, b \in \positives\).
+    Let \(\mu\) be the shape of \(T \leftarrow a\),
+    and let \(\nu\) be the shape of \((T \leftarrow a) \leftarrow b\).
+
+    If \(a \leq b\), then \(\nu / \mu\) is \north\East\ of \(\mu / \lambda\).
+
+    If \(a > b\), then \(\nu / \mu\) is \South\west\ of \(\mu / \lambda\).
+\end{proposition}
+
+Refer to \cite{Fulton1997} for the proof of this proposition --- the sketch is to prove that the two bumping paths do not ``cross'', meaning that, in each row, the box in one path is always to the \West\ of the box in the other path in the same row.
+
+\nameref{thm:pieri-h-formula} follows from this proposition
+by considering the bijection
+\begin{align}
+    \ytableausetup{boxsize=1.5em}
+    \SSYT(\lambda) \times \SSYT(\composition{k}) &\to \bigcup_{\mu : \mu / \lambda \text{ is a horizontal strip}} \SSYT(\mu) \\
+    \left(T, \ytableaushort{{a_1}{a_2}{\cdots}{a_k}}\right) &\mapsto T \leftarrow a_1 \leftarrow a_2 \leftarrow \cdots \leftarrow a_k.
+\end{align}
+
+\nameref{thm:pieri-e-formula} follows from this proposition
+by considering the bijection
+\begin{align}
+    \ytableausetup{boxsize=1.5em}
+    \SSYT(\lambda) \times \SSYT(\composition{k}) &\to \bigcup_{\mu : \mu / \lambda \text{ is a vertical strip}} \SSYT(\mu) \\
+    \left(T, \ytableaushort{{a_1},{a_2},{\vdots},{a_k}}\right) &\mapsto T \leftarrow a_k \leftarrow a_{k-1} \leftarrow \cdots \leftarrow a_1.
+\end{align}
+
+\begin{theorem}
+    There exists a bijection between
+    \begin{equation}
+        \sym{n} \longleftrightarrow \bigsqcup_{\lambda : |\lambda| = n} \SSYT(\lambda).
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    Take \(w \in \sym{n}\), and write it in one line notation, say
+    \begin{equation}
+        w = w_1 w_2 \cdots w_n.
+    \end{equation}
+
+    Let \((P_0, Q_0) = (\emptyset, \emptyset)\) be a pair of tableaux.
+    For \(i = 1, 2, \ldots, n\), define
+    \( P_i = P_{i-1} \leftarrow w_i \)
+    and 
+    \( Q_i \)
+    to be the tableau obtained from \(Q_{i-1}\) by adding the entry \(i\) to the box \(\operatorname{sh}(P_i) / \operatorname{sh}(P_{i-1})\).
+
+    Then, the map \(w \mapsto (P_n, Q_n)\) is the desired bijection,
+    and the rest of the proof is more detailed in \cite{Fulton1997}.
+\end{proof}
