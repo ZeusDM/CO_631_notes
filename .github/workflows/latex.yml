@@ -25,7 +25,7 @@ jobs:
       - name: Build PDF
         run: |
           cd notes
-          latexmk -pdf main.tex
+          latexmk -lualatex main.tex
           mv main.pdf ../CO_631_notes.pdf
 
       - name: Upload PDF Artifact
