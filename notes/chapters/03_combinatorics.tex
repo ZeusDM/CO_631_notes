@@ -1,18 +1,37 @@
-\chapter{Combinatorics}
+\chapter{Compositions and Partitions}
 
 Some of this chapter is copied and slightly edited from my undergraduate thesis~\cite{Zeus2024}.
 
+\section{Compositions}
+
+A \vocab{composition} \(\alpha = \composition{\alpha_1, \alpha_2, \dots}\) is an infinite sequence of nonnegative integers with finitely many nonzero terms, indexed by the positive integers.
+The terms of the sequence are called the \vocab{parts} of the composition.
+
+The \vocab{size} of a composition \(\alpha\) is the sum of the (finitely many) nonzero parts of \(\alpha\), denoted by \(|\alpha|\);
+alternatively, we say that \vocab{\(\alpha\) is a composition of \(|\alpha|\)}.
+
+We identify a finite sequence of positive integers to a composition \(\alpha\) by appending infinitely many zeros to the end of the sequence.
+For example,
+\[
+    \composition{2, 0, 1, 3} = \composition{2, 0, 1, 3, 0, 0, \dots}
+\]
+is a composition of \(6\).
+
+The \vocab{length} of a composition \(\alpha\) is the largest index \(i\) such that \(\alpha_i \neq 0\), denoted by \(\ell(\alpha)\).
+Therefore, any composition \(\alpha\) is identified with the finite sequence
+\[
+    \composition{\alpha_1, \alpha_2, \dots, \alpha_{\ell(\alpha)}}.
+\]
+The \vocab{width} of a composition \(\alpha\) is the largest part of \(\alpha\).
+
+We denote by \(\Comp_{\ell, w}(n)\) the set of all compositions of \(n\) with length at most \(\ell\) and width at most \(w\).
+The lack of a parameter means that the condition is not imposed.
+
 \section{Partitions}
 
-A \vocab{partition} \(\lambda = \composition{\lambda_1, \lambda_2, \dots}\) is an infinite weakly decreasing sequence of nonnegative integers with finitely many nonzero terms, indexed by the positive integers.
-We write \(\lambda \vdash n\) to mean that the sum of the (finitely many) nonzero terms of \(\lambda\) is \(n\), in which case we say that \(\lambda\) is a partition of \(n\).
-
-We associate a finite weakly decreasing sequence of positive integers to a partition \(\lambda\) by appending zeros to the end of the sequence.
-For example, 
-\[
-    \composition{3, 3, 2, 1} = \composition{3, 2, 1, 0, 0, \dots}
-\]
-is a partition of \(9\).
+A \vocab{partition} \(\lambda = \composition{\lambda_1, \lambda_2, \dots}\) is a weakly decreasing composition.
+We denote by \(\Par_{\ell, w}(n)\) the set of all partitions of \(n\) with length at most \(\ell\) and width at most \(w\).
+The lack of a parameter means that the condition is not imposed.
 
 \subsection{Partial Orders on Partitions}
 
@@ -84,7 +103,7 @@ is a partition of \(9\).
     \]
 \end{theorem}
 
-\subsection{Diagrams} \label{subsec:diagrams}
+\subsection{Young Diagrams} \label{subsec:diagrams}
 
 In the context of diagrams,
 we think of \(\positives^2\) as the set of unit boxes in the plane centered at the points with positive integer coordinates.
@@ -158,7 +177,7 @@ which is graphically represented in Figure~\ref{fig:youngdiagram}.
 
 As an abuse of notation, we use \(\lambda\) to denote both the partition and its Young diagram.
 
-\section{Counting Vector Spaces}
+\subsection{Generating Function for Size of Partitions}
 
 \begin{definition}[Grassmanian]
     Let \(\mathbb{K}\) be a field,

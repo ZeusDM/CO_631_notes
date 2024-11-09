@@ -1,4 +1,4 @@
-\chapter{Schur Polynomials}
+\chapter{Alternating Polynomials} \label{ch:alternating-polynomials}
 
 Consider the following two representations of \(\sym{n}\):
 \begin{itemize}
@@ -218,7 +218,7 @@ we can divide by \(v_n\) to get a basis of \(\Sym(n)\).
     \end{equation}
 \end{definition}
 
-\begin{proposition}[Jacobi's bialternant formula]
+\begin{proposition}[Jacobi's bialternant formula] \label{prop:jacobi-bialternant}
     Let \(\lambda\) be a partition of \(n\).
     Then,
     \begin{equation}
@@ -283,6 +283,15 @@ we know that
     \item \(\schur{\lambda}\) has integer coefficients, by divisibility rules on monic polynomials,
     \item \(\schur{\lambda}\) is an integral linear combination of \(m_\mu\)'s, and \(m_\mu\)'s are integral linear combinations of \(\schur{\lambda}\)'s.
 \end{itemize}
+
+\chapter{Schur Polynomials} \label{ch:schur-polynomials}
+
+In Chapter~\ref{ch:alternating-polynomials}, we defined Schur polynomials as
+\begin{equation}
+    \schur{\lambda} = \frac{a_\lambda}{a_{\composition{0}}} = \frac{\tilde{a}_{\lambda + \delta_n}}{\tilde{a}_{\delta_n}}.
+\end{equation}
+
+In this chapter, we prove properties about Schur polynomials using this definition.
 
 \section{Pieri's Formulas and Strips}
 
@@ -669,11 +678,11 @@ Let \(K^{-1}_{\lambda \mu}\) be the entry in the \(\mu\)\textsuperscript{th} row
     Let \(\lambda\) be a partition and let \(n \geq \ell(\lambda)\) be an integer.
     Then,
     \begin{equation}
-        \schur{\lambda} = \det\left( \schur{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
+        \schur{\lambda} = \det\left( h_{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
     \end{equation}
     and
     \begin{equation}
-        \schur{\tilde\lambda} = \det\left( \schur{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
+        \schur{\tilde\lambda} = \det\left( e_{\lambda_i + n - i - j} \right)_{i, j \in \interval{n}}.
     \end{equation}
 \end{theorem}
 
@@ -1310,7 +1319,14 @@ we obtain an Yamanouchi word.
     and therefore \(c_{\composition{2, 1} \composition{2, 1}}^{\composition{3, 2, 1}} = 2\).
 \end{example}
 
-\section{Tableaux Combinatorics}
+\chapter{Tableaux Combinatorics}
+
+In this chapter, we will reinvent the theory of Schur polynomials using tableaux combinatorics.
+We will think of Schur polynomials as generating functions of weights of tableaux,
+namely
+\begin{equation}
+    s_\lambda = \sum_{T \in \SSYT(\lambda)} x^{\wt(T)}.
+\end{equation}
 
 We know that
 \begin{equation}
