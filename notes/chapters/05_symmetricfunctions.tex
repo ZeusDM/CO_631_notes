@@ -765,11 +765,11 @@ Given a sequence \(a_0, a_1, \ldots\) of elements of a ring \(R\) containing \(\
 \begin{fact} \label{fact:egf-cyc-prod}
 	Suppose we have \(a_1, a_2, \ldots\), define for each \(w \in \sym{n}\) with \(\cyc(w) = \lambda\),
 	\begin{equation}
-		a(w) = a_{\lambda_1}a_{\lambda_2}\cdots a_{\lambda_{\ell(\lambda)}}
+		a_w = a_{\lambda} = a_{\lambda_1}a_{\lambda_2}\cdots a_{\lambda_{\ell(\lambda)}}
 	\end{equation}
 	and define 
 	\begin{equation}
-		b_n = \sum_{w \in \sym{n}} a(w),
+		b_n = \sum_{w \in \sym{n}} a_w,
 	\end{equation}
 	with \(b_0 = 1\).
 	Then, the exponential generating function of the sequence \(b_0, b_1, \ldots\) is
@@ -779,6 +779,22 @@ Given a sequence \(a_0, a_1, \ldots\) of elements of a ring \(R\) containing \(\
 		\exp\left( \sum_{n \geq 1} \frac{a_n}{n} t^n \right).
 	\end{equation}
 \end{fact}
+
+\begin{proof}[Proof of Fact~\ref{fact:egf-cyc-prod}]
+	Recall that \(z_\lambda = \prod_{i=1}^{\infty} (j_i)! \prod_{k=1}^{\ell(\lambda)}\), and the number of permutations \(w \in \sym{n}\) with \(\cyc(w) = \lambda\) is \(n! / z_\lambda\).
+	Then, we compute that
+	\begin{align}
+		\exp \left( \sum_{n \geq 1} \frac{a_n}{n} t^n \right)
+		&= \sum_{k \geq 0} \frac{1}{k!} \left( \sum_{n \geq 1} \frac{a_n}{n} t^n \right)^k \\
+		&= \sum_{k \geq 0} \frac{1}{k!} \sum_{\alpha \in \positives^k} \frac{a_{\alpha_1} a_{\alpha_2} \cdots a_{\alpha_k}}{\alpha_1 \alpha_2 \cdots \alpha_k} t^{| \alpha |} \\
+		&= \sum_{k \geq 0} \frac{1}{k!} \sum_{\lambda \in \Par_{k, \infty}} \frac{k!}{z_\lambda} a_\lambda t^{|\lambda|} \\
+		&= \sum_{\lambda \in \Par} z_\lambda^{-1} a_\lambda t^{|\lambda|} \\
+		&= \sum_{n \geq 0} \sum_{\lambda \in \Par(n)} \frac{n!}{z_\lambda} \frac{1}{n!} a_\lambda t^n \\
+		&= \sum_{n \geq 0} \frac{1}{n!} \sum_{w \in \sym{n}} a_w t^n \\
+		&= \sum_{n \geq 0} \frac{b_n}{n!} t^n,
+	\end{align}
+	which completes the proof.
+\end{proof}
 
 \begin{proof}[Proof of the second equality of Proposition~\ref{prop:product-1-xiyj-inverse-into-p}]
 	Let \(a_n = p_n(x)p_n(y)\).
