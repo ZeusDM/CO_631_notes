@@ -11,6 +11,13 @@
 \usepackage{enumitem}
 \setlist[enumerate]{label={(\alph*)}}
 
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern}  
+\makeatletter
+\input{t1mlmr.fd}
+\makeatother
+\DeclareFontShape{T1}{mlmr}{m}{scit}{<->ssub*mlmr/m/scsl}{}
+
 \usepackage{tikz}
 \usetikzlibrary{arrows, positioning}
 \usepackage{subcaption}
@@ -130,6 +137,12 @@
 
 % Set of semistandard Young tableaux
 \DeclareMathOperator\SSYT{\mathsf{SSYT}}
+
+% Robinson–Schensted-Knuth correspondence
+\DeclareMathOperator\RSK{\mathsf{RSK}}
+
+% Row reading word
+\DeclareMathOperator\rowword{\mathsf{w}_{\text{\textsf{row}}}}
 
 % q-binomial coefficient
 \newcommand{\qbinom}[3][q]{\genfrac{[}{]}{0pt}{}{#2}{#3}_{#1}}
