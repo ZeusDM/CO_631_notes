@@ -859,7 +859,7 @@ From Corollary~\ref{cor:schur-sum-kostka-m}, we can observe that, for all nonneg
 \begin{proof}
     By Corollary~\ref{cor:schur-sum-kostka-m}, we have
     \begin{equation}
-        \schur{\lambda} = \sum{\mu} K_{\lambda \mu} m_{\mu}
+        \schur{\lambda} = \sum_{\mu} K_{\lambda \mu} m_{\mu}
         = \sum_{\alpha} K_{\lambda \alpha} x^{\alpha}
         = \sum_{\text{semistandard tableaux } T \text{ of shape } \lambda} x^{\wt(T)}. \qedhere
     \end{equation}
@@ -1604,7 +1604,7 @@ In general, let \(L(a, m)\) be the largest sum of the lengths of \(m\) disjoint 
 
 \begin{proof}[Sketch]
     An increasing sequence of \(\rowword(T)\) uses at most one entry from each column of \(T\), and hence upper bound is achieved.
-    Lower bound is achieved by taking the first \(m\) columns of \(T\).
+    Lower bound is achieved by taking the first \(m\) rows of \(T\).
 \end{proof}
 
 \begin{lemma}
