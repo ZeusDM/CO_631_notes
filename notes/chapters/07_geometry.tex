@@ -1,0 +1,132 @@
+\chapter{Geometry}
+
+First, a disclaimer:
+we will set many conventions in this chapter,
+and write some theorems,
+but there's no guarantee that the theorems match the conventions we chose.
+
+Consider the vector space \(\complexes^n\) of \emph{column vectors} of length \(n\) with complex entries.
+The vectors
+\begin{equation}
+    \mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, \quad
+    \mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \quad
+    \ldots, \quad
+    \mathbf{e}_n = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}.
+\end{equation}
+form a basis for \(\complexes^n\).
+
+Given column vectors \(\mathbf{c}_1, \ldots, \mathbf{c}_n \in \complexes^n\),
+and row vectors \(\mathbf{r}_1, \ldots, \mathbf{r}_n \in \complexes^n\),
+\begin{equation}
+    \begin{pmatrix}
+        \vert & \vert & & \vert \\
+        \mathbf{c}_1 & \mathbf{c}_2 & \cdots & \mathbf{c}_n \\
+        \vert & \vert & & \vert
+    \end{pmatrix}
+    \mathbf{e}_k = \mathbf{c}_k,
+\end{equation}
+\begin{equation}
+    \mathbf{e}_k^T
+    \begin{pmatrix}
+        - & \mathbf{r}_1 & - \\
+        - & \mathbf{r}_2 & - \\
+        & \vdots & \\
+        - & \mathbf{r}_n & -
+    \end{pmatrix}
+    = \mathbf{r}_k,
+\end{equation}
+and
+\begin{equation}
+    \mathbf{e}_k^T
+    \begin{pmatrix}
+        - & \mathbf{r}_1 & - \\
+        - & \mathbf{r}_2 & - \\
+        & \vdots & \\
+        - & \mathbf{r}_n & -
+    \end{pmatrix}
+    \begin{pmatrix}
+        \vert & \vert & & \vert \\
+        \mathbf{c}_1 & \mathbf{c}_2 & \cdots & \mathbf{c}_n \\
+        \vert & \vert & & \vert
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \mathbf{r}_1 \mathbf{c}_1 & \mathbf{r}_1 \mathbf{c}_2 & \cdots & \mathbf{r}_1 \mathbf{c}_n \\
+        \mathbf{r}_2 \mathbf{c}_1 & \mathbf{r}_2 \mathbf{c}_2 & \cdots & \mathbf{r}_2 \mathbf{c}_n \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \mathbf{r}_n \mathbf{c}_1 & \mathbf{r}_n \mathbf{c}_2 & \cdots & \mathbf{r}_n \mathbf{c}_n
+    \end{pmatrix}
+\end{equation}
+
+Recall that the Grasmannian \(\Grassmanian_k(\complexes^n)\) is the set of \(k\)-dimensional subspaces of \(\complexes^n\).
+We can obtain the Grasmannian by starting with the set of full-rank \(k \times n\) matrices, denoted by \(\mathcal{M}_{k \times n}^{\mathsf{FR}}\),
+and quotient out by row operations, which, as we have seen, correspond to left multiplication by invertible matrices.
+Hence,
+\begin{equation}
+    \Grassmanian_k(\complexes^n)
+    \cong
+    \GL{(\complexes^k)^\ast} \backslash \mathcal{M}_{k \times n}^{\mathsf{FR}}.
+\end{equation}
+
+Also, \(\GL{\complexes^n}\) act on the left on \(\complexes^n\),
+so transitively \(\GL{\complexes^n}\) acts on the Grasmannian \(\Grassmanian_k(\complexes^n)\).
+
+Fix \(X \in \Grassmanian_k(\complexes^n)\).
+The Orbit--Stabilizer Theorem provides a bijection
+\begin{equation}
+    \left(\GL{\complexes^n}\right)_X \backslash \GL{\complexes^n} \to \Grassmanian_k(\complexes^n).
+\end{equation}
+Note that \(\GL{\complexes^n} / \left(\GL{\complexes^n}\right)_X \) is \emph{not} a group, because \( \left( \GL{\complexes^n} \right)_X \) is not a normal subgroup of \(\GL{\complexes^n}\).
+Nevertheless, the quotient can still be seen as a set of left(?) cosets.
+
+\begin{proposition}
+    The stabilizer of \(\left\langle \mathbf{e}_1, \ldots, \mathbf{e}_k \right\rangle\) is the subgroup \(P_k\) of \(n \times n\) matrices of the form
+    \begin{equation}
+        \begin{pmatrix}
+            A & B \\
+            0 & C
+        \end{pmatrix},
+    \end{equation}
+    where \(A\) is a \(k \times k\) invertible matrix, \(B\) is a \(k \times (n-k)\) matrix, and \(C\) is an \((n-k) \times (n-k)\) invertible matrix.
+\end{proposition}
+
+The set \(P_k\) is a \(k\)\textsuperscript{th} maximal parabolic subgroup of \(\GL{\complexes^n}\).
+Note that ``parabolic'' means block upper triangle, and ``maximal'' means that there are only two blocks.
+Remember, \(P_k\) is a subgroup of \(\GL{\complexes^n}\), but it's a normal subgroup of \(\GL{\complexes^n}\).
+
+Hence, now we have
+\begin{equation}
+    \Grassmanian_k(\complexes^n) \cong P_k \backslash \GL{\complexes^n}.
+\end{equation}
+
+Therefore, the ``manifold'' dimension of \(\Grassmanian_k(\complexes^n)\) is
+the difference between the ``manifold'' dimension of \(\GL{\complexes^n}\) and the ``manifold'' dimension of \(P_k\),
+namely
+\begin{equation}
+    \dim(\Grassmanian_k(\complexes^n)) = n^2 - (k^2 + (n-k)k + (n-k)^2) = k(n-k).
+\end{equation}
+
+Let \( G = \GL{\mathbb{C}^n} \). Given a choice of basis \(\mathbf{e}_1, \ldots, \mathbf{e}_n\), we can describe specific subgroups of \( G \):
+\begin{itemize}
+    \item The Borel subgroup \( B = B^+ \) is the subgroup of upper triangular matrices.
+    \item The opposite Borel subgroup \( B^- \) is the subgroup of lower triangular matrices.
+    \item The intersection \( T = B^+ \cap B^- \) is the subgroup of diagonal matrices, which is a maximal algebraic torus in \( G \). A maximal algebraic torus is a maximal abelian subgroup.
+\end{itemize}
+
+Without fixing a choice of basis,
+a Borel subgroup of \( G \) is a maximal connected solvable subgroup.
+Given a Borel subgroup \( B = B^+ \) of \( G \),
+there exists an opposite Borel subgroup \( B^- \) is the unique Borel subgroup such that \( B \cap B^- = T \) is a maximal algebraic torus.
+
+Let \(V = \complexes^n\).
+Let \(P = P_k\).
+Recall that \(P\) left-acts on \(G\), which gives a set of left cosets \(P \backslash G \cong \Grassmanian_k(V)\).
+In turn, \(G\) right-acts on \(P \backslash G \cong \Grassmanian_k(V)\),
+and consequently the subgroups \(B\) and \(T\) act on \(P \backslash G\).
+
+\begin{proposition}
+    The set of fixed points in \(P \backslash G \cong \Grassmanian_k(V)\) under the action of \(T\) is (congruent to) the set of \(binom{n}{k}\) 
+    \(k\)-dimensional subspaces of \(V\) whose reduced row echelon form representative only has non-zero entries in the pivot positions.
+    In other words,
+    the set of fixed points are the vector spaces spanned by \(k\) basis vectors.
+\end{proposition}
