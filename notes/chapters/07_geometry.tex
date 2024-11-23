@@ -37,7 +37,6 @@ and row vectors \(\mathbf{r}_1, \ldots, \mathbf{r}_n \in \complexes^n\),
 \end{equation}
 and
 \begin{equation}
-    \mathbf{e}_k^T
     \begin{pmatrix}
         - & \mathbf{r}_1 & - \\
         - & \mathbf{r}_2 & - \\
@@ -58,18 +57,18 @@ and
     \end{pmatrix}
 \end{equation}
 
-Recall that the Grasmannian \(\Grassmanian_k(\complexes^n)\) is the set of \(k\)-dimensional subspaces of \(\complexes^n\).
-We can obtain the Grasmannian by starting with the set of full-rank \(k \times n\) matrices, denoted by \(\mathcal{M}_{k \times n}^{\mathsf{FR}}\),
+Recall that the Grassmannian \(\Grassmanian_k(\complexes^n)\) is the set of \(k\)-dimensional subspaces of \(\complexes^n\).
+We can obtain the Grassmannian by starting with the set of full-rank \(k \times n\) matrices, denoted by \(\mathcal{M}_{k \times n}^{\mathsf{FR}}\),
 and quotient out by row operations, which, as we have seen, correspond to left multiplication by invertible matrices.
 Hence,
 \begin{equation}
     \Grassmanian_k(\complexes^n)
     \cong
-    \GL{(\complexes^k)^\ast} \backslash \mathcal{M}_{k \times n}^{\mathsf{FR}}.
+    \GL{\complexes^k} \backslash \mathcal{M}_{k \times n}^{\mathsf{FR}}.
 \end{equation}
 
 Also, \(\GL{\complexes^n}\) act on the left on \(\complexes^n\),
-so transitively \(\GL{\complexes^n}\) acts on the Grasmannian \(\Grassmanian_k(\complexes^n)\).
+so transitively \(\GL{\complexes^n}\) acts on the Grassmannian \(\Grassmanian_k(\complexes^n)\).
 
 Fix \(X \in \Grassmanian_k(\complexes^n)\).
 The Orbit--Stabilizer Theorem provides a bijection
@@ -108,9 +107,9 @@ namely
 
 Let \( G = \GL{\mathbb{C}^n} \). Given a choice of basis \(\mathbf{e}_1, \ldots, \mathbf{e}_n\), we can describe specific subgroups of \( G \):
 \begin{itemize}
-    \item The Borel subgroup \( B = B^+ \) is the subgroup of upper triangular matrices.
-    \item The opposite Borel subgroup \( B^- \) is the subgroup of lower triangular matrices.
-    \item The intersection \( T = B^+ \cap B^- \) is the subgroup of diagonal matrices, which is a maximal algebraic torus in \( G \). A maximal algebraic torus is a maximal abelian subgroup.
+    \item The Borel subgroup \( B = B^+ \) is the subgroup of invertible upper triangular matrices.
+    \item The opposite Borel subgroup \( B^- \) is the subgroup of invertible lower triangular matrices.
+    \item The intersection \( T = B^+ \cap B^- \) is the subgroup of invertible diagonal matrices, which is a maximal algebraic torus in \( G \). A maximal algebraic torus is a maximal abelian subgroup.
 \end{itemize}
 
 Without fixing a choice of basis,
