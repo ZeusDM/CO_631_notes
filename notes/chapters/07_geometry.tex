@@ -5,6 +5,8 @@ we will set many conventions in this chapter,
 and write some theorems,
 but there's no guarantee that the theorems match the conventions we chose.
 
+\section{Schubert Cells and Schubert Varieties}
+
 Consider the vector space \(\complexes^n\) of \emph{column vectors} of length \(n\) with complex entries.
 The vectors
 \begin{equation}
@@ -128,4 +130,119 @@ and consequently the subgroups \(B\) and \(T\) act on \(P \backslash G\).
     \(k\)-dimensional subspaces of \(V\) whose reduced row echelon form representative only has non-zero entries in the pivot positions.
     In other words,
     the set of fixed points are the vector spaces spanned by \(k\) basis vectors.
+    In other words,
+    the set of fixed points are the \(\binom{n}{k}\) \(k\)-dimensional subspaces of \(V\) of the form 
+    \begin{equation}
+        \left\langle \mathbf{e}_{i_1}, \ldots, \mathbf{e}_{i_k} \right\rangle,        
+    \end{equation}
+    where \(1 \leq i_1 < i_2 < \ldots < i_k \leq n\).
 \end{proposition}
+
+More explicitly, a \(T\)-fixed point in \(\Grassmanian_k(V)\) is a \(k\)-dimensional subspace that, in row echelon form, looks like
+\begin{equation}
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & \textcolor{red}{0} & 1 & 0 & 0 & 0 & 0 \\
+        0 & \textcolor{red}{0} & 0 & 1 & 0 & 0 & 0 \\
+        0 & \textcolor{red}{0} & 0 & 0 & \textcolor{red}{0} & 1 & 0
+    \end{bmatrix},
+\end{equation}
+and, in this example, we call it \(\mathbf{e}_{\composition{2, 1, 1, 0}}\).
+
+\begin{question}
+    What are the \(B\)-orbits? What are the \(B\)-orbits of the \(T\)-fixed points?
+\end{question}
+
+Given some \(T\)-fixed point, which is an arrangement of pivot positions, the \(B\)-orbit of that \(T\)-fixed point is all matrices that have the same pivot positions --- but now not necessarily zero entries everywhere else.
+For example, the \(B\)-orbit of the above \(T\)-fixed point is
+\begin{equation}
+    \begin{bmatrix}
+        1 & \ast & 0 & 0 & \ast & 0 & \ast \\
+        0 & 0    & 1 & 0 & \ast & 0 & \ast \\
+        0 & 0    & 0 & 1 & \ast & 0 & \ast \\
+        0 & 0    & 0 & 0 & 0    & 1 & \ast
+    \end{bmatrix}
+\end{equation}
+and the set of all such matrices is the Schubert cell \(X^\circ_{\composition{2, 1, 1, 0}}\).
+
+In general, \(X^{\circ}_{\lambda}\) has pivot positions \(\lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k\).
+We can rewrite this as
+\begin{equation}
+    X^{\circ}_{\lambda} =
+    \left\{
+        \begin{array}{c}
+            V \in \Grassmanian_k(V) : \\
+            \dim(V \cap \left\langle \mathbf{e}_1, \ldots, \mathbf{e}_{r} \right\rangle)
+            =
+            \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right|
+        \end{array}
+    \right\}.
+\end{equation}
+
+The \vocab{Schubert variety} \(X_{\lambda}\) is
+\begin{equation}
+    X_\lambda =
+    \left\{
+        \begin{array}{c}
+            V \in \Grassmanian_k(V) : \\
+            \dim(V \cap \left\langle \mathbf{e}_1, \ldots, \mathbf{e}_{r} \right\rangle)
+            \leq
+            \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right|
+        \end{array}
+    \right\}.
+\end{equation}
+
+Note that this condition gets less stricter as \(\lambda_k, \ldots, \lambda_1\) increase.
+More precisely, we have
+\begin{equation}
+    X_\lambda = \bigcup_{\substack{\mu \supseteq \lambda \\ \mu \text{ inside } k \times (n-k)}} X^{\circ}_{\mu}.
+\end{equation}
+
+Note that this definition only depends on the sequence of vector spaces
+\begin{equation}
+    \varnothing \subset \left\langle e_1 \right\rangle \subset \left\langle e_1, e_2 \right\rangle \subset \ldots \subset \left\langle e_1, \ldots, e_n \right\rangle.
+\end{equation}
+
+\begin{definition}
+    A \vocab{complete flag} in \(V\) is a sequence of vector spaces
+    \begin{equation}
+        \varnothing = F_0 \subset F_1 \subset \ldots \subset F_n = V
+    \end{equation}
+    such that \(\dim(F_i) = i\).
+    \end{definition}
+
+The \vocab{Schubert cell} and \vocab{Schubert variety} with respect to a complete flag \(F_{\bullet}\) are 
+\begin{equation}
+    X^{\circ}_{\lambda}(F_{\bullet}) =
+    \left\{ V \in \Grassmanian_k(V) : \dim(V \cap V_r) = \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right| \right\}
+\end{equation}
+and
+\begin{equation}
+    X_{\lambda}(F_{\bullet}) =
+    \left\{ V \in \Grassmanian_k(V) : \dim(V \cap V_r) \leq \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right| \right\},
+\end{equation}
+
+\section{Schubert Cohomology}
+
+Details are sparse.
+Be careful.
+We will think of \(X\) as the Grassmanian \(\Grassmanian_k(\complexes^n)\),
+but some of the following may be more general --- although we will not explicitly say so.
+
+If \(X\) is a \emph{nice} topological space,
+then the cohomology ring \(H^*(X)\) is an algebra over \(\mathbb{Z}\).
+If \(Y \subset X\),
+we get a corresponding class \([Y] \in H^*(X)\).
+If \(G\) acts \(X\) transitively and \(g \in G\),
+then \([g \cdot Y] = g \cdot [Y]\).
+If \(Y, Z \subset X\) \emph{intersect transversally},%
+\footnote{Two submanifolds of a given finite-dimensional smooth manifold are said to intersect transversally if at every point of intersection, their separate tangent spaces at that point together generate the tangent space of the ambient manifold at that point.}
+then
+\begin{align}
+    [Y \cap Z] &= [Y] \cdot [Z], \\
+    [Y \cup Z] &= [Y] + [Z].
+\end{align}
+However, if they don't intersect transversally, then you can move \(Y\) (using the group action) and move it to something in the same class so that it does intersect transversally, so there's some way to get around this.
+
+If \(\varnothing = X_0 \subset X_1 \subset \cdots \subset X_d = X\) has each \(X_i\) being closed and each \(X_i \setminus X_{i-1}\) is a finite disjoint union on complex Euclidean spaces,
+then the closures of these Euclidean spaces give a basis for the comohomology.
