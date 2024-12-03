@@ -330,5 +330,164 @@ You can attempt to do the same with \(\lambda = \mu = \composition{1}\) in \(\Gr
 \begin{equation}
     \sigma_{\composition{1}} \cdot \sigma_{\composition{1}} = \sigma_{\composition{2}} + \sigma_{\composition{1, 1}},
 \end{equation}
-by making the intersection transversal.
-Oliver tried to do this in class but didn't finish the computation.
+by making the intersection transversal.%
+\footnote{Oliver tried to do this in class but didn't finish the computation.}
+
+\section{Flag Varieties}
+
+Recall that a \vocab{flag} in a finite-dimensional vector space \(V\) is a sequence of nested subspaces:
+\begin{equation}
+    \{0\} = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_n = V,
+\end{equation}
+where each \(F_k\) is a \(k\)-dimensional subspace of \(V\); that is, \(\dim(F_k) = k\) for each \(k = 1, 2, \dots, n\). This means that each \(F_k\) corresponds to a point in the Grassmannian \(\operatorname{Gr}_k(V)\), which parametrizes the \(k\)-dimensional subspaces of \(V\).
+
+Recall that in the study of Grassmannians, we associated to each point \(F_k\) (i.e., each \(k\)-dimensional subspace) a \(k \times n\) matrix \(A\), whose rows form a basis for \(F_k\).
+
+In the case of a complete flag, we can similarly associate to it an invertible \(n \times n\) matrix \(A\), where the first \(k\) rows span \(F_k\) for each \(k\).
+However, this representation is not unique, because we can perform certain row operations without changing the subspaces \(F_k\).
+Specifically, we can perform \emph{downward} row operations (operations that use lower-numbered rows to eliminate entries in higher-numbered rows) without changing the spans of the rows corresponding to the \(F_k\).
+
+This leads to the identification:
+\begin{equation}
+    \operatorname{Flags}_n \cong B_- \backslash \operatorname{GL}_n(\mathbb{C}),
+\end{equation}
+where \(B_-\) is the subgroup of \(\operatorname{GL}_n(\mathbb{C})\) consisting of lower-triangular invertible matrices.
+Essentially, the flag variety \(\operatorname{Flags}_n\) can be viewed as the quotient of \(\operatorname{GL}_n(\mathbb{C})\) by the left action of \(B_-\).
+
+Moreover, since \(\operatorname{GL}_n(\mathbb{C})\) contains the Borel subgroup \(B\) (the subgroup of upper-triangular invertible matrices) and the maximal torus \(T\) (the subgroup of diagonal invertible matrices), and since these subgroups act on \(\operatorname{GL}_n(\mathbb{C})\) by right multiplication, they also act on \(\operatorname{Flags}_n\) on the right.
+
+\begin{proposition}
+    The \(T\)-fixed points in \(\operatorname{Flags}_n\) are precisely the flags represented by permutation matrices.
+\end{proposition}
+
+In other words, the action of the torus \(T\) on the flag variety \(\operatorname{Flags}_n\) has fixed points corresponding to the permutation matrices, which are the matrices with exactly one entry of \(1\) in each row and column, and zeros elsewhere.
+
+We can further study the orbits of the Borel subgroup \(B\) on \(\operatorname{Flags}_n\).
+
+\begin{proposition}
+    The \(B\)-orbits of a permutation matrix in \(\operatorname{Flags}_n\) are the sets of flags obtained by replacing all zeros that are not to the left or below a \(1\) with an arbitrary entry (denoted by \(\ast\)).
+\end{proposition}
+
+For example, consider the permutation matrix:
+\begin{equation}
+    \begin{bmatrix}
+        0 & 0 & 1 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+    \end{bmatrix}.
+\end{equation}
+The \(B\)-orbit of this permutation matrix consists of all flags represented by matrices of the form:
+\begin{equation}
+    \begin{bmatrix}
+        0 & 0 & 1 \\
+        1 & \ast & 0 \\
+        0 & 1 & 0
+    \end{bmatrix},
+\end{equation}
+where the \(\ast\) represents an arbitrary complex number (since we are allowing arbitrary entries in positions not constrained by the permutation matrix and the action of \(B\)).
+Similarly, for the identity permutation matrix
+\begin{equation}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix},
+\end{equation}
+the \(B\)-orbit consists of all flags represented by matrices of the form:
+\begin{equation}
+    \begin{bmatrix}
+        1 & \ast & \ast \\
+        0 & 1 & \ast \\
+        0 & 0 & 1
+    \end{bmatrix}.
+\end{equation}
+
+We call these sets of flags \vocab{Schubert cells} and denote them by \(X_w^\circ\), where \(w \in S_n\) is a permutation.
+The index \(w\) corresponds to the permutation associated with the permutation matrix.%
+\footnote{Oliver takes the transpose of the permutation matrix to index the Schubert cells, so be careful with this convention.}
+
+Note that the flag variety \(\operatorname{Flags}_n\) maps naturally to the Grassmannian \(\operatorname{Gr}_k(\mathbb{C}^n)\) by sending a flag to its \(k\)-dimensional subspace \(F_k\).
+This mapping allows us to relate the study of flags to the study of subspaces of fixed dimension.
+
+By applying similar techniques as we did for the Grassmannian, we find that the cohomology ring \(H^*(\operatorname{Flags}_n)\) has an additive basis \(\{[X_w]\}\) indexed by permutations \(w \in S_n\). Here, \([X_w]\) denotes the cohomology class associated with the Schubert variety corresponding to \(w\).
+
+Therefore, there exist coefficients \(c_{u,v}^w\) such that the product of two Schubert classes can be expressed as:
+\begin{equation}
+    [X_u] \cdot [X_v] = \sum_{w \in S_n} c_{u,v}^w [X_w].
+\end{equation}
+We call these coefficients the \vocab{Schubert structure constants}. They capture how the cohomology classes of Schubert varieties multiply in the cohomology ring.
+
+In the case of Grassmannians, we had the Schur polynomials, which facilitated the computation of the structure constants. For the flag varieties, we have an analogous tool.
+
+\begin{theorem}[Borel]
+    \begin{equation}
+        H^*(\operatorname{Flags}_n) \cong \mathbb{Z}[x_1, x_2, \ldots, x_n] \bigg/ \Sym_{n}^+,
+    \end{equation}
+    where \(\Sym_{n}^+\) denotes the ideal of symmetric polynomials with zero constant term.
+\end{theorem}
+
+That is, the cohomology ring of the flag variety is isomorphic to the polynomial ring in \(n\) variables modulo the ideal generated by the elementary symmetric polynomials of positive degree. This presentation, however, is not very convenient, as working with cosets modulo symmetric polynomials can be unwieldy.
+
+To address this, we seek good representatives for these cosets.
+The \vocab{Schubert polynomials} \(\mathfrak{S}_w\) provide such representatives.
+By being representatives, they satisfy
+\begin{equation}
+    [\mathfrak{S}_u] \cdot [\mathfrak{S}_v] = \sum_{w \in S_n} c_{u,v}^w [\mathfrak{S}_w].
+\end{equation}
+
+However, the Schubert polynomials possess additional properties that make them particularly useful:
+
+\begin{itemize}
+    \item If \(w\) is a \(k\)-Grassmannian permutation corresponding to a partition \(\lambda\), then \(\mathfrak{S}_w = s_\lambda\).
+    \item If \(\iota: S_n \hookrightarrow S_{n+1}\) is the natural inclusion, then \(\mathfrak{S}_{\iota(w)} = \mathfrak{S}_w\).
+    \item The Schubert polynomials have positive monomial expansions.
+    \item They satisfy the multiplication formula:
+    \begin{equation}
+        \mathfrak{S}_u \cdot \mathfrak{S}_v = \sum_{w \in S_n} c_{u,v}^w \mathfrak{S}_w,
+    \end{equation}
+    where the \(c_{u,v}^w\) are the Schubert structure constants.
+\end{itemize}
+
+These Schubert polynomials exist and are uniquely determined by these properties.
+
+Moreover, the Schubert polynomials can be defined recursively. For the longest permutation \(w_0 \in S_n\), we have:
+\begin{equation}
+    \mathfrak{S}_{w_0} = x_1^{n-1} x_2^{n-2} \cdots x_{n-1}^1 x_n^0.
+\end{equation}
+For other permutations, we use divided difference operators to define the Schubert polynomials. Let \(\delta_i\) be the operator defined by:
+\begin{equation}
+    \delta_i(f) = \frac{f - s_i(f)}{x_i - x_{i+1}},
+\end{equation}
+where \(s_i\) is the simple transposition that swaps \(x_i\) and \(x_{i+1}\). The operator \(\delta_i\) applied to a polynomial \(f\) yields another polynomial.
+
+For a permutation \(w\) that has a descent at position \(i\) (i.e., \(w(i) > w(i+1)\)), we define:
+\begin{equation}
+    \mathfrak{S}_{ws_i} = \delta_i(\mathfrak{S}_w).
+\end{equation}
+Although it may not be immediately apparent, it is a theorem that this recursive definition yields polynomials that are independent of the order in which descents are considered.
+
+While Schubert polynomials provide a powerful tool,
+and there are beautiful combinatorial formulas for them,
+determining the structure constants \(c_{u,v}^w\) combinatorially remains a challenging problem.
+This is one of the most important open problems in algebraic combinatorics.
+
+Nevertheless, there are several cases where we have explicit combinatorial formulas for these structure constants:
+
+\begin{itemize}
+    \item If \(\mathfrak{S}_u = s_1\), then there is a combinatorial formula for \(c_{u,v}^w\) (Monk, 1959).
+    \item If \(\mathfrak{S}_u = s_\lambda\) for a hook partition \(\lambda\), then there is a combinatorial formula for \(c_{u,v}^w\) (Sottile, 1996).
+    \item If \(\mathfrak{S}_u = s_\lambda(x_1, x_2, \ldots, x_a)\) and \(\mathfrak{S}_v = s_\mu(x_1, x_2, \ldots, x_b)\), then there is a combinatorial formula for \(c_{u,v}^w\) (Purbhoo--Sottile, 2009).
+    \item If the Schubert varieties are transverse without any perturbation, then there is a combinatorial formula for \(c_{u,v}^w\) (Knutson--Purbhoo, 2011).
+    \item If \(u\) and \(v\) have descents restricted to the same two positions, then there is a combinatorial formula for \(c_{u,v}^w\) (Buch--Kresch--Purbhoo--Tamvakis, 2016).
+    \item If \(u\) and \(v\) have descents restricted to the same three positions, then there is a combinatorial formula for \(c_{u,v}^w\) (Knutson--Zinn-Justin, 2017+).
+    \item If all descents of \(u\) occur weakly before all the descents of \(v\), then there is a combinatorial formula for \(c_{u,v}^w\) (Huang, 2023).
+    \item If \(u\) and \(v\) are inverses of Grassmannian permutations, then there is a combinatorial formula for \(c_{u,v}^w\) (Pechenik--Weigandt, 2024).
+\end{itemize}
+
+These results represent progress in understanding the multiplication of Schubert classes in the cohomology ring of the flag variety, although a general formula for the structure constants remains elusive.
+
+Finally, there are several directions one can pursue to further explore this topic.
+\begin{itemize}
+    \item Replace \(\operatorname{GL}_n(\mathbb{C})\) with other groups \(G\), such as the orthogonal groups \(O_{2n}(\mathbb{C})\) and \(O_{2n+1}(\mathbb{C})\), or the symplectic group \(Sp_{2n}(\mathbb{C})\), and study the corresponding flag varieties.
+    \item Replace ordinary cohomology \(H^*\) with other generalized cohomology theories, such as \(T\)-equivariant cohomology, quantum cohomology, or \(K\)-theory, to gain deeper insights into the topology and geometry of flag varieties and their Schubert subvarieties.
+\end{itemize}
