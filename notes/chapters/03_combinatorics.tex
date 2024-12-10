@@ -12,16 +12,16 @@ alternatively, we say that \vocab{\(\alpha\) is a composition of \(|\alpha|\)}.
 
 We identify a finite sequence of positive integers to a composition \(\alpha\) by appending infinitely many zeros to the end of the sequence.
 For example,
-\[
+\begin{equation}
     \composition{2, 0, 1, 3} = \composition{2, 0, 1, 3, 0, 0, \dots}
-\]
+\end{equation}
 is a composition of \(6\).
 
 The \vocab{length} of a composition \(\alpha\) is the largest index \(i\) such that \(\alpha_i \neq 0\), denoted by \(\ell(\alpha)\).
 Therefore, any composition \(\alpha\) is identified with the finite sequence
-\[
+\begin{equation}
     \composition{\alpha_1, \alpha_2, \dots, \alpha_{\ell(\alpha)}}.
-\]
+\end{equation}
 The \vocab{width} of a composition \(\alpha\) is the largest part of \(\alpha\).
 
 We denote by \(\Comp_{\ell, w}(n)\) the set of all compositions of \(n\) with length at most \(\ell\) and width at most \(w\).
@@ -64,9 +64,9 @@ The lack of a parameter means that the condition is not imposed.
     We say that \(\lambda\) \vocab{refines} \(\mu\),
     denoted \(\lambda \refines \mu\),
     if there exists a map \(\phi \colon \positives \to \positives\) such that, for all \(i \in \positives\),
-    \[
+    \begin{equation}
         \mu_i = \sum_{j \in \phi^{-1}(i)} \lambda_j.
-    \]
+    \end{equation}
 \end{definition}
 
 \begin{proposition}
@@ -82,25 +82,25 @@ The lack of a parameter means that the condition is not imposed.
 \begin{theorem}
     Let \(w \in \positives\).
     Then,
-    \[
+    \begin{equation}
         \sum_{\lambda \in \Par_{w, \infty}} q^{|\lambda|}
         = \sum_{\lambda \in \Par_{\infty, w}}
         = \prod_{i=1}^{w} \frac{1}{1 - q^i}.
-    \]
+    \end{equation}
 \end{theorem}
 
 \begin{corollary}
-    \[
+    \begin{equation}
         \sum_{\lambda \in \Par} q^{|\lambda|}
         = \prod_{i=1}^{\infty} \frac{1}{1 - q^i}.
-    \]
+    \end{equation}
 \end{corollary}
 
 \begin{theorem}[Hardy--Ramanujan (1918)]
-    \[
+    \begin{equation}
         [q^k] \sum_{\lambda \in \Par} q^{|\lambda|}
         \approx \frac{1}{4 \sqrt{3} k} e^{\pi \sqrt{2k/3}}.
-    \]
+    \end{equation}
 \end{theorem}
 
 \subsection{Young Diagrams} \label{subsec:diagrams}
@@ -188,20 +188,20 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
 
 \begin{definition}
     The \vocab{\(q\)-binomial coefficient}, or \vocab{Gaussian coefficient}, is
-    \[
+    \begin{equation}
         \qbinom{n}{k} = \prod_{i=0}^{k-1} \frac{1 - q^{n-i}}{1 - q^{k-i}}.
-    \]
+    \end{equation}
 \end{definition}
 
 \begin{proposition}[\(q\)-binomial coefficient recursion]
     For all \(n, k \in \positives\),
-    \[
+    \begin{equation}
         \qbinom{n}{k} =
         \begin{cases}
             1 & \text{if } k = 0 \text{ or } k = n, \\    
             \qbinom{n-1}{k} + q^{n-k} \qbinom{n-1}{k-1} & \text{otherwise}.
         \end{cases}
-    \]
+    \end{equation}
 \end{proposition}
 
 \begin{corollary}
@@ -210,22 +210,22 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
 
 \begin{corollary}
     For all \(n, k \in \positives\),
-    \[
+    \begin{equation}
         \qbinom[1]{n}{k} = \binom{n}{k}.
-    \]
+    \end{equation}
 \end{corollary}
 
 \begin{lemma} \label{lem:grassmanian_qbinomial_prime_power}
     Let \(p\) be a prime, \(m \in \positives\), and \(\ell, w \in \nonnegatives\).
     Let \(q = p^m\).
     Then,
-    \[
+    \begin{equation}
         \qbinom{\ell + w}{\ell}
         = \left|
             \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         = \sum{\lambda \in \Par_{\ell, w}} (q)^{|\lambda|}.
-    \]
+    \end{equation}
 \end{lemma}
 
 \begin{proof}[Proof of the first equality.]
@@ -285,22 +285,22 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
 
     Note that, for each Young diagram within the rectangle of size \(\ell \times w\), there are \(q^{|\lambda|}\) ways to assign elements of \(\finitefield{q}\) to the boxes of the Young diagram.
     Therefore,
-    \[
+    \begin{equation}
         \left|
             \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         = \sum_{\lambda \in \Par_{\ell, w}} (q)^{|\lambda|},
-    \]
+    \end{equation}
     as desired for the second equality.
 \end{proof}
 
 \begin{theorem}
     Let \(\ell, w \in \nonnegatives\).
     Then,
-    \[
+    \begin{equation}
         \sum_{\lambda \in \Par_{\ell, w}} q^{|\lambda|}
         = \qbinom{\ell + w}{\ell}.
-    \]
+    \end{equation}
 \end{theorem}
 
 \begin{proof}

@@ -5,36 +5,36 @@ The \vocab{\(n\)\textsuperscript{th} symmetric group} \(\sym{n}\)
 is the group of bijections from \(\{1, 2, \ldots, n\}\) to itself,
 under composition.
 A permutation \(w \in \sym{n}\) can be written in \vocab{two-line notation} as
-\[
+\begin{equation}
     \begin{pmatrix}
         1    & 2    & \cdots & n    \\
         w(1) & w(2) & \cdots & w(n)
     \end{pmatrix},
-\]
+\end{equation}
 or in \vocab{one-line notation} as
-\[
+\begin{equation}
     w(1)w(2)\cdots w(n).
-\]
+\end{equation}
 We may also think of a permutation \(w \in \sym{n}\) as a directed graph with vertex set \(\{1, 2, \ldots, n\}\) and edges \(\{(i, w(i)) \mid i = 1, \ldots, n\}\).
 The connected components of this graph are cycles.
 
 Each permutation \(w\) has an associated partition \(\cyc(w) \vdash n\) whose parts are the lengths of the cycles of \(w\), called the \vocab{cycle type} of \(w\). It is known that \(\cyc(w) = \cyc(u)\) if and only if \(w\) and \(u\) are conjugate in \(\sym{n}\). Thus, the conjugacy class corresponding to a partition \(\lambda \vdash n\) is
-\[
+\begin{equation}
     \zeta_\lambda = \{ w \in \sym{n} \mid \cyc(w) = \lambda \}.
-\]
+\end{equation}
 
 The centralizer of \(w \in \sym{n}\) is
-\[
+\begin{equation}
     Z(w) = \{ u \in \sym{n} \mid uw = wu \}.
-\]
+\end{equation}
 Let \(\lambda\) be a partition of \(n\), and let \(j_i\) be the number of parts of \(\lambda\) equal to \(i\). For \(w \in \zeta_\lambda\), the size of the centralizer is
-\[
+\begin{equation}
     |Z(w)| = \prod_{i=1}^n (j_i)! \prod_{k=1}^{\ell(\lambda)} \lambda_k,
-\]
+\end{equation}
 which does not depend on the choice of \(w \in \zeta_\lambda\). We denote this expression by \(z_\lambda\). Moreover, the size of the conjugacy class is
-\[
+\begin{equation}
     |\zeta_\lambda| = \frac{n!}{z_\lambda}.
-\]
+\end{equation}
 
 A permutation \(w \in \sym{n}\) is called a \vocab{transposition} if \(\cyc(w) = 2\,1^{n-2}\), meaning \(w\) swaps two elements and fixes the rest. A \vocab{simple transposition} is a transposition of the form \(\eltr{i} = (i, i+1)\) for some \(i \in \{1, \ldots, n-1\}\).
 
@@ -57,13 +57,13 @@ For \(w \in \sym{n}\), the \vocab{permutation matrix} \(M(w) \in \GL{n}(\complex
 A \vocab{(linear) representation} of a group \(G\) is a group homomorphism \(\rho \colon G \to \GL{n}(\complexes)\) for some \(n\). For example, \(M \colon \sym{n} \to \GL{n}(\complexes)\) is a representation. A \vocab{permutation representation} of \(G\) is a homomorphism \(\rho \colon G \to \sym{n}\) for some \(n\). Given any permutation representation \(\rho \colon G \to \sym{n}\), composing with \(M\) yields a linear representation \(\rho' \colon G \to \GL{n}(\complexes)\).
 
 Given a set \(S\) and a group action \(\rho \colon G \to \sym(S)\), the \vocab{fixed set} of \(S\) under \(\rho\) is
-\[
+\begin{equation}
     S^G = \{ s \in S \mid \rho(g)(s) = s \text{ for all } g \in G \}.
-\]
+\end{equation}
 Similarly, if \(V\) is a vector space with a representation \(\rho \colon G \to \GL{V}\), the \vocab{invariant subspace} is
-\[
+\begin{equation}
     V^G = \{ v \in V \mid \rho(g)v = v \text{ for all } g \in G \}.
-\]
+\end{equation}
 One can view \(V^G\) as the intersection of the eigenspaces associated with the eigenvalue \(1\) of the matrices \(\rho(g)\) for all \(g \in G\).
 
 As an example, let \(\mathcal{G}_n\) be the set of all graphs on the vertex set \(\{1, 2, \ldots, n\}\). The group \(\sym{n}\) acts on \(\mathcal{G}_n\) by permuting vertices: for \(w \in \sym{n}\) and \(G \in \mathcal{G}_n\), the graph \(w \cdot G\) is obtained by applying \(w\) to the vertices of \(G\). Under this action, the only fixed graphs are the empty graph and the complete graph.
@@ -77,20 +77,20 @@ Examples of \(k\)-algebras include the ring of polynomials \(k[x]\), the ring of
 Given \(k\)-algebras \(A\) and \(B\), a \vocab{\(k\)-algebra homomorphism} is a map \(\varphi \colon A \to B\) that is both a ring homomorphism and \(k\)-linear. An \vocab{action of a group \(G\) on a \(k\)-algebra \(A\)} is a group homomorphism \(\rho \colon G \to \Aut(A)\), where \(\Aut(A)\) is the group of \(k\)-algebra automorphisms of \(A\). The fixed set \(A^G\) is a \(k\)-subalgebra of \(A\).
 
 A \vocab{monomial} is a product of powers of variables. In \(\rationals[x_1, x_2, \ldots, x_n]\), monomials are indexed by \(\mathbb{N}^n\):
-\[
+\begin{equation}
     x^\alpha = x_1^{\alpha_1}x_2^{\alpha_2}\cdots x_n^{\alpha_n},
-\]
+\end{equation}
 for \(\alpha = (\alpha_1, \alpha_2, \ldots, \alpha_n) \in \mathbb{N}^n\). The \vocab{degree} of \(x^\alpha\) is \(\deg(x^\alpha) = \alpha_1 + \alpha_2 + \cdots + \alpha_n\). The set of monomials forms a basis for \(\rationals[x_1, x_2, \ldots, x_n]\) as a vector space over \(\rationals\).
 
 We denote by \(\rationals[x_1, x_2, \ldots, x_n]_d\) the subspace spanned by monomials of degree \(d\), giving the direct sum decomposition
-\[
+\begin{equation}
     \rationals[x_1, x_2, \ldots, x_n] = \bigoplus_{d=0}^\infty \rationals[x_1, x_2, \ldots, x_n]_d.
-\]
+\end{equation}
 
 The group \(\sym{n}\) acts on monomials by
-\[
+\begin{equation}
     w \cdot x^\alpha = x^{w(\alpha)} = x_{w^{-1}(1)}^{\alpha_1}x_{w^{-1}(2)}^{\alpha_2}\cdots x_{w^{-1}(n)}^{\alpha_n}.
-\]
+\end{equation}
 This action extends linearly to \(\rationals[x_1, x_2, \ldots, x_n]\).
 The \vocab{algebra of symmetric polynomials} is the subalgebra \(\Sym(n) = \rationals[x_1, x_2, \ldots, x_n]^{\sym{n}}\) consisting of all polynomials fixed under this action.
 Let \(\Sym(n)_d = \Sym(n) \cap \rationals[x_1, x_2, \ldots, x_n]_d\).
@@ -143,34 +143,34 @@ For example, for \(n = 3\),
 \end{align*}
 
 The set of monomial symmetric polynomials
-\[
+\begin{equation}
     \{ m_\lambda \mid \lambda \in \Par_{n, \infty}(d) \}
-\]
+\end{equation}
 is a basis for \(\Sym(n)_d\).
 As a corollary, the set of monomial symmetric polynomials
-\[
+\begin{equation}
     \{ m_\lambda \mid \lambda \in \Par_{n, \infty} \}
-\]
+\end{equation}
 is a basis for \(\Sym(n)\).
 As another corollary, the Hilbert series of \(\Sym(n)\) is
-\[
+\begin{equation}
     \Hilb(\Sym(n); t) = \prod_{i=1}^n \frac{1}{1-t^i}.
-\]
+\end{equation}
 
 As a remark,
 if we let \(B\) be the \(\rationals\)-algebra \(\rationals[x_1, x_2, \ldots, x_n]\)
 with the nonstandard grading where \(\deg(x_i) = i\) for all \(i \in \interval{n}\),
 then the Hilbert series of \(B\) is
-\[
+\begin{equation}
     \Hilb(B; t) = \prod_{i=1}^n \frac{1}{1-t^i}.
-\]
+\end{equation}
 Therefore, the homogeneous components of \(\Sym(n)\) and \(B\) are isomorphic as vector spaces.
 Indeed, the set
-\[
+\begin{equation}
     \left\{
     x_\lambda = prod_{i=1}^n x_{\lambda_i} \mid \lambda \in \Par_{n, \infty}(d)
     \right\}
-\]
+\end{equation}
 is a basis for \(B_d\), also indexed by partitions of \(d\) with at most \(n\) parts.
 Sadly (or not), the map \(x_\lambda \mapsto m_\lambda\) is not an isomorphism of algebras,
 as multiplication is not preserved.

@@ -13,13 +13,13 @@ As a set, let \(R[[x]]\) be \(R^{\nonnegatives}\), the set of all infinite seque
 In other words, \(R[[x]]\) is the set of all sequences \((a_n)_{n=0}^\infty\) where each \(a_n \in R\).
 
 Given two sequences \((a_n)_{n=0}^\infty\) and \((b_n)_{n=0}^\infty\) in \(R[[x]]\), we define their sum as
-\[
+\begin{equation}
     (a_n)_{n=0}^\infty + (b_n)_{n=0}^\infty = (a_n + b_n)_{n=0}^\infty
-\]
+\end{equation}
 and their product as
-\[
+\begin{equation}
     (a_n)_{n=0}^\infty \cdot (b_n)_{n=0}^\infty = \left( \sum_{j=0}^n a_j b_{n-j} \right)_{n=0}^\infty.
-\]
+\end{equation}
 Such product is known as the \vocab{Cauchy product} of the two sequences.
 With these operations, \(R[[x]]\) is a ring with additive identity \((0, 0, 0, \dots)\) and multiplicative identity \((1, 0, 0, \dots)\).
 
@@ -67,21 +67,21 @@ we write \(A(x) = \lim_{n \to \infty} A_n(x)\).
 
 Let \(A_1(x), A_2(x), \dots\) be a sequence of formal power series.
 The \vocab{infinite sum} of the sequence is
-\[
+\begin{equation}
     \sum_{i=1}^\infty A_i(x) = \lim_{n \to \infty} \sum_{i=1}^n A_i(x),
-\]
+\end{equation}
 which may or may not converge.
 The \vocab{infinite product} of the sequence is
-\[
+\begin{equation}
     \prod_{i=1}^\infty A_i(x) = \lim_{n \to \infty} \prod_{i=1}^n A_i(x),
-\]
+\end{equation}
 which may or may not converge.
 
 Let \(A(x) = \sum_{i=0}^\infty a_i x^i\) and \(B(x) = \sum_{i=0}^\infty b_i x^i\).
 Then, the \vocab{composition} of \(A(x)\) and \(B(x)\) is the formal power series
-\[
+\begin{equation}
     A(B(x)) = \sum_{i=0}^\infty a_i B(x)^i,
-\]
+\end{equation}
 which may or may not converge.
 
 \begin{proposition} \label{prop:composition_constant_term_zero}
@@ -92,16 +92,16 @@ which may or may not converge.
 \begin{proposition}
     Let \(A(x) \in R[[x]]\) such that \(A(0) = 0\).
     Then, \(1 - A(x)\) is invertible in \(R[[x]]\), with inverse
-    \[
+    \begin{equation}
         \sum_{i=0}^\infty A(x)^i.
-    \]
+    \end{equation}
 \end{proposition}
 
 \begin{proof}
     Let \(B(x) = \sum_{i=0}^\infty x^i\).
     First, the expression \(\sum_{i=0}^\infty A(x)^i = B(A(x))\) is well-defined by Proposition~\ref{prop:composition_constant_term_zero}.
     Then, it is straightforward to verify that
-    \[
+    \begin{equation}
         (1 - A(x)) \cdot \sum_{i=0}^\infty A(x)^i = 1. \qedhere
-    \]
+    \end{equation}
 \end{proof}

@@ -22,30 +22,30 @@ hence it has no Hilbert series.
 
 \begin{definition}
     The \vocab{algebra of symmetric functions} is
-    \[
+    \begin{equation}
         \Sym = \rationals[[x_1, x_2, \ldots]]_{\mathsf{gr}}^{\sym{\infty}},
-    \]
+    \end{equation}
 \end{definition}
 
 Note that there are projections \(\Sym(n) \to \Sym(n-1)\) for all \(n\),
 where \(x_n\) is sent to \(0\) and the other variables are fixed.
 Thus, we have a sequence of maps
-\[
+\begin{equation}
     \cdots \to \Sym(n) \to \Sym(n-1) \to \cdots \to \Sym(2) \to \Sym(1) \to \rationals,
-\]
+\end{equation}
 and the algebra of symmetric functions \(\Sym\) is the inverse limit of this sequence; whatevers that means.
 
 There is a projection \(\Sym \to \Sym(n)\) that sends \(x_i\) to \(0\) for all \(i > n\), and the other variables are fixed.
 
 Given a partition \(\lambda \in \Par\),
 the \vocab{monomial symmetric function} \(m_\lambda \in \Sym\) is defined by
-\[
+\begin{equation}
     m_\lambda = \sum_{\sort{\alpha} = \lambda} x^\alpha.
-\]
+\end{equation}
 The set of monomial symmetric functions
-\[
+\begin{equation}
     \{ m_\lambda \mid \lambda \in \Par \}
-\]
+\end{equation}
 is a basis for \(\Sym\).
 
 Any formula that holds in \(\Sym\) will hold in \(\Sym(n)\) after sending \(m_\lambda\) to \(m_\lambda(x_1, x_2, \ldots, x_n)\) if \(\ell(\lambda) \leq n\), and to \(0\) otherwise.
@@ -413,7 +413,7 @@ Given a partition \(\lambda \in \Par\), define \(h_\lambda = h_{\lambda_1}h_{\la
 
 \begin{example}[Theorem~\ref{thm:hn_sym}\ref{item:hl_symd_basis} for \(d = 3\)]
     We claim that \(\{h_{\lambda} : \lambda \in \Par(3)\}\) is a basis for \(\Lambda_3\).
-    \[
+    \begin{equation}
         \begin{bsmallmatrix}
             h_{1,1,1} \\
             h_{2,1}   \\
@@ -430,7 +430,7 @@ Given a partition \(\lambda \in \Par\), define \(h_\lambda = h_{\lambda_1}h_{\la
             m_{2,1}   \\
             m_3
         \end{bsmallmatrix}.
-    \]
+    \end{equation}
     Since the matrix
 		\(
         \begin{bsmallmatrix}
