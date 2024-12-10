@@ -131,9 +131,9 @@ and also partitioned into \vocab{columns}, where the \(j\)\textsuperscript{th} c
 \newcommand\coordleq{\leq_\mathrm{coord}}
 
 The \vocab{coordinatewise partial order} on \(\positives^2\) is the partial order \(\coordleq\) given by
-\begin{equation*}
+\begin{equation}
     (i, j) \coordleq (i', j') \qquad \text{if and only if} \qquad i \leq i' \quad \text{and} \quad j \leq j'.
-\end{equation*}
+\end{equation}
 See Figure~\ref{fig:coordleq} for a graphical representation of the coordinatewise partial order \(\coordleq\) on \(\positives^2\).
 
 \begin{figure}[htbp]
@@ -159,13 +159,13 @@ See Figure~\ref{fig:coordleq} for a graphical representation of the coordinatewi
 
 A \vocab{Young diagram} is a diagram \(D \subset \positives^2\) such that, if \((i, j) \in D\), then \((i', j') \in D\) for all \((i', j') \coordleq (i, j)\).
 Given a partition \(\lambda\), \vocab{the Young diagram of the partition} \(\lambda\) is the subset of \(\positives^2\) given by
-\begin{equation*}
+\begin{equation}
     \left\{ (i, j) \in \positives^2 \ : \  j \leq \lambda_i \right\}.
-\end{equation*}
+\end{equation}
 For example, the Young diagram of \(\composition{3, 3, 1}\) is the subset of \(\positives^2\) given by
-\begin{equation*}
+\begin{equation}
     \Big\{ (1, 1), (1, 2), (1, 3), \quad (2, 1), (2, 2), (2, 3), \quad (3, 1) \Big\},
-\end{equation*}
+\end{equation}
 which is graphically represented in Figure~\ref{fig:youngdiagram}.
 
 \begin{figure}[htbp]
@@ -236,12 +236,12 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
     \(q^{\ell + w} - q\) choices for the second row, and so on.
     In general, there are \(q^{\ell + w} - q^{i-1}\) choices for the \(i\)\textsuperscript{th} row.
     Therefore,
-    \begin{equation*}
+    \begin{equation}
         \left|
             \mathcal{M}
         \right|
         = \prod_{i=1}^{\ell} (q^{\ell + w} - q^{i-1})
-    \end{equation*}
+    \end{equation}
 
     On the other hand, we may count the elements of \(\mathcal{M}\) by first choosing the linear span of its rows, and then choosing the rows themselves in such linear span.
     There are \(|\Grassmanian_\ell(\finitefield{q}^{\ell + w})|\) choices for an \(\ell\)-dimensional subspace of \(\finitefield{q}^{\ell + w}\).
@@ -250,7 +250,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
     there are \(q^{\ell} - q\) choices for the second row, and so on.
     In general, there are \(q^{\ell} - q^{i-1}\) choices for the \(i\)\textsuperscript{th} row.
     Therefore,
-    \begin{equation*}
+    \begin{equation}
         \left|
             \mathcal{M}
         \right|
@@ -258,17 +258,17 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
             \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         \prod_{i=1}^{\ell} (q^{\ell} - q^{i-1})
-    \end{equation*}
+    \end{equation}
 
     Finally, from the two expressions for \(\left| \mathcal{M} \right|\), we find
-    \begin{align*}
+    \begin{align}
         \left|
             \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         = \prod_{i=1}^{\ell} \frac{q^{\ell + w} - q^{i-1}}{q^{\ell} - q^{i-1}} \\
         = \prod_{i=0}^{\ell - 1} \frac{1 - q^{\ell + w - i}}{1 - q^{\ell - i}} \\
         = \qbinom{\ell + w}{\ell},
-    \end{align*}
+    \end{align}
     as desired for the first equality.
 \end{proof}
 
