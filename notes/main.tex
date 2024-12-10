@@ -9,6 +9,7 @@
 \usepackage[onehalfspacing, nodisplayskipstretch]{setspace}
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage{enumitem}
+\setlist{noitemsep}
 \setlist[enumerate]{label={(\alph*)}}
 
 \usepackage[T1]{fontenc}
@@ -37,7 +38,7 @@
 \DTMsettimestyle{en-CA}
 
 \usepackage{amsthm}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{fact}[theorem]{Fact}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -260,6 +261,29 @@
 
 \begin{document}
 	\maketitle
+
+  This document contains my lecture notes for CO 631, Symmetric Functions,
+  taught by Oliver Pechenik at the University of Waterloo in the Fall 2024 term.
+  Any errors, inaccuracies, or misinterpretations are entirely my own.
+  Use these notes at your own discretion, and please report any errors to me.
+
+  There is no official textbook for this course, but Oliver Pechenik listed the following resources that cover similar material:
+  \begin{itemize}
+    \item \fullcite{BS17};
+    \item \fullcite{Egg10};
+    \item \fullcite{Mac95};
+    \item \fullcite{Man01};
+    \item \fullcite{Sag01};
+    \item \fullcite{Sta99}.
+  \end{itemize}
+  
+  The following course description was provided by Oliver Pechenik:
+  \begin{quote}
+    Symmetric Function Theory is the heart of algebraic combinatorics.
+    In everything we do, we desire to apply Symmetric Function Theory, and we either do so or else try to invent an acceptable substitute.
+    Symmetric Function Theory can be motivated algebraically by a desire to understand group representations or geometrically by a desire to understand vector bundles.
+    We will take substantially combinatorial approach and backfill the motivations later.
+  \end{quote}
 
   \tableofcontents
 
