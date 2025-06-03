@@ -179,11 +179,11 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
 
 \subsection{Generating Function for Size of Partitions}
 
-\begin{definition}[Grassmanian]
+\begin{definition}[Grassmannian]
     Let \(\mathbb{K}\) be a field,
     \(V\) be a vector space over \(\mathbb{K}\),
     and \(d \in \nonnegatives\).
-    The \vocab{Grassmannian} \(\Grassmanian_d(V)\) is the set of all \(d\)-dimensional subspaces of \(V\).
+    The \vocab{Grassmannian} \(\Grassmannian_d(V)\) is the set of all \(d\)-dimensional subspaces of \(V\).
 \end{definition}
 
 \begin{definition}
@@ -222,7 +222,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
     \begin{equation}
         \qbinom{\ell + w}{\ell}
         = \left|
-            \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
+            \Grassmannian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         = \sum{\lambda \in \Par_{\ell, w}} (q)^{|\lambda|}.
     \end{equation}
@@ -244,7 +244,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
     \end{equation}
 
     On the other hand, we may count the elements of \(\mathcal{M}\) by first choosing the linear span of its rows, and then choosing the rows themselves in such linear span.
-    There are \(|\Grassmanian_\ell(\finitefield{q}^{\ell + w})|\) choices for an \(\ell\)-dimensional subspace of \(\finitefield{q}^{\ell + w}\).
+    There are \(|\Grassmannian_\ell(\finitefield{q}^{\ell + w})|\) choices for an \(\ell\)-dimensional subspace of \(\finitefield{q}^{\ell + w}\).
     Given such a subspace,
     there are \(q^{\ell} - 1\) choices for the first row,
     there are \(q^{\ell} - q\) choices for the second row, and so on.
@@ -255,7 +255,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
             \mathcal{M}
         \right|
         = \left|
-            \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
+            \Grassmannian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         \prod_{i=1}^{\ell} (q^{\ell} - q^{i-1})
     \end{equation}
@@ -263,7 +263,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
     Finally, from the two expressions for \(\left| \mathcal{M} \right|\), we find
     \begin{align}
         \left|
-            \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
+            \Grassmannian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         = \prod_{i=1}^{\ell} \frac{q^{\ell + w} - q^{i-1}}{q^{\ell} - q^{i-1}} \\
         = \prod_{i=0}^{\ell - 1} \frac{1 - q^{\ell + w - i}}{1 - q^{\ell - i}} \\
@@ -273,7 +273,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
 \end{proof}
 
 \begin{proof}[Proof for the second equality]
-    By linear algebra, the \(\Grassmanian_\ell(\finitefield{q}^{\ell + w})\) is in bijection with the set of \(\ell \times (\ell + w)\) matrices with independent rows and in row reduced echelon form.
+    By linear algebra, the \(\Grassmannian_\ell(\finitefield{q}^{\ell + w})\) is in bijection with the set of \(\ell \times (\ell + w)\) matrices with independent rows and in row reduced echelon form.
 
     The set of \(\ell \times (\ell + w)\) matrices with independent rows and in row reduced echelon form is in bijection with the set of partitions of \(\ell\) with at most \(w\) parts by the following correspondence:
     \begin{quote}
@@ -287,7 +287,7 @@ As an abuse of notation, we use \(\lambda\) to denote both the partition and its
     Therefore,
     \begin{equation}
         \left|
-            \Grassmanian_\ell\left(\finitefield{q}^{\ell + w} \right)
+            \Grassmannian_\ell\left(\finitefield{q}^{\ell + w} \right)
         \right|
         = \sum_{\lambda \in \Par_{\ell, w}} (q)^{|\lambda|},
     \end{equation}
