@@ -59,23 +59,23 @@ and
     \end{pmatrix}
 \end{equation}
 
-Recall that the Grassmanian \(\Grassmanian_k(\complexes^n)\) is the set of \(k\)-dimensional subspaces of \(\complexes^n\).
-We can obtain the Grassmanian by starting with the set of full-rank \(k \times n\) matrices, denoted by \(\mathcal{M}_{k \times n}^{\mathsf{FR}}\),
+Recall that the Grassmannian \(\Grassmannian_k(\complexes^n)\) is the set of \(k\)-dimensional subspaces of \(\complexes^n\).
+We can obtain the Grassmannian by starting with the set of full-rank \(k \times n\) matrices, denoted by \(\mathcal{M}_{k \times n}^{\mathsf{FR}}\),
 and quotient out by row operations, which, as we have seen, correspond to left multiplication by invertible matrices.
 Hence,
 \begin{equation}
-    \Grassmanian_k(\complexes^n)
+    \Grassmannian_k(\complexes^n)
     \cong
     \GL{\complexes^k} \backslash \mathcal{M}_{k \times n}^{\mathsf{FR}}.
 \end{equation}
 
 Also, \(\GL{\complexes^n}\) act on the left on \(\complexes^n\),
-so transitively \(\GL{\complexes^n}\) acts on the Grassmanian \(\Grassmanian_k(\complexes^n)\).
+so transitively \(\GL{\complexes^n}\) acts on the Grassmannian \(\Grassmannian_k(\complexes^n)\).
 
-Fix \(X \in \Grassmanian_k(\complexes^n)\).
+Fix \(X \in \Grassmannian_k(\complexes^n)\).
 The Orbit--Stabilizer Theorem provides a bijection
 \begin{equation}
-    \left(\GL{\complexes^n}\right)_X \backslash \GL{\complexes^n} \to \Grassmanian_k(\complexes^n).
+    \left(\GL{\complexes^n}\right)_X \backslash \GL{\complexes^n} \to \Grassmannian_k(\complexes^n).
 \end{equation}
 Note that \(\GL{\complexes^n} / \left(\GL{\complexes^n}\right)_X \) is \emph{not} a group, because \( \left( \GL{\complexes^n} \right)_X \) is not a normal subgroup of \(\GL{\complexes^n}\).
 Nevertheless, the quotient can still be seen as a set of left(?) cosets.
@@ -97,14 +97,14 @@ Remember, \(P_k\) is a subgroup of \(\GL{\complexes^n}\), but it's a normal subg
 
 Hence, now we have
 \begin{equation}
-    \Grassmanian_k(\complexes^n) \cong P_k \backslash \GL{\complexes^n}.
+    \Grassmannian_k(\complexes^n) \cong P_k \backslash \GL{\complexes^n}.
 \end{equation}
 
-Therefore, the ``manifold'' dimension of \(\Grassmanian_k(\complexes^n)\) is
+Therefore, the ``manifold'' dimension of \(\Grassmannian_k(\complexes^n)\) is
 the difference between the ``manifold'' dimension of \(\GL{\complexes^n}\) and the ``manifold'' dimension of \(P_k\),
 namely
 \begin{equation}
-    \dim(\Grassmanian_k(\complexes^n)) = n^2 - (k^2 + (n-k)k + (n-k)^2) = k(n-k).
+    \dim(\Grassmannian_k(\complexes^n)) = n^2 - (k^2 + (n-k)k + (n-k)^2) = k(n-k).
 \end{equation}
 
 Let \( G = \GL{\mathbb{C}^n} \). Given a choice of basis \(\mathbf{e}_1, \ldots, \mathbf{e}_n\), we can describe specific subgroups of \( G \):
@@ -121,12 +121,12 @@ there exists an opposite Borel subgroup \( B^- \) is the unique Borel subgroup s
 
 Let \(V = \complexes^n\).
 Let \(P = P_k\).
-Recall that \(P\) left-acts on \(G\), which gives a set of left cosets \(P \backslash G \cong \Grassmanian_k(V)\).
-In turn, \(G\) right-acts on \(P \backslash G \cong \Grassmanian_k(V)\),
+Recall that \(P\) left-acts on \(G\), which gives a set of left cosets \(P \backslash G \cong \Grassmannian_k(V)\).
+In turn, \(G\) right-acts on \(P \backslash G \cong \Grassmannian_k(V)\),
 and consequently the subgroups \(B\) and \(T\) act on \(P \backslash G\).
 
 \begin{proposition}
-    The set of fixed points in \(P \backslash G \cong \Grassmanian_k(V)\) under the action of \(T\) is (congruent to) the set of \(binom{n}{k}\) 
+    The set of fixed points in \(P \backslash G \cong \Grassmannian_k(V)\) under the action of \(T\) is (congruent to) the set of \(binom{n}{k}\) 
     \(k\)-dimensional subspaces of \(V\) whose reduced row echelon form representative only has non-zero entries in the pivot positions.
     In other words,
     the set of fixed points are the vector spaces spanned by \(k\) basis vectors.
@@ -138,7 +138,7 @@ and consequently the subgroups \(B\) and \(T\) act on \(P \backslash G\).
     where \(1 \leq i_1 < i_2 < \ldots < i_k \leq n\).
 \end{proposition}
 
-More explicitly, a \(T\)-fixed point in \(\Grassmanian_k(V)\) is a \(k\)-dimensional subspace that, in row echelon form, looks like
+More explicitly, a \(T\)-fixed point in \(\Grassmannian_k(V)\) is a \(k\)-dimensional subspace that, in row echelon form, looks like
 \begin{equation}
     \begin{bmatrix}
         1 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -171,7 +171,7 @@ We can rewrite this as
     X^{\circ}_{\lambda} =
     \left\{
         \begin{array}{c}
-            V \in \Grassmanian_k(V) : \\
+            V \in \Grassmannian_k(V) : \\
             \dim(V \cap \left\langle \mathbf{e}_1, \ldots, \mathbf{e}_{r} \right\rangle)
             =
             \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right|
@@ -184,7 +184,7 @@ The \vocab{Schubert variety} \(X_{\lambda}\) is
     X_\lambda =
     \left\{
         \begin{array}{c}
-            V \in \Grassmanian_k(V) : \\
+            V \in \Grassmannian_k(V) : \\
             \dim(V \cap \left\langle \mathbf{e}_1, \ldots, \mathbf{e}_{r} \right\rangle)
             \leq
             \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right|
@@ -214,19 +214,19 @@ Note that this definition only depends on the sequence of vector spaces
 The \vocab{Schubert cell} and \vocab{Schubert variety} with respect to a complete flag \(F_{\bullet}\) are 
 \begin{equation}
     X^{\circ}_{\lambda}(F_{\bullet}) =
-    \left\{ V \in \Grassmanian_k(V) : \dim(V \cap V_r) = \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right| \right\}
+    \left\{ V \in \Grassmannian_k(V) : \dim(V \cap V_r) = \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right| \right\}
 \end{equation}
 and
 \begin{equation}
     X_{\lambda}(F_{\bullet}) =
-    \left\{ V \in \Grassmanian_k(V) : \dim(V \cap V_r) \leq \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right| \right\},
+    \left\{ V \in \Grassmannian_k(V) : \dim(V \cap V_r) \leq \left|[r] \cap \{ \lambda_k + 1, \lambda_{k-1} + 2, \ldots, \lambda_1 + k \} \right| \right\},
 \end{equation}
 
 \section{Schubert Cohomology}
 
 Details are sparse.
 Be careful.
-We will think of \(X\) as the Grassmanian \(\Grassmanian_k(\complexes^n)\),
+We will think of \(X\) as the Grassmannian \(\Grassmannian_k(\complexes^n)\),
 but some of the following may be more general --- although we will not explicitly say so.
 
 If \(X\) is a \emph{nice} topological space,
@@ -259,22 +259,22 @@ Therefore, every class in \(H^*(X)\) can be written as \(a [p] + b [S^2]\).
 We can compute the product by computing the intersection of our basis elements in generic position (i.e.\ transversal intersection).
 We get \([p] \cdot [p] = 0\), \([p] \cdot [S^2] = [S^2] \cdot [p] = 1\), and \([S^2] \cdot [S^2] = [S^2]\).
 
-For example, \(\Grassmanian_k(\complexes^n)\) is a finite union of Schubert cells \(X^{\circ}_{\lambda}\).
+For example, \(\Grassmannian_k(\complexes^n)\) is a finite union of Schubert cells \(X^{\circ}_{\lambda}\).
 Since the closure of a Schubert cell \(X^{\circ}_{\lambda}\) is a Schubert variety \(X_{\lambda}\), by letting \(\sigma_{\lambda} = [X_{\lambda}]\),
 \begin{equation}
-    H^*(\Grassmanian_k(\complexes^n)) = \bigoplus_{\lambda} \mathbb{Z} \cdot \sigma_{\lambda}.
+    H^*(\Grassmannian_k(\complexes^n)) = \bigoplus_{\lambda} \mathbb{Z} \cdot \sigma_{\lambda}.
 \end{equation}
 
 \begin{theorem}
     Let \(\lambda, \mu\) be partitions inside \(k \times (n-k)\).
-    Then, in \(H^*(\Grassmanian_k(\complexes^n))\),
+    Then, in \(H^*(\Grassmannian_k(\complexes^n))\),
     \begin{equation}
         \sigma_{\lambda} \cdot \sigma_{\mu} = \sum_{\nu} c_{\lambda, \mu}^{\nu} \sigma_{\nu},
     \end{equation}
     where \(\nu\) ranges over partitions inside \(k \times (n-k)\) and \(c_{\lambda, \mu}^{\nu}\) are the Littlewood--Richardson coefficients.
 \end{theorem}
 
-If \(\lambda = \composition{p, 0, \cdots, 0}\), then \(X_\lambda\) is a \vocab{Pieri Schubert variety} or \vocab{special Schubert variety}, consisting of points in \(\Grassmanian_k(\complexes^n)\) of the form
+If \(\lambda = \composition{p, 0, \cdots, 0}\), then \(X_\lambda\) is a \vocab{Pieri Schubert variety} or \vocab{special Schubert variety}, consisting of points in \(\Grassmannian_k(\complexes^n)\) of the form
 \begin{equation}
     \left[\begin{array}{*{20}{c}}
         1 & 0 & \cdots & 0 & \ast & \ast & \cdots & \ast & 0 & \ast & \cdots & \ast \\
@@ -284,7 +284,7 @@ If \(\lambda = \composition{p, 0, \cdots, 0}\), then \(X_\lambda\) is a \vocab{P
     \end{array}\right].
 \end{equation}
 
-For example, consider the Grassmanian \(\Grassmanian_1(\complexes^5)\),
+For example, consider the Grassmannian \(\Grassmannian_1(\complexes^5)\),
 \(\lambda = \composition{2}\) and \(\mu = \composition{1}\).
 Then,
 \begin{align}
@@ -326,7 +326,7 @@ From this, we can compute
     \right] = \sigma_{\composition{3}}.
 \end{equation}
 
-You can attempt to do the same with \(\lambda = \mu = \composition{1}\) in \(\Grassmanian_2(\complexes^4)\) and find that
+You can attempt to do the same with \(\lambda = \mu = \composition{1}\) in \(\Grassmannian_2(\complexes^4)\) and find that
 \begin{equation}
     \sigma_{\composition{1}} \cdot \sigma_{\composition{1}} = \sigma_{\composition{2}} + \sigma_{\composition{1, 1}},
 \end{equation}
